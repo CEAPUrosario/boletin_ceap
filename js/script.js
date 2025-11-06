@@ -1,4 +1,4 @@
-// Mostrar solo la sección activa
+// Controla el cambio de secciones
 document.addEventListener("DOMContentLoaded", () => {
     const buttons = document.querySelectorAll(".nav-btn");
     const sections = document.querySelectorAll(".section");
@@ -7,7 +7,7 @@ document.addEventListener("DOMContentLoaded", () => {
         button.addEventListener("click", () => {
             // Quitar clase "active" de todos los botones
             buttons.forEach(btn => btn.classList.remove("active"));
-            // Marcar el botón actual
+            // Activar botón actual
             button.classList.add("active");
 
             // Ocultar todas las secciones
@@ -16,6 +16,9 @@ document.addEventListener("DOMContentLoaded", () => {
             // Mostrar la sección seleccionada
             const sectionId = button.getAttribute("data-section");
             document.getElementById(sectionId).classList.add("active");
+
+            // Desplazar hacia arriba al cambiar de sección
+            window.scrollTo({ top: 0, behavior: "smooth" });
         });
     });
 });
