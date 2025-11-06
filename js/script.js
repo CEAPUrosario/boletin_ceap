@@ -1,17 +1,21 @@
+// Mostrar solo la sección activa
 document.addEventListener("DOMContentLoaded", () => {
     const buttons = document.querySelectorAll(".nav-btn");
     const sections = document.querySelectorAll(".section");
 
-    buttons.forEach(btn => {
-        btn.addEventListener("click", () => {
-            // Quita la clase activa de todos los botones y secciones
-            buttons.forEach(b => b.classList.remove("active"));
-            sections.forEach(s => s.classList.remove("active"));
+    buttons.forEach(button => {
+        button.addEventListener("click", () => {
+            // Quitar clase "active" de todos los botones
+            buttons.forEach(btn => btn.classList.remove("active"));
+            // Marcar el botón actual
+            button.classList.add("active");
 
-            // Activa el botón y la sección seleccionada
-            btn.classList.add("active");
-            const target = btn.dataset.section;
-            document.getElementById(target).classList.add("active");
+            // Ocultar todas las secciones
+            sections.forEach(section => section.classList.remove("active"));
+
+            // Mostrar la sección seleccionada
+            const sectionId = button.getAttribute("data-section");
+            document.getElementById(sectionId).classList.add("active");
         });
     });
 });
