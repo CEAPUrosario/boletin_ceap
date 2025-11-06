@@ -1,41 +1,61 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Boletín Cultural del Museo Bolivariano</title>
-  <link rel="stylesheet" href="css/estilo.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Boletín CEAP #9 – Noviembre 2025</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&family=Poppins:wght@500;700&display=swap" rel="stylesheet">
 </head>
-
 <body>
-  <header>
-    <h1>Boletín Cultural del Museo Bolivariano</h1>
-    <p>Reflexiones sobre nuestra historia, cultura y educación.</p>
-  </header>
+    <header>
+        <div class="logo">CEAP</div>
+        <nav>
+            <button class="nav-btn active" data-section="inicio">Inicio</button>
+            <button class="nav-btn" data-section="podcast">Podcast</button>
+            <button class="nav-btn" data-section="ia">IA</button>
+            <button class="nav-btn" data-section="internacionalizacion">Internacionalización</button>
+            <button class="nav-btn" data-section="modelos">Modelos Pedagógicos</button>
+            <button class="nav-btn" data-section="eventos">Eventos</button>
+        </nav>
+    </header>
 
-  <main>
-    <section>
-      <h2>Edición de Noviembre 2025</h2>
-      <p>Bienvenidos a una nueva edición de nuestro boletín mensual, donde compartimos las actividades, exposiciones y reflexiones que conectan al museo con la comunidad.</p>
-      
-      <h3>🎧 Escucha nuestro podcast</h3>
-      <iframe style="border-radius:12px" 
-        src="<iframe data-testid="embed-iframe" style="border-radius:12px" src="https://open.spotify.com/embed/show/56vBIn7doLY3q4J6YWvVIM?utm_source=generator&theme=0&t=0" width="100%" height="352" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>" 
-        width="100%" height="232" frameBorder="0" 
-        allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" 
-        loading="lazy">
-      </iframe>
-    </section>
+    <main id="content">
+        <section id="inicio" class="section active">
+            <h1>Boletín CEAP #9</h1>
+            <p>Bienvenido al boletín del Centro de Enseñanza y Aprendizaje. Explora las secciones para conocer las últimas novedades, reflexiones y recursos sobre innovación educativa.</p>
+        </section>
 
-    <section>
-      <h3>📸 Galería del mes</h3>
-      <img src="img/museo1.jpg" alt="Exposición del Museo Bolivariano" width="100%">
-    </section>
-  </main>
+        <section id="podcast" class="section">
+            <h2>🎙️ Podcast del mes</h2>
+            <p>Escucha el episodio más reciente de <strong>Reflexiones para la Enseñanza y el Aprendizaje</strong>, donde exploramos ideas para transformar la docencia universitaria.</p>
+        </section>
 
-  <footer>
-    <p>© 2025 Museo Bolivariano de Soledad — <a href="mailto:ensenanzayaprendizaje@urosario.edu.co">Contáctanos</a></p>
-  </footer>
+        <section id="ia" class="section">
+            <h2>🤖 Inteligencia Artificial y Educación</h2>
+            <p>Descubre cómo los docentes del Rosario están incorporando la IA en sus estrategias pedagógicas, promoviendo el pensamiento crítico y la creatividad.</p>
+        </section>
+
+        <section id="internacionalizacion" class="section">
+            <h2>🌍 Internacionalización del Currículo</h2>
+            <p>Conoce las experiencias que fortalecen la formación global de nuestros estudiantes y la cooperación académica internacional.</p>
+        </section>
+
+        <section id="modelos" class="section">
+            <h2>📘 Modelos Pedagógicos</h2>
+            <p>Reflexionamos sobre las tendencias y enfoques que guían la enseñanza universitaria contemporánea, desde la docencia centrada en el estudiante hasta el aprendizaje experiencial.</p>
+        </section>
+
+        <section id="eventos" class="section">
+            <h2>📅 Eventos y Actividades</h2>
+            <p>Consulta la agenda CEAP: talleres, seminarios y espacios de aprendizaje colaborativo para fortalecer la práctica docente.</p>
+        </section>
+    </main>
+
+    <footer>
+        <iframe style="border-radius:12px" src="https://open.spotify.com/embed/episode/5J7v6KzGvF2XvW5tdlGsnT?utm_source=generator&theme=0" width="100%" height="80" frameborder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"></iframe>
+    </footer>
+
+    <script src="js/script.js"></script>
 </body>
 </html>
-
