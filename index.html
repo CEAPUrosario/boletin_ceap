@@ -19,7 +19,7 @@
         header {
             background: #fff;
             text-align: center;
-            padding: 2em 1em 1em;
+            padding: 0.8em 1em 0.5em;
             box-shadow: 0 2px 8px rgba(0,0,0,0.1);
             position: fixed;
             top: 0;
@@ -28,43 +28,33 @@
             z-index: 1000;
         }
 
-        /* **NUEVAS REGLAS PARA CONTROLAR LA IMAGEN** */
-        .header-image {
-            max-width: 100%; /* Asegura que no se desborde */
-            height: auto;
-            display: block; /* Elimina espacios extra debajo de la imagen */
-            margin: 0 auto 0.5em; /* Centra la imagen y añade margen inferior */
-            /* OPCIONAL: Puedes establecer un ancho máximo para la imagen si lo deseas, por ejemplo: */
-            /* max-width: 600px; */
-        }
-
-        /* Se mantiene el selector, pero ahora se aplicará a la imagen dentro */
-        .logo {
-            margin-bottom: 0.5em;
-        }
-        /* **FIN DE NUEVAS REGLAS** */
-
-        /* --- BLOQUE DE TEXTOS --- */
-        .header-info {
+        /* --- BLOQUE DE TEXTOS ARRIBA --- */
+        .header-top {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            max-width: 900px;
-            margin: 0 auto 1em;
-            font-size: 0.95em;
+            max-width: 1000px;
+            margin: 0 auto 0.5em;
+            font-size: 0.9em;
             color: #555;
-            flex-wrap: wrap;
-            text-align: center;
         }
 
-        .header-info div {
-            flex: 1;
-            min-width: 200px;
-            padding: 0.3em;
-        }
-
-        .header-info strong {
+        .header-top a {
+            color: #a020f0;
+            text-decoration: none;
             font-weight: 600;
+        }
+
+        .header-top a:hover {
+            text-decoration: underline;
+        }
+
+        /* --- IMAGEN DE ENCABEZADO --- */
+        .logo img {
+            max-width: 220px; /* tamaño reducido */
+            height: auto;
+            display: block;
+            margin: 0.3em auto;
         }
 
         /* --- BOTONES DE NAVEGACIÓN --- */
@@ -73,7 +63,7 @@
             justify-content: center;
             gap: 1em;
             flex-wrap: wrap;
-            margin-top: 0.5em;
+            margin-top: 0.3em;
         }
 
         .nav-btn {
@@ -83,9 +73,10 @@
             font-family: 'Poppins', sans-serif;
             font-weight: 500;
             cursor: pointer;
-            padding: 0.5em 1.2em;
+            padding: 0.4em 1em;
             border-radius: 8px;
             transition: all 0.3s ease;
+            font-size: 0.9em;
         }
 
         .nav-btn:hover {
@@ -99,7 +90,7 @@
 
         /* --- CONTENIDO PRINCIPAL --- */
         main {
-            padding: 16em 2em 160px; /* **ESTE VALOR PUEDE NECESITAR AJUSTES** después de ver la imagen cargada */
+            padding: 12em 2em 160px; 
             max-width: 900px;
             margin: 0 auto;
         }
@@ -150,27 +141,26 @@
 
         /* --- RESPONSIVE --- */
         @media (max-width: 768px) {
-            .header-info {
+            .header-top {
                 flex-direction: column;
                 text-align: center;
+                gap: 0.3em;
             }
             main {
-                padding: 20em 1em 180px; /* **ESTE VALOR PUEDE NECESITAR AJUSTES** */
+                padding: 15em 1em 180px;
             }
         }
     </style>
 </head>
 <body>
     <header>
-        <div class="logo">
-            <img src="https://github.com/CEAPUrosario/boletin_ceap/blob/main/img/Header.png?raw=true" 
-                 alt="Logo CEAP Boletín" 
-                 class="header-image">
+        <div class="header-top">
+            <div><a href="https://urosario.edu.co/profesores/ceap" target="_blank">Conozca el CEAP</a></div>
+            <div><strong>Boletín bimensual #9 – Noviembre 2025</strong></div>
         </div>
 
-        <div class="header-info">
-            <div><strong>Conozca el CEAP</strong></div>
-            <div><strong>Boletín bimensual #9 – Noviembre 2025</strong></div>
+        <div class="logo">
+            <img src="https://github.com/CEAPUrosario/boletin_ceap/blob/main/img/Header.png?raw=true" alt="Logo CEAP Boletín">
         </div>
 
         <nav>
