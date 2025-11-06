@@ -7,6 +7,7 @@ body {
     padding: 0;
 }
 
+/* === Header fijo === */
 header {
     background-color: #ffffff;
     display: flex;
@@ -14,8 +15,10 @@ header {
     align-items: center;
     padding: 1em 2em;
     box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-    position: sticky;
+    position: fixed;
     top: 0;
+    left: 0;
+    width: 100%;
     z-index: 1000;
 }
 
@@ -23,7 +26,7 @@ header {
     font-family: 'Poppins', sans-serif;
     font-size: 1.5em;
     font-weight: 700;
-    color: #a020f0; /* morado institucional cálido */
+    color: #a020f0;
 }
 
 nav {
@@ -54,8 +57,9 @@ nav {
     color: white;
 }
 
+/* === Contenido principal === */
 main {
-    padding: 2em;
+    padding: 7em 2em 160px; /* espacio arriba y abajo para header y footer fijos */
     max-width: 900px;
     margin: 0 auto;
 }
@@ -74,13 +78,25 @@ main {
     to {opacity: 1; transform: translateY(0);}
 }
 
+/* === Footer con reproductor fijo === */
 footer {
-    background-color: #f5f5f5;
-    padding: 1em;
-    text-align: center;
-    color: #666;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background-color: #121212;
+    color: white;
+    z-index: 1000;
+    box-shadow: 0 -2px 8px rgba(0,0,0,0.2);
+}
+
+footer .player-header {
     font-size: 0.9em;
-    margin-top: 3em;
+    text-align: center;
+    background-color: #181818;
+    padding: 0.4em 0;
+    font-family: 'Poppins', sans-serif;
+    color: #f5f5f5;
 }
 
 /* === Responsividad === */
@@ -88,8 +104,14 @@ footer {
     nav {
         flex-direction: column;
         gap: 0.5em;
+        align-items: center;
     }
+
+    .logo {
+        margin-bottom: 0.5em;
+    }
+
     main {
-        padding: 1em;
+        padding: 9em 1em 180px;
     }
 }
