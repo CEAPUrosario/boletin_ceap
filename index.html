@@ -1,176 +1,237 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>Boletín CEAP - Noviembre 2025</title>
 
   <style>
-    body {
-      font-family: Arial, sans-serif;
-      margin: 0;
-      padding: 0;
-      background-color: #f9f9f9;
+    /* ===== Reset / base ===== */
+    :root{
+      --accent:#8C1D40;
+      --accent-2:#A72C52;
+      --bg:#f9f9f9;
+      --text:#222;
+      --banner-max-width:900px; /* cambia esto si quieres banner más ancho */
+      --banner-max-height:200px; /* altura máxima del banner */
     }
 
-    header {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      z-index: 1000;
-      background-color: #fff;
+    *{box-sizing:border-box}
+    body{
+      margin:0;
+      font-family: "Open Sans", Arial, sans-serif;
+      background:var(--bg);
+      color:var(--text);
+      -webkit-font-smoothing:antialiased;
     }
 
-    .banner-img {
-      width: 100%;
-      height: auto;
-      max-height: 350px;
-      object-fit: cover;
-      display: block;
+    /* ===== Header (fijo) ===== */
+    header{
+      position:fixed;
+      top:0;
+      left:0;
+      width:100%;
+      background:#ffffff;
+      z-index:1000;
+      box-shadow:0 2px 8px rgba(0,0,0,0.06);
+      /* contenido centrado dentro del header */
+      display:flex;
+      flex-direction:column;
+      align-items:center;
     }
 
-    .header-texts {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 10px 40px;
-      background-color: #ffffff;
-      border-bottom: 2px solid #eee;
-      flex-wrap: wrap;
+    /* Banner: centrado y con límites; no se estira a todo el ancho */
+    .banner-wrap{
+      width:100%;
+      display:flex;
+      justify-content:center;
+      padding:12px 16px 8px; /* reduce arriba si quieres menos espacio */
     }
 
-    .header-texts h2, .header-texts h3 {
-      margin: 5px 0;
-      font-weight: normal;
+    .banner-img{
+      width:100%;
+      max-width:var(--banner-max-width);
+      height:auto;
+      max-height:var(--banner-max-height);
+      object-fit:contain; /* preserva proporciones */
+      display:block;
     }
 
-    .buttons {
-      display: flex;
-      justify-content: center;
-      gap: 15px;
-      padding: 15px;
-      background-color: #fff;
-      border-bottom: 1px solid #ddd;
-      flex-wrap: wrap;
+    /* textos debajo de la imagen (dentro del header) */
+    .header-texts{
+      width:100%;
+      max-width:var(--banner-max-width);
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      padding:8px 16px 14px;
+      gap:10px;
     }
 
-    button {
-      background-color: #8C1D40;
-      color: white;
-      border: none;
-      padding: 10px 18px;
-      border-radius: 5px;
-      cursor: pointer;
-      font-size: 16px;
-      transition: background-color 0.3s;
+    .header-texts .left, .header-texts .right{
+      min-width:150px;
+    }
+    .header-texts h2, .header-texts h3{
+      margin:0;
+      font-weight:600;
+      color:#444;
+      font-size:0.98rem;
+    }
+    .header-texts h3{ text-align:right; color:#666; font-weight:500; font-size:0.92rem }
+
+    /* botones centrados (debajo de textos) */
+    .buttons{
+      width:100%;
+      display:flex;
+      justify-content:center;
+      gap:12px;
+      padding:12px 16px 16px;
+      flex-wrap:wrap;
+      border-top:1px solid rgba(0,0,0,0.03);
+      border-bottom:1px solid rgba(0,0,0,0.03);
+      background:#fff;
     }
 
-    button:hover {
-      background-color: #A72C52;
+    .btn{
+      background:var(--accent);
+      color:#fff;
+      border:none;
+      padding:10px 16px;
+      border-radius:8px;
+      cursor:pointer;
+      font-family: "Poppins", sans-serif;
+      font-weight:600;
+      transition:background .18s, transform .08s;
+      font-size:0.95rem;
+    }
+    .btn:hover{ background:var(--accent-2); transform:translateY(-2px) }
+
+    /* ===== Main - dejar espacio para header y footer =====
+       Ajusta --banner-max-height o el margin-top si cambias la imagen */
+    main{
+      /* espacio superior = banner max height + textos + botones */
+      margin-top: calc(var(--banner-max-height) + 120px);
+      margin-bottom:120px; /* espacio para reproductor fijo */
+      padding:24px 20px;
+      max-width:940px;
+      margin-left:auto;
+      margin-right:auto;
     }
 
-    main {
-      margin-top: 550px; /* espacio para el encabezado fijo */
-      margin-bottom: 120px; /* espacio para el reproductor fijo */
-      padding: 20px 40px;
+    .content-section{ display:none; animation:fadeIn .36s ease both }
+    .content-section.active{ display:block }
+
+    @keyframes fadeIn{
+      from{opacity:0; transform:translateY(8px)}
+      to{opacity:1; transform:translateY(0)}
     }
 
-    .content-section {
-      display: none;
+    /* ===== Footer - reproductor fijo ===== */
+    footer{
+      position:fixed;
+      bottom:0;
+      left:0;
+      width:100%;
+      background:#111;
+      color:#fff;
+      z-index:1000;
+      display:flex;
+      justify-content:center;
+      align-items:center;
+      padding:8px 12px;
+      box-shadow:0 -4px 14px rgba(0,0,0,0.25);
     }
+    .player-wrap{ width:100%; max-width:900px; display:flex; flex-direction:column; gap:6px; align-items:center; }
+    .player-title{ font-family:"Poppins",sans-serif; font-size:0.95rem; color:#eee; margin:0; padding:0 8px; text-align:center }
+    .player-iframe{ width:100%; max-width:900px; height:80px; border-radius:8px; border:0; }
 
-    .content-section.active {
-      display: block;
-    }
-
-    footer {
-      position: fixed;
-      bottom: 0;
-      left: 0;
-      width: 100%;
-      background-color: #111;
-      padding: 10px 0;
-      text-align: center;
-      z-index: 1000;
-    }
-
-    iframe {
-      border-radius: 12px;
-      width: 100%;
-      max-width: 600px;
-      height: 80px;
-      border: none;
-    }
-
-    @media (max-width: 768px) {
-      .header-texts {
-        flex-direction: column;
-        align-items: center;
-        text-align: center;
-      }
-      main {
-        margin-top: 600px;
-      }
+    /* ===== Responsive ===== */
+    @media (max-width:820px){
+      :root{ --banner-max-height:160px } /* reduce alto en móvil */
+      .header-texts{ padding:8px 12px; flex-direction:column; text-align:center }
+      .header-texts h3{ text-align:center }
+      main{ margin-top: calc(var(--banner-max-height) + 160px); padding:18px 12px }
+      .player-iframe{ height:74px }
     }
   </style>
 </head>
 <body>
 
   <header>
-    <img src="https://github.com/CEAPUrosario/boletin_ceap/blob/main/img/Header.png?raw=true" alt="Boletín CEAP" class="banner-img" />
+    <div class="banner-wrap">
+      <!-- imagen centrada, no ocupa todo el ancho -->
+      <img class="banner-img"
+           src="https://github.com/CEAPUrosario/boletin_ceap/blob/main/img/Header.png?raw=true"
+           alt="Boletín CEAP - Header">
+    </div>
 
-    <div class="header-texts">
-      <h2>Conozca el CEAP</h2>
-      <h3>Boletín bimensual #9 - Noviembre de 2025</h3>
+    <div class="header-texts" aria-hidden="false">
+      <div class="left"><h2>Conozca el CEAP</h2></div>
+      <div class="right"><h3>Boletín bimensual #9 — Noviembre 2025</h3></div>
     </div>
 
     <div class="buttons">
-      <button onclick="showSection('noticias')">Noticias</button>
-      <button onclick="showSection('reflexiones')">Reflexiones</button>
-      <button onclick="showSection('experiencias')">Experiencias</button>
-      <button onclick="showSection('recursos')">Recursos</button>
+      <button class="btn" data-section="noticias">Noticias</button>
+      <button class="btn" data-section="reflexiones">Reflexiones</button>
+      <button class="btn" data-section="experiencias">Experiencias</button>
+      <button class="btn" data-section="recursos">Recursos</button>
     </div>
   </header>
 
   <main>
-    <div id="noticias" class="content-section active">
-      <h2>Noticias</h2>
-      <p>En esta edición encontrará las noticias más recientes sobre las iniciativas del CEAP y sus proyectos destacados...</p>
-    </div>
+    <article id="noticias" class="content-section active">
+      <h1>Noticias</h1>
+      <p>Aquí aparecen las noticias destacadas del CEAP para esta edición...</p>
+    </article>
 
-    <div id="reflexiones" class="content-section">
+    <article id="reflexiones" class="content-section">
       <h2>Reflexiones</h2>
-      <p>Espacio para el pensamiento crítico sobre la enseñanza y el aprendizaje universitario...</p>
-    </div>
+      <p>Espacio para pensar sobre prácticas docentes y aprendizaje...</p>
+    </article>
 
-    <div id="experiencias" class="content-section">
+    <article id="experiencias" class="content-section">
       <h2>Experiencias</h2>
-      <p>Conozca experiencias inspiradoras de profesores y equipos académicos que transforman su práctica educativa...</p>
-    </div>
+      <p>Relatos de innovación y proyectos en la Universidad...</p>
+    </article>
 
-    <div id="recursos" class="content-section">
+    <article id="recursos" class="content-section">
       <h2>Recursos</h2>
-      <p>Explore herramientas, lecturas y materiales para fortalecer la innovación docente en la Universidad...</p>
-    </div>
+      <p>Materiales, lecturas y herramientas recomendadas para docentes...</p>
+    </article>
   </main>
 
   <footer>
-    <iframe style="border-radius:12px"
-      src="https://open.spotify.com/embed/show/7rDqLbD5rQn5E5M6CBY4tD?utm_source=generator"
-      width="100%" height="80" frameBorder="0" allowfullscreen=""
-      allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture">
-    </iframe>
+    <div class="player-wrap">
+      <div class="player-title">🎙️ <strong>Reflexiones para la Enseñanza y el Aprendizaje</strong></div>
+      <iframe class="player-iframe"
+        src="https://open.spotify.com/embed/show/56vBIn7doLY3q4J6YWvVIM?utm_source=generator&theme=0"
+        allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+    </div>
   </footer>
 
   <script>
-    function showSection(sectionId) {
-      document.querySelectorAll('.content-section').forEach(section => {
-        section.classList.remove('active');
-      });
-      document.getElementById(sectionId).classList.add('active');
-    }
-  </script>
+    // Navegación entre secciones (simple y segura)
+    document.addEventListener('DOMContentLoaded', () => {
+      const buttons = document.querySelectorAll('.btn');
+      const sections = document.querySelectorAll('.content-section');
 
+      buttons.forEach(btn => {
+        btn.addEventListener('click', () => {
+          // activar botón
+          buttons.forEach(b => b.classList.remove('active'));
+          btn.classList.add('active');
+
+          // mostrar sección
+          const id = btn.dataset.section;
+          sections.forEach(s => s.classList.remove('active'));
+          const target = document.getElementById(id);
+          if (target) target.classList.add('active');
+
+          // subir al tope del contenido (efecto suave)
+          window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+      });
+    });
+  </script>
 </body>
 </html>
