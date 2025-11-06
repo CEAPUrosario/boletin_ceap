@@ -1,79 +1,60 @@
-/* --- Estilos generales --- */
-body {
-    margin: 0;
-    font-family: 'Open Sans', sans-serif;
-    background-color: #F7F8FA;
-    color: #1E3A5F;
-}
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Boletín CEAP #9 – Noviembre 2025</title>
+    <link rel="stylesheet" href="css/**estilo.css**">     <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&family=Poppins:wght@500;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header>
+        <div class="logo">CEAP</div>
+        <nav>
+            <button class="nav-btn active" data-section="inicio">Inicio</button>
+            <button class="nav-btn" data-section="podcast">Podcast</button>
+            <button class="nav-btn" data-section="ia">IA</button>
+            <button class="nav-btn" data-section="internacionalizacion">Internacionalización</button>
+            <button class="nav-btn" data-section="modelos">Modelos Pedagógicos</button>
+            <button class="nav-btn" data-section="eventos">Eventos</button>
+        </nav>
+    </header>
 
-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    background-color: #1E3A5F;
-    color: white;
-    padding: 15px 30px;
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    z-index: 10;
-}
+    <main id="content">
+        <section id="inicio" class="section active">
+            <h1>Boletín CEAP #9</h1>
+            <p>Bienvenido al boletín del Centro de Enseñanza y Aprendizaje. Explora las secciones para conocer las últimas novedades, reflexiones y recursos sobre innovación educativa.</p>
+        </section>
 
-.logo {
-    font-family: 'Poppins', sans-serif;
-    font-weight: 700;
-    font-size: 1.4em;
-}
+        <section id="podcast" class="section">
+            <h2>🎙️ Podcast del mes</h2>
+            <p>Escucha el episodio más reciente de <strong>Reflexiones para la Enseñanza y el Aprendizaje</strong>, donde exploramos ideas para transformar la docencia universitaria.</p>
+        </section>
 
-nav {
-    display: flex;
-    gap: 10px;
-}
+        <section id="ia" class="section">
+            <h2>🤖 Inteligencia Artificial y Educación</h2>
+            <p>Descubre cómo los docentes del Rosario están incorporando la IA en sus estrategias pedagógicas, promoviendo el pensamiento crítico y la creatividad.</p>
+        </section>
 
-.nav-btn {
-    background: transparent;
-    border: none;
-    color: white;
-    font-family: 'Poppins', sans-serif;
-    font-weight: 500;
-    cursor: pointer;
-    transition: 0.3s;
-}
+        <section id="internacionalizacion" class="section">
+            <h2>🌍 Internacionalización del Currículo</h2>
+            <p>Conoce las experiencias que fortalecen la formación global de nuestros estudiantes y la cooperación académica internacional.</p>
+        </section>
 
-.nav-btn:hover, .nav-btn.active {
-    color: #F5B301;
-    border-bottom: 2px solid #F5B301;
-}
+        <section id="modelos" class="section">
+            <h2>📘 Modelos Pedagógicos</h2>
+            <p>Reflexionamos sobre las tendencias y enfoques que guían la enseñanza universitaria contemporánea, desde la docencia centrada en el estudiante hasta el aprendizaje experiencial.</p>
+        </section>
 
-/* --- Contenido principal --- */
-main {
-    padding: 120px 20px 100px;
-    max-width: 900px;
-    margin: auto;
-}
+        <section id="eventos" class="section">
+            <h2>📅 Eventos y Actividades</h2>
+            <p>Consulta la agenda CEAP: talleres, seminarios y espacios de aprendizaje colaborativo para fortalecer la práctica docente.</p>
+        </section>
+    </main>
 
-.section {
-    display: none;
-    opacity: 0;
-    transition: opacity 0.5s ease;
-}
+    <footer>
+        <iframe style="border-radius:12px" src="https://open.spotify.com/embed/episode/5J7v6KzGvF2XvW5tdlGsnT?utm_source=generator&theme=0" width="100%" height="80" frameborder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"></iframe>
+    </footer>
 
-.section.active {
-    display: block;
-    opacity: 1;
-}
-
-h1, h2 {
-    font-family: 'Poppins', sans-serif;
-}
-
-/* --- Reproductor Spotify --- */
-footer {
-    position: fixed;
-    bottom: 0;
-    left: 0;
-    width: 100%;
-    background-color: #E0E0E0;
-    box-shadow: 0 -2px 10px rgba(0,0,0,0.1);
-}
+    <script src="js/script.js"></script>
+</body>
+</html>
