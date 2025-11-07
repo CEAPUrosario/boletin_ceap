@@ -1,235 +1,185 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Boletín CEAP #9 – Noviembre 2025</title>
-    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&family=Poppins:wght@500;700&display=swap" rel="stylesheet">
-    <style>
-        /* --- ESTILOS GENERALES --- */
-        body {
-            font-family: 'Open Sans', sans-serif;
-            background: #f9fafc;
-            color: #333;
-            margin: 0;
-            padding: 0;
-        }
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Boletín CEAP #10 – Enero 2026</title>
+  <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&family=Poppins:wght@500;700&display=swap" rel="stylesheet">
+  <style>
+    /* --- ESTILOS GENERALES --- */
+    body {
+      font-family: 'Open Sans', sans-serif;
+      background: #fff;
+      color: #333;
+      margin: 0;
+      padding: 0;
+    }
 
-        /* --- ENCABEZADO --- */
-        header {
-            background: #fff;
-            text-align: center;
-            padding: 0.8em 1em 0.5em;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            z-index: 1000;
-        }
+    /* --- ENCABEZADO --- */
+    header {
+      background: #fff;
+      padding: 1em 2em;
+      text-align: center;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      z-index: 1000;
+    }
 
-        /* --- BLOQUE DE TEXTOS ARRIBA --- */
-        .header-top {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            max-width: 1000px;
-            margin: 0 auto 0.5em;
-            font-size: 0.9em;
-            color: #555;
-        }
+    .header-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
 
-        .header-top a {
-            color: #a020f0;
-            text-decoration: none;
-            font-weight: 600;
-        }
+    .header-top img {
+      height: 60px;
+      width: auto;
+    }
 
-        .header-top a:hover {
-            text-decoration: underline;
-        }
+    .header-left {
+      font-size: 0.95em;
+      color: #0056a4;
+      font-weight: 600;
+    }
 
-        /* --- IMAGEN DE ENCABEZADO --- */
-        .logo img {
-            max-width: 300px; /* tamaño reducido */
-            height: auto;
-            display: block;
-            margin: 0.3em auto;
-        }
+    .header-right a {
+      font-size: 0.95em;
+      color: #d4002a;
+      text-decoration: none;
+      font-weight: 600;
+    }
 
-        /* --- BOTONES DE NAVEGACIÓN --- */
-        nav {
-            display: flex;
-            justify-content: center;
-            gap: 1em;
-            flex-wrap: wrap;
-            margin-top: 0.3em;
-        }
+    /* --- BOTONES DE NAVEGACIÓN --- */
+    nav {
+      margin-top: 1em;
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 0.3em;
+    }
 
-        .nav-btn {
-            background: none;
-            border: 2px solid #a020f0;
-            color: #a020f0;
-            font-family: 'Poppins', sans-serif;
-            font-weight: 500;
-            cursor: pointer;
-            padding: 0.4em 1em;
-            border-radius: 8px;
-            transition: all 0.3s ease;
-            font-size: 0.9em;
-        }
+    .nav-btn {
+      background: #f3f3f3;
+      border: 1px solid #ccc;
+      color: #333;
+      font-family: 'Poppins', sans-serif;
+      font-weight: 500;
+      cursor: pointer;
+      padding: 0.6em 1.2em;
+      border-radius: 2px;
+      transition: all 0.3s ease;
+    }
 
-        .nav-btn:hover {
-            background: #f0e6ff;
-        }
+    .nav-btn:hover {
+      background: #e0e0e0;
+    }
 
-        .nav-btn.active {
-            background: #a020f0;
-            color: white;
-        }
+    .nav-btn.active {
+      background: #0074c2;
+      color: white;
+      border: 1px solid #005fa3;
+    }
 
-        /* --- CONTENIDO PRINCIPAL --- */
-        main {
-            padding: 12em 2em 160px; 
-            max-width: 900px;
-            margin: 0 auto;
-        }
+    /* --- CONTENIDO PRINCIPAL --- */
+    main {
+      max-width: 900px;
+      margin: 160px auto 160px;
+      padding: 1em;
+      min-height: 60vh;
+    }
 
-        .section {
-            display: none;
-            animation: fadeIn 0.5s ease;
-        }
+    .section {
+      display: none;
+      animation: fadeIn 0.5s ease;
+    }
 
-        .section.active {
-            display: block;
-        }
+    .section.active {
+      display: block;
+    }
 
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(10px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
 
-        h1, h2 {
-            font-family: 'Poppins', sans-serif;
-        }
+    /* --- PIE CON REPRODUCTOR --- */
+    footer {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      background: #fff;
+      border-top: 2px solid #e0e0e0;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0.4em 1em;
+      flex-wrap: wrap;
+      z-index: 1000;
+    }
 
-        /* --- REPRODUCTOR DE SPOTIFY --- */
-        footer {
-            position: fixed;
-            bottom: 0;
-            left: 0;
-            width: 100%;
-            background: #121212;
-            color: white;
-            z-index: 1000;
-            box-shadow: 0 -2px 8px rgba(0,0,0,0.2);
-        }
+    .podcast-player {
+      display: flex;
+      align-items: center;
+      gap: 0.6em;
+      flex: 1;
+    }
 
-        footer .player-header {
-            font-size: 0.9em;
-            text-align: center;
-            background: #181818;
-            padding: 0.4em 0;
-            font-family: 'Poppins', sans-serif;
-            color: #f5f5f5;
-        }
+    .podcast-player button {
+      background: #ffcc00;
+      border: none;
+      border-radius: 50%;
+      width: 28px;
+      height: 28px;
+      cursor: pointer;
+    }
 
-        iframe {
-            width: 100%;
-            border: none;
-        }
+    .podcast-player span {
+      font-size: 0.9em;
+    }
 
-        /* --- RESPONSIVE --- */
-        @media (max-width: 768px) {
-            .header-top {
-                flex-direction: column;
-                text-align: center;
-                gap: 0.3em;
-            }
-            main {
-                padding: 15em 1em 180px;
-            }
-        }
-    </style>
+    .social-links {
+      display: flex;
+      align-items: center;
+      gap: 0.5em;
+    }
+
+    .social-links img {
+      width: 24px;
+      height: 24px;
+    }
+
+    @media (max-width: 768px) {
+      .header-top {
+        flex-direction: column;
+        text-align: center;
+        gap: 0.5em;
+      }
+      .header-left, .header-right {
+        font-size: 0.9em;
+      }
+      footer {
+        flex-direction: column;
+        gap: 0.5em;
+      }
+    }
+  </style>
 </head>
 <body>
-    <header>
-        <div class="header-top">
-            <div><a href="https://urosario.edu.co/profesores/ceap" target="_blank">Conozca el CEAP</a></div>
-            <div><strong>Boletín bimensual #9 – Noviembre 2025</strong></div>
-        </div>
+  <header>
+    <div class="header-top">
+      <div class="header-left">Edición 10 - Enero de 2026</div>
+      <img src="https://github.com/CEAPUrosario/boletin_ceap/blob/main/img/Header.png?raw=true" alt="Logo Boletín CEAP">
+      <div class="header-right">
+        <a href="https://urosario.edu.co/CEAP" target="_blank">www.urosario.edu.co/CEAP</a>
+      </div>
+    </div>
 
-        <div class="logo">
-            <img src="https://github.com/CEAPUrosario/boletin_ceap/blob/main/img/Header.png?raw=true" alt="Logo CEAP Boletín">
-        </div>
-
-        <nav>
-            <button class="nav-btn active" data-section="inicio">Inicio</button>
-            <button class="nav-btn" data-section="ia">IA</button>
-            <button class="nav-btn" data-section="internacionalizacion">Internacionalización</button>
-            <button class="nav-btn" data-section="modelos">Modelos</button>
-            <button class="nav-btn" data-section="eventos">Eventos</button>
-        </nav>
-    </header>
-
-    <main id="content">
-        <section id="inicio" class="section active">
-            <h1>Boletín CEAP #9</h1>
-            <p>Bienvenido al boletín del Centro de Enseñanza y Aprendizaje. Explora las secciones para conocer las últimas novedades, reflexiones y recursos sobre innovación educativa.</p>
-        </section>
-
-        <section id="ia" class="section">
-            <h2>🤖 Inteligencia Artificial y Educación</h2>
-            <p>Descubre cómo los docentes del Rosario están incorporando la IA en sus estrategias pedagógicas, promoviendo el pensamiento crítico y la creatividad.</p>
-        </section>
-
-        <section id="internacionalizacion" class="section">
-            <h2>🌍 Internacionalización del Currículo</h2>
-            <p>Conoce las experiencias que fortalecen la formación global de nuestros estudiantes y la cooperación académica internacional.</p>
-        </section>
-
-        <section id="modelos" class="section">
-            <h2>📘 Modelos Pedagógicos</h2>
-            <p>Reflexionamos sobre las tendencias y enfoques que guían la enseñanza universitaria contemporánea, desde la docencia centrada en el estudiante hasta el aprendizaje experiencial.</p>
-        </section>
-
-        <section id="eventos" class="section">
-            <h2>📅 Eventos y Actividades</h2>
-            <p>Consulta la agenda CEAP: talleres, seminarios y espacios de aprendizaje colaborativo para fortalecer la práctica docente.</p>
-        </section>
-    </main>
-
-    <footer>
-        <div class="player-header">🎙️ <strong>Reflexiones para la Enseñanza y el Aprendizaje</strong></div>
-        <iframe 
-            style="border-radius:0" 
-            src="https://open.spotify.com/embed/show/56vBIn7doLY3q4J6YWvVIM?utm_source=generator&theme=0&t=0" 
-            height="80" 
-            allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" 
-            loading="lazy">
-        </iframe>
-    </footer>
-
-    <script>
-        document.addEventListener("DOMContentLoaded", () => {
-            const buttons = document.querySelectorAll(".nav-btn");
-            const sections = document.querySelectorAll(".section");
-
-            buttons.forEach(button => {
-                button.addEventListener("click", () => {
-                    buttons.forEach(btn => btn.classList.remove("active"));
-                    button.classList.add("active");
-
-                    sections.forEach(section => section.classList.remove("active"));
-                    const sectionId = button.getAttribute("data-section");
-                    document.getElementById(sectionId).classList.add("active");
-
-                    window.scrollTo({ top: 0, behavior: "smooth" });
-                });
-            });
-        });
-    </script>
-</body>
-</html>
-
-
+    <nav>
+      <button class="nav-btn active" data-section="inicio">I
