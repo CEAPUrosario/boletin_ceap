@@ -8,9 +8,10 @@
     body {
       font-family: "Segoe UI", sans-serif;
       margin: 0;
-      padding-bottom: 110px; /* espacio para el reproductor fijo */
+      padding-bottom: 140px; /* espacio para el reproductor fijo */
       background-color: #f7f7f7;
       color: #333;
+      overflow-x: hidden;
     }
 
     /* === ENCABEZADO CON IMAGEN === */
@@ -102,7 +103,7 @@
       justify-content: space-between;
       align-items: center;
       flex-wrap: wrap;
-      padding: 10px 20px;
+      padding: 12px 20px;
       position: fixed;
       bottom: 0;
       left: 0;
@@ -114,13 +115,13 @@
     .podcast-player {
       flex: 2;
       min-width: 300px;
-      max-width: 700px;
+      max-width: 720px;
     }
 
     .podcast-links {
       display: flex;
       align-items: center;
-      gap: 8px;
+      gap: 10px;
       flex-wrap: wrap;
       justify-content: flex-end;
     }
@@ -128,11 +129,15 @@
     .podcast-links span {
       font-weight: bold;
       font-size: 0.9em;
+      text-align: center;
+      line-height: 1.1em;
     }
 
     .podcast-links img {
       height: 28px;
+      width: auto;
       transition: transform 0.2s;
+      max-width: 35px;
     }
 
     .podcast-links img:hover {
@@ -168,16 +173,21 @@
 
       footer {
         flex-direction: column;
-        gap: 8px;
+        gap: 10px;
         padding: 10px;
       }
 
       .podcast-player {
         width: 100%;
+        max-width: none;
       }
 
       .podcast-links {
         justify-content: center;
+      }
+
+      .podcast-links img {
+        height: 26px;
       }
     }
   </style>
@@ -242,14 +252,15 @@
   <!-- Pie de página fijo -->
   <footer>
     <div class="podcast-player">
-      <iframe style="border-radius:12px" src="https://open.spotify.com/embed/show/56vBIn7doLY3q4J6YWvVIM?utm_source=generator&theme=0&t=0"
-        width="100%" height="100" frameBorder="0"
+      <iframe style="border-radius:12px"
+        src="https://open.spotify.com/embed/show/56vBIn7doLY3q4J6YWvVIM?utm_source=generator&theme=0&t=0"
+        width="100%" height="120" frameBorder="0"
         allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
         loading="lazy"></iframe>
     </div>
 
     <div class="podcast-links">
-      <span>Siga nuestro podcast en:</span>
+      <span>Siga nuestro<br>podcast en:</span>
       <a href="https://open.spotify.com/show/56vBIn7doLY3q4J6YWvVIM" target="_blank">
         <img src="https://github.com/CEAPUrosario/boletin_ceap/blob/main/img/Spotify.png?raw=true" alt="Spotify">
       </a>
