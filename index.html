@@ -1,275 +1,220 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Boletín CEAP</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Boletín CEAP - Edición 10</title>
   <style>
-    /* --- RESETEO Y CONFIGURACIÓN BÁSICA --- */
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
-
     body {
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      line-height: 1.6;
+      margin: 0;
+      font-family: "Segoe UI", Arial, sans-serif;
       background-color: #fff;
-      color: #000;
-      overflow-x: hidden;
+      color: #333;
     }
 
-    /* --- ENCABEZADO --- */
+    /* ENCABEZADO */
     header {
+      background-color: #ffffff;
       position: fixed;
       top: 0;
       width: 100%;
-      background-color: #fff;
-      border-bottom: 1px solid #ddd;
       z-index: 1000;
-      padding: 10px 40px;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    }
+
+    .header-top {
       display: flex;
-      flex-wrap: wrap;
       justify-content: space-between;
       align-items: center;
+      padding: 10px 40px;
+      font-size: 14px;
     }
 
-    header .left-section {
-      display: flex;
-      flex-direction: column;
-      align-items: flex-start;
-    }
-
-    header .edition {
-      color: #0066cc;
-      font-size: 0.9rem;
-      margin-bottom: 5px;
-    }
-
-    header .logo-container {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-    }
-
-    header img.logo {
-      height: 60px;
-      width: auto;
-    }
-
-    header .right-section {
-      text-align: right;
-    }
-
-    header .right-section a {
-      color: #cc0000;
-      font-weight: bold;
+    .header-top a {
       text-decoration: none;
+      color: #d61c29;
+      font-weight: bold;
     }
 
-    /* --- BOTÓN HAMBURGUESA --- */
-    .menu-toggle {
-      display: none;
-      background-color: transparent;
-      border: none;
-      cursor: pointer;
-      font-size: 1.8rem;
-      color: #0078d7;
+    .logo-container {
+      text-align: center;
+      padding: 5px 0;
     }
 
-    /* --- MENÚ DE NAVEGACIÓN --- */
+    .logo-container img {
+      width: 280px;
+      height: auto;
+    }
+
+    /* MENÚ PRINCIPAL */
     nav {
-      margin-top: 120px;
+      background-color: #f4f4f4;
       display: flex;
       justify-content: center;
+      align-items: center;
       flex-wrap: wrap;
-      gap: 2px;
-      width: 100%;
-      background-color: #f5f5f5;
-      transition: all 0.3s ease-in-out;
+      padding: 0;
     }
 
     nav a {
-      display: inline-block;
-      padding: 10px 25px;
-      background-color: #ddd;
-      color: #000;
+      color: #333;
       text-decoration: none;
-      font-size: 0.95rem;
-      border-radius: 3px;
-      transition: background 0.3s;
+      padding: 12px 25px;
+      display: block;
+      font-weight: 500;
+      transition: background 0.3s, color 0.3s, transform 0.2s;
+      border-radius: 8px;
+      margin: 5px;
+      background: linear-gradient(145deg, #ffffff, #e9e9e9);
+      box-shadow: 3px 3px 6px #dcdcdc, -3px -3px 6px #ffffff;
     }
 
-    nav a:hover,
-    nav a.active {
-      background-color: #0078d7;
+    nav a:hover {
+      background: #0077b6;
       color: #fff;
+      transform: scale(1.05);
     }
 
-    /* --- CONTENIDO PRINCIPAL --- */
-    main {
-      max-width: 1400px;
-      margin: 40px auto;
-      padding: 20px 40px;
+    .menu-toggle {
+      display: none;
+      background-color: #0077b6;
+      color: #fff;
+      border: none;
+      padding: 10px 15px;
+      font-size: 18px;
+      cursor: pointer;
+      width: 100%;
     }
 
-    main h1 {
-      margin-bottom: 10px;
-      font-size: 1.8rem;
+    /* CONTENIDO PRINCIPAL */
+    .content {
+      margin-top: 260px; /* evita que el contenido quede debajo del header */
+      max-width: 1200px;
+      margin-left: auto;
+      margin-right: auto;
+      padding: 20px;
     }
 
-    /* --- PIE DE PÁGINA --- */
+    /* PIE / REPRODUCTOR */
     footer {
       border-top: 1px solid #ccc;
-      margin-top: 50px;
-      padding: 15px 40px;
+      padding: 20px 40px;
+      text-align: center;
+      background-color: #fafafa;
+    }
+
+    .podcast-section {
+      margin-top: 20px;
+    }
+
+    .podcast-links {
+      margin-top: 15px;
       display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 20px;
       flex-wrap: wrap;
-      align-items: center;
-      justify-content: space-between;
-      gap: 15px;
-      background-color: #fff;
     }
 
-    footer .podcast-box {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      border: 1px solid #cc0000;
-      border-radius: 8px;
-      padding: 10px 15px;
-      flex: 1;
+    .podcast-links a img {
+      width: 35px;
+      height: 35px;
+      transition: transform 0.3s;
     }
 
-    footer .podcast-box button {
-      background: none;
-      border: none;
-      color: #ffcc00;
-      font-size: 1.2rem;
+    .podcast-links a img:hover {
+      transform: scale(1.15);
     }
 
-    footer .social-icons a {
-      margin: 0 5px;
-      text-decoration: none;
-    }
-
-    footer img {
-      height: 28px;
-      width: auto;
-    }
-
-    /* --- RESPONSIVIDAD --- */
-    @media (max-width: 1024px) {
-      header {
-        flex-direction: column;
-        align-items: flex-start;
-      }
-
-      .menu-toggle {
-        display: block;
-        position: absolute;
-        top: 20px;
-        right: 25px;
-      }
-
+    /* RESPONSIVO */
+    @media (max-width: 768px) {
       nav {
         display: none;
         flex-direction: column;
-        align-items: center;
-        width: 100%;
       }
 
       nav.active {
         display: flex;
       }
 
-      nav a {
-        width: 90%;
-        text-align: center;
-        padding: 12px;
+      .menu-toggle {
+        display: block;
       }
 
-      main {
-        padding: 20px;
-      }
-    }
-
-    @media (max-width: 768px) {
-      header .logo-container {
-        flex-direction: column;
-        align-items: flex-start;
+      .logo-container img {
+        width: 200px;
       }
 
-      footer {
-        flex-direction: column;
-        align-items: flex-start;
+      .header-top {
+        padding: 8px 15px;
+        font-size: 13px;
       }
 
-      footer .podcast-box {
-        width: 100%;
+      .content {
+        margin-top: 230px;
+        padding: 15px;
       }
     }
   </style>
 </head>
+
 <body>
   <header>
-    <div class="left-section">
-      <div class="edition">Edición 10 - Enero de 2026</div>
-      <div class="logo-container">
-        <h1 style="color:#0078d7; font-weight:600;">Boletín</h1>
-        <img src="https://rosariorepositirio.s3.amazonaws.com/express/urosario/DED/boletin/ceap-logo.png" alt="Logo CEAP" class="logo">
-        <div style="font-size:0.8rem; color:#555;">
-          Con el apoyo de la<br>
-          <img src="https://rosariorepositirio.s3.amazonaws.com/express/urosario/DED/boletin/logo-rosario.png" alt="Universidad del Rosario" style="height:28px; vertical-align:middle;">
-        </div>
-      </div>
+    <div class="header-top">
+      <div>Edición 10 - Enero de 2026</div>
+      <a href="https://urosario.edu.co/CEAP" target="_blank">Conozca el CEAP</a>
     </div>
 
-    <div class="right-section">
-      <a href="https://www.urosario.edu.co/CEAP" target="_blank">Conozca el CEAP</a>
+    <div class="logo-container">
+      <img src="https://github.com/CEAPUrosario/boletin_ceap/blob/main/img/Header.png?raw=true" alt="Boletín CEAP">
     </div>
 
-    <!-- Botón menú hamburguesa -->
-    <button class="menu-toggle" id="menu-toggle">☰</button>
+    <button class="menu-toggle" onclick="toggleMenu()">☰ Menú</button>
+
+    <nav id="menu">
+      <a href="#">Inicio</a>
+      <a href="#">Pensar la evaluación</a>
+      <a href="#">IA para la planeación de clases</a>
+      <a href="#">Preguntarse al diseñar su curso</a>
+      <a href="#">Cursos de desarrollo profesoral</a>
+      <a href="#">Próximos eventos</a>
+    </nav>
   </header>
 
-  <nav id="main-nav">
-    <a href="#" class="active">Inicio</a>
-    <a href="#">Pensar la evaluación</a>
-    <a href="#">IA para la planeación de clases</a>
-    <a href="#">Preguntarse al diseñar su curso</a>
-    <a href="#">Cursos de desarrollo profesoral</a>
-    <a href="#">Próximos eventos</a>
-  </nav>
-
-  <main>
+  <div class="content">
     <h1>Bienvenido al Boletín CEAP</h1>
-    <p>Seleccione una sección del menú para explorar el contenido.</p>
-  </main>
+    <p>Aquí puede ir el contenido principal del boletín, artículos, noticias y más.</p>
+  </div>
 
   <footer>
-    <div class="podcast-box">
-      <button>▶</button>
-      <span>Cap.5: Lineamientos para la IA en la educación superior: retos y dilemas</span>
-      <img src="https://rosariorepositirio.s3.amazonaws.com/express/urosario/DED/boletin/spreaker.png" alt="Spreaker">
-    </div>
-    <div class="social-icons">
-      <span>Siga nuestro podcast en:</span>
-      <a href="#"><img src="https://rosariorepositirio.s3.amazonaws.com/express/urosario/DED/boletin/spotify.png" alt="Spotify"></a>
-      <a href="#"><img src="https://rosariorepositirio.s3.amazonaws.com/express/urosario/DED/boletin/youtube.png" alt="YouTube"></a>
-      <a href="#"><img src="https://rosariorepositirio.s3.amazonaws.com/express/urosario/DED/boletin/spreaker.png" alt="Spreaker"></a>
+    <div class="podcast-section">
+      <iframe data-testid="embed-iframe" style="border-radius:12px" src="https://open.spotify.com/embed/show/56vBIn7doLY3q4J6YWvVIM?utm_source=generator&theme=0&t=0" width="100%" height="352" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+
+      <p><strong>Siga nuestro podcast en:</strong></p>
+      <div class="podcast-links">
+        <a href="https://open.spotify.com/show/56vBIn7doLY3q4J6YWvVIM" target="_blank">
+          <img src="https://upload.wikimedia.org/wikipedia/commons/1/19/Spotify_logo_without_text.svg" alt="Spotify">
+        </a>
+        <a href="https://www.youtube.com/playlist?list=PLCSRbw2Pd-BkwlO53gkWqMEUbc0x7HfNJ" target="_blank">
+          <img src="https://upload.wikimedia.org/wikipedia/commons/0/09/YouTube_full-color_icon_%282017%29.svg" alt="YouTube">
+        </a>
+        <a href="https://soundcloud.com/ensenanza-aprendizaje" target="_blank">
+          <img src="https://upload.wikimedia.org/wikipedia/commons/6/6a/Soundcloud_logo.svg" alt="Soundcloud">
+        </a>
+        <a href="https://podcasts.apple.com/us/podcast/reflexiones-para-la-ense%C3%B1anza-y-el-aprendizaje/id1828714453" target="_blank">
+          <img src="https://upload.wikimedia.org/wikipedia/commons/d/d7/Apple_Podcasts_logo.svg" alt="Apple Podcast">
+        </a>
+        <a href="https://www.spreaker.com/user/ceap-urosario--17959747" target="_blank">
+          <img src="https://upload.wikimedia.org/wikipedia/commons/0/0f/Spreaker_logo.svg" alt="Spreaker">
+        </a>
+      </div>
     </div>
   </footer>
 
   <script>
-    // --- SCRIPT PARA EL MENÚ RESPONSIVE ---
-    const menuToggle = document.getElementById('menu-toggle');
-    const nav = document.getElementById('main-nav');
-
-    menuToggle.addEventListener('click', () => {
-      nav.classList.toggle('active');
-    });
+    function toggleMenu() {
+      document.getElementById("menu").classList.toggle("active");
+    }
   </script>
 </body>
 </html>
