@@ -1,136 +1,275 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Boletín CEAP</title>
-<style>
-  body {
-    font-family: Arial, sans-serif;
-    margin: 0;
-    background-color: #fff;
-  }
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Boletín CEAP</title>
+  <style>
+    /* --- RESETEO Y CONFIGURACIÓN BÁSICA --- */
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
 
-  /* Encabezado general */
-  header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 10px 40px;
-    border-bottom: 2px solid #f2f2f2;
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    background-color: white;
-    z-index: 1000;
-  }
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      line-height: 1.6;
+      background-color: #fff;
+      color: #000;
+      overflow-x: hidden;
+    }
 
-  /* Texto izquierda y derecha */
-  .header-left {
-    font-size: 14px;
-    color: #004B8D;
-  }
+    /* --- ENCABEZADO --- */
+    header {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      background-color: #fff;
+      border-bottom: 1px solid #ddd;
+      z-index: 1000;
+      padding: 10px 40px;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: center;
+    }
 
-  .header-right a {
-    color: #D6001C;
-    text-decoration: none;
-    font-weight: bold;
-    font-size: 14px;
-  }
+    header .left-section {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+    }
 
-  /* Logo centrado */
-  .header-center {
-    text-align: center;
-  }
+    header .edition {
+      color: #0066cc;
+      font-size: 0.9rem;
+      margin-bottom: 5px;
+    }
 
-  .header-center img {
-    height: 100px; /* antes 70px */
-  }
+    header .logo-container {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
 
-  /* Menú de botones */
-  nav {
-    display: flex;
-    justify-content: center;
-    margin-top: 110px; /* ajustado para el nuevo alto del encabezado */
-    flex-wrap: wrap;
-  }
+    header img.logo {
+      height: 60px;
+      width: auto;
+    }
 
-  nav button {
-    background-color: #e5e5e5;
-    color: #000;
-    border: none;
-    padding: 12px 20px;
-    margin: 2px;
-    font-size: 14px;
-    cursor: pointer;
-  }
+    header .right-section {
+      text-align: right;
+    }
 
-  nav button.active {
-    background-color: #0074c7;
-    color: white;
-  }
+    header .right-section a {
+      color: #cc0000;
+      font-weight: bold;
+      text-decoration: none;
+    }
 
-  nav button:hover {
-    background-color: #0074c7;
-    color: white;
-  }
+    /* --- BOTÓN HAMBURGUESA --- */
+    .menu-toggle {
+      display: none;
+      background-color: transparent;
+      border: none;
+      cursor: pointer;
+      font-size: 1.8rem;
+      color: #0078d7;
+    }
 
-  /* Contenido dinámico */
-  main {
-    padding: 30px 60px;
-    margin-top: 20px;
-  }
-</style>
+    /* --- MENÚ DE NAVEGACIÓN --- */
+    nav {
+      margin-top: 120px;
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 2px;
+      width: 100%;
+      background-color: #f5f5f5;
+      transition: all 0.3s ease-in-out;
+    }
+
+    nav a {
+      display: inline-block;
+      padding: 10px 25px;
+      background-color: #ddd;
+      color: #000;
+      text-decoration: none;
+      font-size: 0.95rem;
+      border-radius: 3px;
+      transition: background 0.3s;
+    }
+
+    nav a:hover,
+    nav a.active {
+      background-color: #0078d7;
+      color: #fff;
+    }
+
+    /* --- CONTENIDO PRINCIPAL --- */
+    main {
+      max-width: 1400px;
+      margin: 40px auto;
+      padding: 20px 40px;
+    }
+
+    main h1 {
+      margin-bottom: 10px;
+      font-size: 1.8rem;
+    }
+
+    /* --- PIE DE PÁGINA --- */
+    footer {
+      border-top: 1px solid #ccc;
+      margin-top: 50px;
+      padding: 15px 40px;
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 15px;
+      background-color: #fff;
+    }
+
+    footer .podcast-box {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      border: 1px solid #cc0000;
+      border-radius: 8px;
+      padding: 10px 15px;
+      flex: 1;
+    }
+
+    footer .podcast-box button {
+      background: none;
+      border: none;
+      color: #ffcc00;
+      font-size: 1.2rem;
+    }
+
+    footer .social-icons a {
+      margin: 0 5px;
+      text-decoration: none;
+    }
+
+    footer img {
+      height: 28px;
+      width: auto;
+    }
+
+    /* --- RESPONSIVIDAD --- */
+    @media (max-width: 1024px) {
+      header {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      .menu-toggle {
+        display: block;
+        position: absolute;
+        top: 20px;
+        right: 25px;
+      }
+
+      nav {
+        display: none;
+        flex-direction: column;
+        align-items: center;
+        width: 100%;
+      }
+
+      nav.active {
+        display: flex;
+      }
+
+      nav a {
+        width: 90%;
+        text-align: center;
+        padding: 12px;
+      }
+
+      main {
+        padding: 20px;
+      }
+    }
+
+    @media (max-width: 768px) {
+      header .logo-container {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      footer {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      footer .podcast-box {
+        width: 100%;
+      }
+    }
+  </style>
 </head>
 <body>
+  <header>
+    <div class="left-section">
+      <div class="edition">Edición 10 - Enero de 2026</div>
+      <div class="logo-container">
+        <h1 style="color:#0078d7; font-weight:600;">Boletín</h1>
+        <img src="https://rosariorepositirio.s3.amazonaws.com/express/urosario/DED/boletin/ceap-logo.png" alt="Logo CEAP" class="logo">
+        <div style="font-size:0.8rem; color:#555;">
+          Con el apoyo de la<br>
+          <img src="https://rosariorepositirio.s3.amazonaws.com/express/urosario/DED/boletin/logo-rosario.png" alt="Universidad del Rosario" style="height:28px; vertical-align:middle;">
+        </div>
+      </div>
+    </div>
 
-<header>
-  <div class="header-left">
-    Edición 10 - Enero de 2026
-  </div>
+    <div class="right-section">
+      <a href="https://www.urosario.edu.co/CEAP" target="_blank">Conozca el CEAP</a>
+    </div>
 
-  <div class="header-center">
-    <img src="https://github.com/CEAPUrosario/boletin_ceap/blob/main/img/Header.png?raw=true" alt="Boletín CEAP">
-  </div>
+    <!-- Botón menú hamburguesa -->
+    <button class="menu-toggle" id="menu-toggle">☰</button>
+  </header>
 
-  <div class="header-right">
-    <a href="https://urosario.edu.co/profesores/ceap" target="_blank">Conozca el CEAP</a>
-  </div>
-</header>
+  <nav id="main-nav">
+    <a href="#" class="active">Inicio</a>
+    <a href="#">Pensar la evaluación</a>
+    <a href="#">IA para la planeación de clases</a>
+    <a href="#">Preguntarse al diseñar su curso</a>
+    <a href="#">Cursos de desarrollo profesoral</a>
+    <a href="#">Próximos eventos</a>
+  </nav>
 
-<nav>
-  <button class="active" onclick="showContent('inicio')">Inicio</button>
-  <button onclick="showContent('evaluacion')">Pensar la evaluación</button>
-  <button onclick="showContent('ia')">IA para la planeación de clases</button>
-  <button onclick="showContent('diseno')">Preguntarse al diseñar su curso</button>
-  <button onclick="showContent('cursos')">Cursos de desarrollo profesoral</button>
-  <button onclick="showContent('eventos')">Próximos eventos</button>
-</nav>
+  <main>
+    <h1>Bienvenido al Boletín CEAP</h1>
+    <p>Seleccione una sección del menú para explorar el contenido.</p>
+  </main>
 
-<main id="content">
-  <h2>Bienvenido al Boletín CEAP</h2>
-  <p>Seleccione una sección del menú para explorar el contenido.</p>
-</main>
+  <footer>
+    <div class="podcast-box">
+      <button>▶</button>
+      <span>Cap.5: Lineamientos para la IA en la educación superior: retos y dilemas</span>
+      <img src="https://rosariorepositirio.s3.amazonaws.com/express/urosario/DED/boletin/spreaker.png" alt="Spreaker">
+    </div>
+    <div class="social-icons">
+      <span>Siga nuestro podcast en:</span>
+      <a href="#"><img src="https://rosariorepositirio.s3.amazonaws.com/express/urosario/DED/boletin/spotify.png" alt="Spotify"></a>
+      <a href="#"><img src="https://rosariorepositirio.s3.amazonaws.com/express/urosario/DED/boletin/youtube.png" alt="YouTube"></a>
+      <a href="#"><img src="https://rosariorepositirio.s3.amazonaws.com/express/urosario/DED/boletin/spreaker.png" alt="Spreaker"></a>
+    </div>
+  </footer>
 
-<script>
-function showContent(section) {
-  const content = document.getElementById('content');
-  document.querySelectorAll('nav button').forEach(btn => btn.classList.remove('active'));
-  event.target.classList.add('active');
+  <script>
+    // --- SCRIPT PARA EL MENÚ RESPONSIVE ---
+    const menuToggle = document.getElementById('menu-toggle');
+    const nav = document.getElementById('main-nav');
 
-  const sections = {
-    inicio: `<h2>Inicio</h2><p>Contenido inicial del boletín.</p>`,
-    evaluacion: `<h2>Pensar la evaluación</h2><p>Contenido sobre evaluación.</p>`,
-    ia: `<h2>IA para la planeación de clases</h2><p>Contenido sobre inteligencia artificial en docencia.</p>`,
-    diseno: `<h2>Preguntarse al diseñar su curso</h2><p>Contenido sobre diseño pedagógico.</p>`,
-    cursos: `<h2>Cursos de desarrollo profesoral</h2><p>Información sobre cursos.</p>`,
-    eventos: `<h2>Próximos eventos</h2><p>Agenda de actividades futuras.</p>`
-  };
-
-  content.innerHTML = sections[section];
-}
-</script>
-
+    menuToggle.addEventListener('click', () => {
+      nav.classList.toggle('active');
+    });
+  </script>
 </body>
 </html>
