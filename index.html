@@ -1,304 +1,237 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Boletín CEAP</title>
   <style>
     body {
-      font-family: "Segoe UI", sans-serif;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
       margin: 0;
-      padding-bottom: 130px; /* espacio para el reproductor fijo */
-      background-color: #f7f7f7;
-      color: #333;
-      overflow-x: hidden;
+      padding: 0;
+      background-color: #fff;
     }
 
-    /* === ENCABEZADO === */
+    /* Encabezado */
     header {
-      width: 100%;
       text-align: center;
-      background: url("https://github.com/CEAPUrosario/boletin_ceap/blob/main/img/Header.png?raw=true") no-repeat center;
-      background-size: contain;
-      height: 130px;
-      position: relative;
+      padding: 10px 0 0 0;
     }
 
-    /* === SUBENCABEZADO === */
-    .sub-header {
+    header img {
+      max-width: 450px;
+      height: auto;
+      display: block;
+      margin: 0 auto;
+    }
+
+    .top-info {
       display: flex;
       justify-content: space-between;
       align-items: center;
-      padding: 5px 30px;
-      background-color: #ffffff;
-      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+      margin: 0 40px;
       font-size: 0.9em;
     }
 
-    .sub-header span { color: #0078d7; }
-    .sub-header a { color: #d00000; text-decoration: none; }
+    .top-info a {
+      color: #d00000;
+      text-decoration: none;
+    }
 
-    /* === MENÚ === */
+    /* Navegación */
     nav {
-      background-color: #e0e0e0;
+      background-color: #f2f2f2;
       display: flex;
       justify-content: center;
       flex-wrap: wrap;
-      gap: 5px;
-      padding: 8px 0;
+      padding: 5px 0;
     }
 
     nav button {
-      background-color: #dcdcdc;
+      background-color: #e0e0e0;
       border: none;
-      padding: 10px 18px;
+      padding: 10px 20px;
+      margin: 5px;
+      font-size: 15px;
+      border-radius: 8px;
+      transition: background 0.3s, transform 0.2s;
       cursor: pointer;
-      transition: all 0.3s;
-      font-size: 1em;
-      border-radius: 4px;
-    }
-
-    nav button.active {
-      background-color: #0078d7;
-      color: white;
-      font-weight: bold;
     }
 
     nav button:hover {
       background-color: #0078d7;
       color: white;
+      transform: scale(1.05);
     }
 
-    /* === CONTENIDO === */
-    main {
-      max-width: 1200px;
-      margin: 30px auto;
-      padding: 0 20px;
-      background-color: white;
-      border-radius: 8px;
-      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+    nav button.active {
+      background-color: #0078d7;
+      color: white;
     }
 
-    .section {
+    /* Contenido */
+    .content {
       display: none;
       padding: 20px;
+      max-width: 900px;
+      margin: 0 auto;
+      text-align: justify;
     }
 
-    .section.active {
+    .content.active {
       display: block;
     }
 
-    /* === PIE DE PÁGINA FIJO === */
-    footer {
+    /* Reproductor inferior fijo */
+    .fixed-player {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      width: 100%;
       background-color: #ffffff;
       border-top: 1px solid #ccc;
       display: flex;
       justify-content: space-between;
       align-items: center;
-      flex-wrap: wrap;
-      padding: 12px 20px;
-      position: fixed;
-      bottom: 0;
-      left: 0;
+      padding: 6px 15px;
+      box-shadow: 0 -2px 6px rgba(0, 0, 0, 0.1);
+      box-sizing: border-box;
+    }
+
+    .player-container {
+      flex: 1;
+      max-width: 75%;
+    }
+
+    .player-container iframe {
       width: 100%;
-      z-index: 1001;
-      box-shadow: 0 -2px 6px rgba(0,0,0,0.1);
+      height: 80px; /* Delgada pero visible */
+      border-radius: 8px;
     }
 
-    /* Reproductor más ancho pero con altura normal */
-    .podcast-player {
-      flex: 1.8;
-      min-width: 280px;
-      max-width: 620px;
-    }
-
-    .podcast-player iframe {
-      width: 100%;
-      height: 90px; /* altura original */
-      border-radius: 12px;
-    }
-
-    /* === ÍCONOS Y TEXTO === */
     .podcast-links {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      flex-wrap: nowrap;
-      justify-content: flex-end;
-      max-width: 100%;
-    }
-
-    .podcast-links span {
-      font-weight: bold;
-      font-size: 0.9em;
       text-align: center;
-      line-height: 1.1em;
-      white-space: nowrap;
+      min-width: 240px;
     }
 
-    .podcast-links img {
+    .podcast-links p {
+      margin: 0;
+      font-weight: bold;
+      font-size: 14px;
+      line-height: 1.2;
+    }
+
+    .podcast-icons {
+      margin-top: 5px;
+    }
+
+    .podcast-icons a img {
+      width: 26px;
       height: 26px;
-      width: auto;
-      transition: transform 0.2s;
-      max-width: 30px;
+      margin: 0 4px;
+      vertical-align: middle;
     }
 
-    .podcast-links img:hover {
-      transform: scale(1.1);
-    }
-
-    /* Ajuste para evitar desbordamiento */
-    @media (max-width: 1024px) {
-      .podcast-links {
-        flex-wrap: wrap;
-        justify-content: center;
-      }
-
-      .podcast-links img {
-        height: 24px;
-        max-width: 28px;
-      }
-    }
-
-    /* === MENÚ MÓVIL === */
-    .menu-toggle {
-      display: none;
-      background-color: #0078d7;
-      color: white;
-      border: none;
-      padding: 10px;
-      font-size: 1em;
-      cursor: pointer;
-    }
-
+    /* Responsivo */
     @media (max-width: 768px) {
-      .menu-toggle {
-        display: block;
-        width: 100%;
-      }
-
-      nav {
-        display: none;
+      .top-info {
         flex-direction: column;
         align-items: center;
+        margin: 0;
       }
 
-      nav.active { display: flex; }
-
-      footer {
+      .fixed-player {
         flex-direction: column;
-        gap: 10px;
-        padding: 10px;
+        padding: 8px;
       }
 
-      .podcast-player {
-        width: 100%;
-        max-width: none;
+      .player-container {
+        max-width: 100%;
       }
 
       .podcast-links {
-        justify-content: center;
-      }
-
-      .podcast-links img {
-        height: 24px;
+        margin-top: 5px;
       }
     }
   </style>
 </head>
 <body>
-
-  <header></header>
-
-  <div class="sub-header">
-    <span>Edición 10 - Enero de 2026</span>
-    <a href="https://www.urosario.edu.co/CEAP/" target="_blank">Conozca el CEAP</a>
-  </div>
-
-  <button class="menu-toggle" onclick="toggleMenu()">☰ Menú</button>
+  <header>
+    <img src="https://github.com/CEAPUrosario/boletin_ceap/blob/main/img/Header.png?raw=true" alt="Boletín CEAP">
+    <div class="top-info">
+      <span>Edición 10 - Enero de 2026</span>
+      <a href="https://www.urosario.edu.co/CEAP" target="_blank">www.urosario.edu.co/CEAP</a>
+    </div>
+  </header>
 
   <nav>
-    <button class="active" onclick="showSection('inicio', this)">Inicio</button>
-    <button onclick="showSection('evaluacion', this)">Pensar la evaluación</button>
-    <button onclick="showSection('ia', this)">IA para la planeación de clases</button>
-    <button onclick="showSection('preguntas', this)">Preguntarse al diseñar su curso</button>
-    <button onclick="showSection('desarrollo', this)">Cursos de desarrollo profesoral</button>
-    <button onclick="showSection('eventos', this)">Próximos eventos</button>
+    <button class="active" onclick="showContent('inicio')">Inicio</button>
+    <button onclick="showContent('evaluacion')">Pensar la evaluación</button>
+    <button onclick="showContent('ia')">IA para la planeación de clases</button>
+    <button onclick="showContent('diseno')">Preguntarse al diseñar su curso</button>
+    <button onclick="showContent('cursos')">Cursos de desarrollo profesoral</button>
+    <button onclick="showContent('eventos')">Próximos Eventos</button>
   </nav>
 
-  <main>
-    <div id="inicio" class="section active">
-      <h2>Inicio</h2>
-      <p>Bienvenido a la edición 10 del Boletín CEAP. Aquí encontrará reflexiones, herramientas y recursos para fortalecer su práctica docente.</p>
-    </div>
+  <div id="inicio" class="content active">
+    <h2>Bienvenido al Boletín CEAP</h2>
+    <p>Explora las últimas reflexiones y recursos sobre la enseñanza y el aprendizaje...</p>
+  </div>
 
-    <div id="evaluacion" class="section">
-      <h2>Pensar la evaluación</h2>
-      <p>Exploramos estrategias de evaluación auténtica y su integración con los resultados de aprendizaje.</p>
-    </div>
+  <div id="evaluacion" class="content">
+    <h2>Pensar la evaluación</h2>
+    <p>Contenido sobre estrategias y reflexiones en torno a la evaluación...</p>
+  </div>
 
-    <div id="ia" class="section">
-      <h2>IA para la planeación de clases</h2>
-      <p>Recursos y ejemplos para aprovechar la inteligencia artificial en el diseño de clases más efectivas y personalizadas.</p>
-    </div>
+  <div id="ia" class="content">
+    <h2>IA para la planeación de clases</h2>
+    <p>Explora herramientas y metodologías para integrar IA en tus clases...</p>
+  </div>
 
-    <div id="preguntas" class="section">
-      <h2>Preguntarse al diseñar su curso</h2>
-      <p>Preguntas clave que orientan la construcción de experiencias de aprendizaje significativas.</p>
-    </div>
+  <div id="diseno" class="content">
+    <h2>Preguntarse al diseñar su curso</h2>
+    <p>Reflexiones sobre el diseño pedagógico efectivo y centrado en el aprendizaje...</p>
+  </div>
 
-    <div id="desarrollo" class="section">
-      <h2>Cursos de desarrollo profesoral</h2>
-      <p>Conozca la oferta formativa del CEAP para el fortalecimiento de las competencias pedagógicas del profesorado.</p>
-    </div>
+  <div id="cursos" class="content">
+    <h2>Cursos de desarrollo profesoral</h2>
+    <p>Consulta nuestra oferta de formación docente y desarrollo profesional...</p>
+  </div>
 
-    <div id="eventos" class="section">
-      <h2>Próximos eventos</h2>
-      <p>Participe en nuestras actividades, seminarios y jornadas de reflexión docente.</p>
-    </div>
-  </main>
+  <div id="eventos" class="content">
+    <h2>Próximos Eventos</h2>
+    <p>Entérate de los eventos y actividades del CEAP...</p>
+  </div>
 
-  <footer>
-    <div class="podcast-player">
-      <iframe src="https://open.spotify.com/embed/show/56vBIn7doLY3q4J6YWvVIM?utm_source=generator&theme=0&t=0"
-        frameBorder="0"
-        allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
+  <!-- Reproductor fijo inferior -->
+  <div class="fixed-player">
+    <div class="player-container">
+      <iframe style="border-radius:12px"
+        src="https://open.spotify.com/embed/show/56vBIn7doLY3q4J6YWvVIM?utm_source=generator&theme=0&t=0"
+        width="100%" height="80" frameBorder="0" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
         loading="lazy"></iframe>
     </div>
-
     <div class="podcast-links">
-      <span>Siga nuestro<br>podcast en:</span>
-      <a href="https://open.spotify.com/show/56vBIn7doLY3q4J6YWvVIM" target="_blank">
-        <img src="https://github.com/CEAPUrosario/boletin_ceap/blob/main/img/Spotify.png?raw=true" alt="Spotify">
-      </a>
-      <a href="https://www.youtube.com/playlist?list=PLCSRbw2Pd-BkwlO53gkWqMEUbc0x7HfNJ" target="_blank">
-        <img src="https://github.com/CEAPUrosario/boletin_ceap/blob/main/img/Youtube.png?raw=true" alt="YouTube">
-      </a>
-      <a href="https://soundcloud.com/ensenanza-aprendizaje" target="_blank">
-        <img src="https://github.com/CEAPUrosario/boletin_ceap/blob/main/img/soundcloud.png?raw=true" alt="SoundCloud">
-      </a>
-      <a href="https://www.spreaker.com/user/ceap-urosario--17959747" target="_blank">
-        <img src="https://github.com/CEAPUrosario/boletin_ceap/blob/main/img/Spreaker.png?raw=true" alt="Spreaker">
-      </a>
-      <a href="https://podcasts.apple.com/us/podcast/reflexiones-para-la-ense%C3%B1anza-y-el-aprendizaje/id1828714453" target="_blank">
-        <img src="https://github.com/CEAPUrosario/boletin_ceap/blob/main/img/Apple.png?raw=true" alt="Apple Podcast">
-      </a>
+      <p>Siga nuestro<br>podcast en:</p>
+      <div class="podcast-icons">
+        <a href="https://open.spotify.com/show/56vBIn7doLY3q4J6YWvVIM" target="_blank"><img src="https://github.com/CEAPUrosario/boletin_ceap/blob/main/img/Spotify.png?raw=true" alt="Spotify"></a>
+        <a href="https://www.youtube.com/playlist?list=PLCSRbw2Pd-BkwlO53gkWqMEUbc0x7HfNJ" target="_blank"><img src="https://github.com/CEAPUrosario/boletin_ceap/blob/main/img/Youtube.png?raw=true" alt="YouTube"></a>
+        <a href="https://soundcloud.com/ensenanza-aprendizaje" target="_blank"><img src="https://github.com/CEAPUrosario/boletin_ceap/blob/main/img/soundcloud.png?raw=true" alt="SoundCloud"></a>
+        <a href="https://www.spreaker.com/user/ceap-urosario--17959747" target="_blank"><img src="https://github.com/CEAPUrosario/boletin_ceap/blob/main/img/Spreaker.png?raw=true" alt="Spreaker"></a>
+        <a href="https://podcasts.apple.com/us/podcast/reflexiones-para-la-ense%C3%B1anza-y-el-aprendizaje/id1828714453" target="_blank"><img src="https://github.com/CEAPUrosario/boletin_ceap/blob/main/img/Apple.png?raw=true" alt="Apple Podcast"></a>
+      </div>
     </div>
-  </footer>
+  </div>
 
   <script>
-    function showSection(id, button) {
-      document.querySelectorAll('.section').forEach(section => section.classList.remove('active'));
-      document.querySelectorAll('nav button').forEach(btn => btn.classList.remove('active'));
+    function showContent(id) {
+      const contents = document.querySelectorAll('.content');
+      const buttons = document.querySelectorAll('nav button');
+      contents.forEach(c => c.classList.remove('active'));
+      buttons.forEach(b => b.classList.remove('active'));
       document.getElementById(id).classList.add('active');
-      button.classList.add('active');
-      window.scrollTo({ top: 0, behavior: 'smooth' });
-    }
-
-    function toggleMenu() {
-      document.querySelector("nav").classList.toggle("active");
+      event.target.classList.add('active');
     }
   </script>
-
 </body>
 </html>
