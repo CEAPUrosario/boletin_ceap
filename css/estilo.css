@@ -22,7 +22,7 @@ html, body{
   /* Tipografía sobria y legible: Roboto Serif para el cuerpo */
   font-family: "Roboto Serif", serif; 
   
-  /* Imagen de fondo (Pearly White / 60%) */
+  /* Imagen de fondo ( 60%) */
   background-image: url("https://github.com/CEAPUrosario/boletin_ceap/blob/main/img/Dise%C3%B1o%20sin%20t%C3%ADtulo%20(18).png?raw=true");
   background-size: cover;
   background-position: center;
@@ -42,7 +42,7 @@ h2 {
     font-size: 3rem; 
     font-weight: 500; 
     /* AJUSTE CLAVE: Eliminar margen inferior si ya tenemos un separador o texto que lo sigue */
-    margin-bottom: 10rem; 
+    margin-bottom: 6rem; 
 }
 
 /* --- ESTILOS INSPIRADOS EN NAVAPRESS (ARTÍCULOS) --- */
@@ -340,4 +340,5 @@ main{
 .podcast-tab:hover .podcast-icons{
   display:flex;
 }
+
 
