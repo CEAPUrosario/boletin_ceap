@@ -1,117 +1,342 @@
-/* === Estilos base === */
-body {
-    font-family: 'Open Sans', sans-serif;
-    background-color: #f9fafc;
-    color: #333;
-    margin: 0;
-    padding: 0;
+/* ---------- Reset y variables ---------- */
+:root{
+  --sidebar-width: 280px; 
+  /* 30% - Color Secundario (Emerald Oscuro - Tipografía y Sidebar) */
+  --secondary-color: #ffffff; 
+  /* 10% - Color de Acento (Gold/Oro Pálido - Botones, FAB, Links) */
+  --accent: #C2A46C; 
+  --player-height: 82px;
+
+  /* AJUSTE CLAVE: Reducimos el alto y el ancho inicial para que el texto quepa verticalmente */
+  --podcast-tab-height: 180px; 
+  --podcast-tab-width: 30px; /* Reducido para solo mostrar la línea vertical */
+  --podcast-tab-width-hover: 120px; /* Más ancho para mostrar bien los íconos */
+  
+  --podcast-color: #004D40; /* Usamos el color secundario para el podcast */
 }
 
-/* === Header fijo === */
-header {
-    background-color: #ffffff;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 1em 2em;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    z-index: 1000;
+*{box-sizing:border-box; margin:0; padding:0;}
+
+html, body{
+  height:100%;
+  /* Tipografía sobria y legible: Roboto Serif para el cuerpo */
+  font-family: "Roboto Serif", serif; 
+  
+  /* Imagen de fondo (Pearly White / 60%) */
+  background-image: url("https://github.com/CEAPUrosario/boletin_ceap/blob/main/img/Dise%C3%B1o%20sin%20t%C3%ADtulo%20(18).png?raw=true");
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+  /* El color del texto base se vuelve el Secundario (30%) */
+  color: var(--secondary-color);
 }
 
-.logo {
-    font-family: 'Poppins', sans-serif;
-    font-size: 1.5em;
-    font-weight: 700;
-    color: #a020f0;
+h2, h3 {
+  /* FUENTE: PLAYFAIR DISPLAY para títulos elegantes (Serif) */
+  font-family: 'Playfair Display', serif; 
+  color: var(--secondary-color); /* Los títulos usan el color Secundario (Emerald) */
 }
 
-nav {
-    display: flex;
-    gap: 1em;
-    flex-wrap: wrap;
+/* --- REGLA PARA HACER LOS H2 MUCHO MÁS GRANDES (2.5rem) --- */
+h2 {
+    font-size: 5rem; 
+    font-weight: 500; 
+    /* AJUSTE CLAVE: Eliminar margen inferior si ya tenemos un separador o texto que lo sigue */
+    margin-bottom: 10rem; 
 }
 
-.nav-btn {
-    background: none;
-    border: none;
-    font-family: 'Poppins', sans-serif;
-    font-weight: 500;
-    color: #555;
-    cursor: pointer;
-    padding: 0.5em 1em;
-    border-radius: 6px;
-    transition: all 0.3s ease;
+/* --- ESTILOS INSPIRADOS EN NAVAPRESS (ARTÍCULOS) --- */
+
+.article {
+    margin-bottom: 3rem;
+    padding-bottom: 2rem;
+    border-bottom: 1px solid rgba(0, 77, 64, 0.15); /* Sombra sutil del Emerald */
 }
 
-.nav-btn:hover {
-    background-color: #f0e6ff;
-    color: #6a0dad;
+/* Línea separadora HR: Ahora usa el color de Acento (Gold/10%) */
+.article-separator {
+    border: none;
+    border-top: 2px solid var(--accent); /* Más grueso y color de acento */
+    width: 100px; /* Reducido para más elegancia */
+    /* AJUSTE CLAVE: Espacio después del separador */
+    margin: 1rem 0 3rem 0; 
 }
 
-.nav-btn.active {
-    background-color: #a020f0;
-    color: white;
+/* Subtítulos/Categorías: Usan color de acento o un tono más claro del secundario */
+.article-category {
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 0.15em; 
+    text-transform: uppercase;
+    color: rgba(0, 77, 64, 0.6); /* Gris tenue, pero con base Emerald */
+    /* AJUSTE CLAVE: Aumentar el margen inferior para separarlo del H2 (Título) */
+    margin-bottom: 1.5rem; 
+    display: block;
 }
 
-/* === Contenido principal === */
-main {
-    padding: **25em** 2em 160px; /* ¡VALOR AJUSTADO! */
-    max-width: 900px;
-    margin: 0 auto;
+/* Título de la publicación: Usa color Secundario (Emerald) */
+.article-title {
+    margin-top: 0;
 }
 
-.section {
-    display: none;
-    animation: fadeIn 0.5s ease;
+/* Cuerpo del artículo: Usa color Secundario (Emerald) */
+.article-body p {
+    font-size: 1.1rem;
+    line-height: 1.8;
+    margin-bottom: 1.5rem;
 }
 
-.section.active {
-    display: block;
+.article-body .read-more {
+    display: inline-block;
+    color: var(--accent); /* Color de Acento (Gold) */
+    text-decoration: none;
+    font-weight: 600;
+    letter-spacing: 0.05em;
+    padding-top: 0.5rem;
+    transition: opacity 0.2s ease;
 }
 
-@keyframes fadeIn {
-    from {opacity: 0; transform: translateY(10px);}
-    to {opacity: 1; transform: translateY(0);}
+.article-body .read-more:hover {
+    opacity: 0.8;
 }
 
-/* === Footer con reproductor fijo === */
-footer {
-    position: fixed;
-    bottom: 0;
-    left: 0;
-    width: 100%;
-    background-color: #121212;
-    color: white;
-    z-index: 1000;
-    box-shadow: 0 -2px 8px rgba(0,0,0,0.2);
-}
-
-footer .player-header {
-    font-size: 0.9em;
-    text-align: center;
-    background-color: #181818;
-    padding: 0.4em 0;
-    font-family: 'Poppins', sans-serif;
-    color: #f5f5f5;
-}
-
-/* === Responsividad === */
+/* --- Ajuste para Títulos en Móvil (h2) --- */
 @media (max-width: 768px) {
-    nav {
-        flex-direction: column;
-        gap: 0.5em;
-        align-items: center;
-    }
+    h2 {
+        font-size: 2rem; 
+    }
+}
+/* ---------------------------------------------------- */
 
-    .logo {
-        margin-bottom: 0.5em;
-    }
+/* ---------- SIDEBAR IZQUIERDO: SIN FONDO NI BLUR ---------- */
+.sidebar{
+  position: fixed;
+  top:0;
+  left:0;
+  width: var(--sidebar-width);
+  height: calc(100vh - var(--player-height)); 
+  background: none; 
+  backdrop-filter: none;
+  -webkit-backdrop-filter: none;
+  padding: 1.2rem .8rem;
+  box-shadow: none; 
+  border-right: none; 
+  display:flex;
+  flex-direction:column; 
+  z-index:1200;
+}
 
-    main {
-        padding: **30em** 1em 180px; /* ¡VALOR AJUSTADO! */
-    }
+/* Logo arriba */
+.sidebar-logo {
+  margin-bottom: 1rem;
+  flex-shrink: 0; 
+}
+
+.sidebar .logo-img{
+  width: 100%;
+  display:block;
+}
+
+.sidebar .brand-text{
+  font-size:.78rem;
+  text-align:center;
+  color: var(--secondary-color); /* Color Secundario */
+  display:block;
+}
+
+/* Contenedor de navegación para distribución uniforme */
+.sidebar-nav {
+  flex-grow: 1; 
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly; 
+  align-items: center;
+}
+
+/* Botones: ESTILO ELEGANTE */
+.sidebar .nav-btn{
+  width:90%; 
+  /* Botones transparentes con borde y color de texto del Secundario */
+  background:transparent; 
+  color: var(--secondary-color); /* Texto Secundario (Emerald) */
+  border: 2px solid var(--secondary-color); /* Borde Secundario (Emerald) */
+  padding:.7rem 1rem; 
+  margin: .3rem 0; 
+  text-align:center; 
+  border-radius:8px;
+  font-weight:600;
+  cursor:pointer;
+  transition: background .18s ease, transform .18s ease, box-shadow .18s ease, color .18s ease;
+  box-shadow: none; 
+}
+
+/* Hover: Invertir colores (relleno), usa el Secundario */
+.sidebar .nav-btn:hover{
+  background: var(--secondary-color);
+  color: white; 
+  transform: translateY(-1px);
+  box-shadow: 0 4px 8px rgba(0,0,0,0.15); 
+}
+
+/* Botón activo: Fondo Secundario */
+.sidebar .nav-btn.active{
+  background: var(--secondary-color);
+  color:white;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.15);
+}
+
+/* ---------- MAIN CONTENT: OCUPAR TODO EL ESPACIO RESTANTE ---------- */
+main{
+  margin-left: var(--sidebar-width);
+  min-height: calc(100vh - var(--player-height));
+  padding:2rem 2.2rem calc(var(--player-height) + 1rem) 2.2rem;
+  width: calc(100% - var(--sidebar-width)); 
+  overflow-x: hidden;
+}
+
+/* CARD DEL CONTENIDO: SIN FONDO NI BLUR */
+.content-card{
+  width: 100%;
+  max-width: 100%; 
+  margin:0 auto;
+  background: none; 
+  backdrop-filter: none;
+  -webkit-backdrop-filter: none;
+  border-radius: 0; 
+  padding:0; 
+  box-shadow: none;
+}
+
+
+.section{ display:none; }
+.section.active{ display:block; }
+
+/* ---------- REPRODUCTOR FIJO (Sin cambios de color) ---------- */
+.fixed-player{
+  position:fixed;
+  bottom:0;
+  left:0;
+  width:100%;
+  background:#000;
+  z-index:1400;
+}
+.fixed-player iframe{
+  width:100%;
+  height: var(--player-height);
+  border:none;
+}
+
+/* ---------- FAB BUTTON (AYUDA): Usa Color de Acento (Gold/10%) ---------- */
+.help-fab{
+  position:fixed;
+  bottom: calc(var(--player-height) + 20px);
+  right:20px;
+  width:56px;
+  height:56px;
+  border:none;
+  border-radius:50%;
+  background:var(--accent); /* Usa el color de acento (Gold) */
+  color:white;
+  font-size:24px;
+  font-weight:700;
+  cursor:pointer;
+  box-shadow:0 8px 24px rgba(0,0,0,0.25);
+  z-index:1500;
+}
+
+/* ---------- MODAL (Ajuste de color de texto) ---------- */
+.modal-backdrop{
+  position:fixed; inset:0;
+  background: rgba(0,0,0,0.45);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  visibility:hidden;
+  opacity:0;
+  z-index:1600;
+  transition:opacity .25s ease;
+}
+
+.modal-backdrop.open{
+  visibility:visible;
+  opacity:1;
+}
+
+.modal{
+  background:white;
+  padding:2rem;
+  width:min(550px, 94%);
+  border-radius:14px;
+  position:relative;
+  /* Color del texto interior del modal se ajusta al secundario */
+  color: var(--secondary-color);
+}
+
+.modal .close-btn{
+  position:absolute;
+  top:12px;
+  right:12px;
+  font-size:20px;
+  background:none;
+  border:none;
+  cursor:pointer;
+  color: var(--secondary-color); /* Color secundario para la X */
+}
+
+/* ---------- PESTAÑA DERECHA (PODCAST) ---------- */
+.podcast-tab{
+  position:fixed;
+  right:0;
+  top:65%;
+  transform:translateY(-50%);
+  background:var(--podcast-color); /* Color Secundario (Emerald) */
+  color:white; 
+  padding:.6rem;
+  width:var(--podcast-tab-width);
+  height:var(--podcast-tab-height); 
+  border-radius:8px 0 0 8px;
+  display:flex;
+  align-items:center;
+  justify-content:center; 
+  overflow:hidden;
+  cursor:pointer;
+  transition:width .25s ease;
+  box-shadow: -4px 0 12px rgba(0,0,0,0.15);
+  z-index:1300;
+}
+
+.podcast-rotated{
+  transform: rotate(-90deg); 
+  white-space:nowrap;
+  font-size:.8rem;
+  font-weight: bold; 
+}
+
+.podcast-icons{
+  display:none;
+  flex-direction:column;
+  gap:10px;
+  align-items:center;
+  width: 100%;
+  justify-content: space-evenly;
+  margin-left: -5px; 
+}
+
+.podcast-icons img{
+  width:24px;
+  height:24px;
+  filter: drop-shadow(0 1px 1px rgba(0,0,0,0.5)); 
+}
+
+/* Hover → ocultar texto, mostrar íconos */
+.podcast-tab:hover{
+  width:var(--podcast-tab-width-hover); 
+}
+
+.podcast-tab:hover .podcast-rotated{
+  display:none;
+}
+
+.podcast-tab:hover .podcast-icons{
+  display:flex;
 }
