@@ -8,212 +8,165 @@
   <!-- Enlaces a Google Fonts para fuentes sobrias y elegantes -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <!-- Volvemos a PLAYFAIR DISPLAY para títulos y ROBOTO SERIF para cuerpo -->
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Roboto+Serif:opsz,wght@8..144,300;8..144,400;8..144,600&display=swap" rel="stylesheet">
   
-  <link rel="stylesheet" href="styles.css">
+  <!-- Iconos de Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+  
+  <!-- RUTA CORREGIDA: Apunta a la carpeta 'css' y al archivo 'estilo.css' -->
+  <link rel="stylesheet" href="css/estilo.css"> 
 </head>
 
 <body>
 
-  <!-- ============================
-       BARRA VERTICAL IZQUIERDA (Ajustada)
+  <!-- ===========================
+       BARRA VERTICAL IZQUIERDA
   ================================-->
   <aside class="sidebar left-sidebar" aria-label="Barra de navegación lateral">
     
     <div class="sidebar-logo">
-      <img src="https://github.com/CEAPUrosario/boletin_ceap/blob/main/img/Header.png?raw=true" alt="Boletín CEAP" class="logo-img">
-      <span class="brand-text">Edición 10 - Enero 2026</span>
+      <img src="https://github.com/CEAPUrosario/boletin_ceap/blob/main/img/Header.png?raw=true" alt="Logo CEAP" class="logo-img">
+      <span class="brand-text">Universidad del Rosario</span>
     </div>
 
-    <nav class="sidebar-nav">
-      <button class="nav-btn active" data-section="inicio" aria-current="page">Inicio</button>
+    <nav class="sidebar-nav" aria-label="Menú principal">
+      <button class="nav-btn" data-section="inicio" aria-current="page">Inicio</button>
       <button class="nav-btn" data-section="evaluacion">Pensar la evaluación</button>
-      <button class="nav-btn" data-section="ia">IA para la planeación de clases</button>
-      <button class="nav-btn" data-section="diseno">Preguntarse al diseñar su curso</button>
-      <button class="nav-btn" data-section="cursos">Cursos de desarrollo profesoral</button>
+      <button class="nav-btn" data-section="planeacion">IA para la planeación</button>
+      <button class="nav-btn" data-section="diseno">Preguntarse al diseñar</button>
+      <button class="nav-btn" data-section="profesional">Cursos profesional</button>
       <button class="nav-btn" data-section="eventos">Próximos Eventos</button>
     </nav>
-
   </aside>
 
-  <!-- ============================
+  <!-- ===========================
        CONTENIDO PRINCIPAL
   ================================-->
-  <main id="mainContent">
+  <main class="main-content" role="main" id="main-content">
     <div class="content-card">
+      <div class="sections-wrapper">
+        
+        <!-- SECCIÓN 1: INICIO (Activa por defecto) -->
+        <section id="inicio" class="section active" aria-labelledby="heading-inicio">
+          <span class="article-category">Edición 10 - Enero 2026</span>
+          <h2 class="article-title" id="heading-inicio">Bienvenido al Boletín CEAP: Herramientas para la Excelencia Docente</h2>
+          <div class="article-separator"></div>
+          <div class="article-body">
+            <p>Explora las últimas reflexiones y recursos sobre la enseñanza y el aprendizaje. Esta edición se centra en la innovación en la evaluación, el uso estratégico de la IA en la planeación y las preguntas esenciales para el diseño curricular. Nuestro objetivo es equiparte con el conocimiento y las herramientas para transformar tu práctica pedagógica.</p>
+            <p><strong>Temas Destacados:</strong></p>
+            <ul>
+              <li><a href="#" class="read-more" data-section-link="evaluacion">Innovación en la Evaluación Formativa: Más allá del examen tradicional.</a></li>
+              <li><a href="#" class="read-more" data-section-link="planeacion">La IA como co-piloto en la planeación de unidades didácticas.</a></li>
+              <li><a href="#" class="read-more" data-section-link="diseno">Las 5 preguntas que todo docente debe hacerse al diseñar su curso.</a></li>
+            </ul>
+          </div>
+        </section>
 
-      <!-- ============================ -->
-      <!-- SECCIÓN INICIO -->
-      <!-- ============================ -->
-      <section id="inicio" class="section active">
-        <article class="article">
-            
-            <header class="article-header">
-                <span class="article-category">Edición de Enero 2026</span>
-                <h2 class="article-title">Bienvenido al Boletín CEAP: Herramientas para la Excelencia Docente</h2>
-            </header>
-            
-            <hr class="article-separator">
+        <!-- SECCIÓN 2: EVALUACIÓN -->
+        <section id="evaluacion" class="section" aria-labelledby="heading-evaluacion">
+          <span class="article-category">Estrategias & Metodologías</span>
+          <h2 class="article-title" id="heading-evaluacion">Innovación en la Evaluación Formativa: Más allá del examen tradicional</h2>
+          <div class="article-separator"></div>
+          <div class="article-body">
+            <p>La evaluación formativa no solo busca medir el conocimiento, sino guiar el proceso de aprendizaje del estudiante. En un entorno académico en constante evolución, el CEAP promueve herramientas que permiten retroalimentar el desempeño de manera efectiva y oportuna, integrando la reflexión y el desarrollo de habilidades críticas por encima de la memorización. Este enfoque está alineado con las mejores prácticas internacionales en diseño curricular.</p>
+            <p>Exploramos el uso de portafolios digitales, rúbricas dinámicas y coevaluación entre pares como mecanismos para enriquecer la experiencia evaluativa.</p>
+            <a href="#" class="read-more" data-section-link="inicio">Volver al Inicio &rarr;</a>
+          </div>
+        </section>
+        
+        <!-- SECCIÓN 3: PLANEACIÓN CON IA -->
+        <section id="planeacion" class="section" aria-labelledby="heading-planeacion">
+          <span class="article-category">Tecnología y Diseño Curricular</span>
+          <h2 class="article-title" id="heading-planeacion">La IA como co-piloto en la planeación de unidades didácticas</h2>
+          <div class="article-separator"></div>
+          <div class="article-body">
+            <p>La Inteligencia Artificial ha dejado de ser una herramienta futurista para convertirse en un asistente práctico en la sala de clases. Te mostramos cómo utilizar modelos de lenguaje avanzado para generar objetivos de aprendizaje claros, diseñar actividades diferenciadas y crear instrumentos de evaluación que midan competencias complejas. La IA no reemplaza al docente, sino que amplifica su capacidad de diseñar experiencias educativas de alto impacto.</p>
+            <a href="#" class="read-more" data-section-link="inicio">Volver al Inicio &rarr;</a>
+          </div>
+        </section>
 
-            <div class="article-body">
-                <p>Explora las últimas reflexiones y recursos sobre la enseñanza y el aprendizaje. Esta edición se centra en la innovación en la evaluación, el uso estratégico de la IA en la planeación y las preguntas esenciales para el diseño curricular. Nuestro objetivo es equiparte con el conocimiento y las herramientas para transformar tu práctica pedagógica.</p>
-                <a href="#" class="read-more">Explorar la Edición &rarr;</a>
-            </div>
-        </article>
-      </section>
+        <!-- SECCIÓN 4: DISEÑO DE CURSOS -->
+        <section id="diseno" class="section" aria-labelledby="heading-diseno">
+          <span class="article-category">Diseño Curricular</span>
+          <h2 class="article-title" id="heading-diseno">Las 5 preguntas que todo docente debe hacerse al diseñar su curso</h2>
+          <div class="article-separator"></div>
+          <div class="article-body">
+            <p>Todo gran curso comienza con una reflexión profunda sobre su propósito. Te presentamos un marco de cinco preguntas esenciales, inspiradas en el 'Backward Design', que te ayudarán a enfocar el diseño de tu asignatura desde el resultado de aprendizaje deseado. Asegura la alineación perfecta entre objetivos, metodologías y evaluación, garantizando que cada actividad contribuya directamente al perfil de egreso del estudiante.</p>
+            <a href="#" class="read-more" data-section-link="inicio">Volver al Inicio &rarr;</a>
+          </div>
+        </section>
 
-      <!-- ============================ -->
-      <!-- SECCIÓN EVALUACIÓN -->
-      <!-- ============================ -->
-      <section id="evaluacion" class="section">
-        <article class="article">
+        <!-- SECCIÓN 5: DESARROLLO PROFESIONAL -->
+        <section id="profesional" class="section" aria-labelledby="heading-profesional">
+          <span class="article-category">Formación Contínua</span>
+          <h2 class="article-title" id="heading-profesional">Cursos de desarrollo profesional: Inscríbete ahora</h2>
+          <div class="article-separator"></div>
+          <div class="article-body">
+            <p>El CEAP lanza su nuevo calendario de talleres intensivos y cursos de corta duración diseñados para potenciar tus habilidades pedagógicas en el entorno digital. Temas como "Neuroeducación Aplicada", "Metodologías Activas" y "Liderazgo Educativo" ya están disponibles para inscripción. Invierte en tu crecimiento y lleva la excelencia a tu aula.</p>
+            <a href="#" class="read-more" data-section-link="inicio">Volver al Inicio &rarr;</a>
+          </div>
+        </section>
+        
+        <!-- SECCIÓN 6: PRÓXIMOS EVENTOS -->
+        <section id="eventos" class="section" aria-labelledby="heading-eventos">
+          <span class="article-category">Agenda CEAP</span>
+          <h2 class="article-title" id="heading-eventos">Próximos Eventos: No te los pierdas</h2>
+          <div class="article-separator"></div>
+          <div class="article-body">
+            <p>Mantente al tanto de los seminarios, conferencias y encuentros clave organizados por el CEAP y la Universidad del Rosario. Consulta el calendario completo y regístrate en los eventos que transformarán tu visión de la docencia.</p>
+            <a href="#" class="read-more" data-section-link="inicio">Volver al Inicio &rarr;</a>
+          </div>
+        </section>
 
-            <header class="article-header">
-                <span class="article-category">Estrategias &amp; Metodologías</span>
-                <h2 class="article-title">Innovación en la Evaluación Formativa: Más allá del examen tradicional</h2>
-            </header>
-            
-            <hr class="article-separator">
-
-            <div class="article-body">
-                <p>La evaluación formativa no solo busca medir el conocimiento, sino guiar el proceso de aprendizaje del estudiante. En un entorno académico en constante evolución, el CEAP promueve herramientas que permiten retroalimentar el desempeño de manera efectiva y oportuna, integrando la reflexión y el desarrollo de habilidades críticas por encima de la memorización. Este enfoque está alineado con las mejores prácticas internacionales en diseño curricular.</p>
-                <p>Exploramos el uso de portafolios digitales, rúbricas dinámicas y coevaluación entre pares como mecanismos para enriquecer la experiencia evaluativa.</p>
-                <a href="#" class="read-more">Seguir Leyendo &rarr;</a>
-            </div>
-        </article>
-      </section>
-
-      <!-- ============================ -->
-      <!-- SECCIÓN IA -->
-      <!-- ============================ -->
-      <section id="ia" class="section">
-        <article class="article">
-
-            <header class="article-header">
-                <span class="article-category">Tecnología y Futuro</span>
-                <h2 class="article-title">Integrando la IA en tu Syllabus: Eficiencia y Personalización</h2>
-            </header>
-            
-            <hr class="article-separator">
-
-            <div class="article-body">
-                <p>La Inteligencia Artificial ofrece oportunidades inéditas para optimizar la planeación de clases, desde la generación de actividades diferenciadas hasta la creación de esquemas de evaluación inicial. Descubre cómo utilizar herramientas de IA para reducir la carga administrativa y enfocar más tiempo en la interacción directa con tus estudiantes.</p>
-                <a href="#" class="read-more">Ver Guía Rápida &rarr;</a>
-            </div>
-        </article>
-      </section>
-
-      <!-- ============================ -->
-      <!-- SECCIÓN DISEÑO -->
-      <!-- ============================ -->
-      <section id="diseno" class="section">
-        <article class="article">
-
-            <header class="article-header">
-                <span class="article-category">Diseño Curricular</span>
-                <h2 class="article-title">Las 5 Preguntas Esenciales antes de Diseñar tu Curso</h2>
-            </header>
-            
-            <hr class="article-separator">
-
-            <div class="article-body">
-                <p>El diseño efectivo de un curso comienza con una reflexión profunda sobre los objetivos, los resultados de aprendizaje deseados y la audiencia. Te presentamos las cinco preguntas clave que todo profesor debe responder antes de estructurar su material para garantizar la coherencia y el impacto pedagógico.</p>
-                <a href="#" class="read-more">Revisar Preguntas &rarr;</a>
-            </div>
-        </article>
-      </section>
-
-      <!-- ============================ -->
-      <!-- SECCIÓN CURSOS -->
-      <!-- ============================ -->
-      <section id="cursos" class="section">
-        <article class="article">
-
-            <header class="article-header">
-                <span class="article-category">Formación Profesional</span>
-                <h2 class="article-title">Agenda de Cursos de Desarrollo Profesoral: Primavera 2026</h2>
-            </header>
-            
-            <hr class="article-separator">
-
-            <div class="article-body">
-                <p>Conoce la nueva oferta de talleres y seminarios diseñados para el crecimiento continuo de la planta docente. Desde herramientas de gamificación hasta didáctica avanzada, inscríbete para seguir fortaleciendo tus habilidades pedagógicas.</p>
-                <a href="#" class="read-more">Ver Calendario Completo &rarr;</a>
-            </div>
-        </article>
-      </section>
-
-      <!-- ============================ -->
-      <!-- SECCIÓN EVENTOS -->
-      <!-- ============================ -->
-      <section id="eventos" class="section">
-        <article class="article">
-
-            <header class="article-header">
-                <span class="article-category">Fechas Importantes</span>
-                <h2 class="article-title">Próximos Eventos: Coloquios y Seminarios Abiertos</h2>
-            </header>
-            
-            <hr class="article-separator">
-
-            <div class="article-body">
-                <p>Te invitamos a participar en el próximo Coloquio de Innovación Educativa. Un espacio de encuentro para compartir experiencias y debatir el futuro de la enseñanza superior.</p>
-                <a href="#" class="read-more">Consultar Detalles &rarr;</a>
-            </div>
-        </article>
-      </section>
-
-
+      </div> <!-- /.sections-wrapper -->
     </div>
   </main>
 
-  <!-- ============================
-       PESTAÑA PODCAST (derecha)
+  <!-- ===========================
+       REPRODUCTOR FIJO (BASE)
   ================================-->
-  <div class="podcast-tab">
-    <div class="podcast-rotated">Siga nuestro podcast en:</div>
+  <footer class="fixed-player" aria-label="Reproductor de audio">
+    <!-- El iframe se mantiene para el reproductor de SoundCloud -->
+    <iframe width="100%" height="82" scrolling="no" frameborder="no" allow="autoplay" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/1758963287&color=%23ff5500&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true"></iframe>
+  </footer>
+  
+  <!-- ===========================
+       FAB BUTTON Y PESTAÑA DERECHA
+  ================================-->
+  <button class="help-fab" id="help-fab" aria-label="Abrir formulario de ayuda y contacto">
+    <i class="fas fa-question-circle"></i>
+  </button>
 
+  <div class="podcast-tab" role="complementary">
+    <span class="podcast-rotated">Siga nuestro podcast en:</span>
     <div class="podcast-icons">
-      <a href="https://open.spotify.com/show/56vBIn7doLY3q4J6YWvVIM" target="_blank"><img src="https://github.com/CEAPUrosario/boletin_ceap/blob/main/img/Spotify.png?raw=true" alt="Spotify"></a>
-      <a href="https://www.youtube.com/playlist?list=PLCSRbw2Pd-BkwlO53gkWqMEUbc0x7HfNJ" target="_blank"><img src="https://github.com/CEAPUrosario/boletin_ceap/blob/main/img/Youtube.png?raw=true" alt="YouTube"></a>
-      <a href="https://soundcloud.com/ensenanza-aprendizaje" target="_blank"><img src="https://github.com/CEAPUrosario/boletin_ceap/blob/main/img/soundcloud.png?raw=true" alt="SoundCloud"></a>
-      <a href="https://www.spreaker.com/user/ceap-urosario--17959747" target="_blank"><img src="https://github.com/CEAPUrosario/boletin_ceap/blob/main/img/Spreaker.png?raw=true" alt="Spreaker"></a>
-      <a href="https://podcasts.apple.com/us/podcast/reflexiones-para-la-ense%C3%B1anza-y-el-aprendizaje/id1828714453" target="_blank"><img src="https://github.com/CEAPUrosario/boletin_ceap/blob/main/img/Apple.png?raw=true" alt="Apple Podcasts"></a>
+      <i class="fab fa-spotify fa-lg" aria-label="Spotify"></i>
+      <i class="fab fa-apple fa-lg" aria-label="Apple Podcasts"></i>
+      <i class="fab fa-google fa-lg" aria-label="Google Podcasts"></i>
+      <i class="fab fa-soundcloud fa-lg" aria-label="SoundCloud"></i>
     </div>
   </div>
-
-  <!-- ============================
-        REPRODUCTOR INFERIOR
+  
+  <!-- ===========================
+       MODAL DE AYUDA/CONTACTO
   ================================-->
-  <div class="fixed-player">
-    <div class="player-container">
-      <iframe
-        src="https://open.spotify.com/embed/show/56vBIn7doLY3q4J6YWvVIM?utm_source=generator&theme=0"
-        frameborder="0"
-        allow="autoplay; encrypted-media"
-        loading="lazy"
-        title="Podcast Player">
-      </iframe>
-    </div>
-  </div>
-
-  <!-- BOTÓN FLOTANTE AYUDA -->
-  <button class="help-fab" id="helpFab" aria-label="Abrir formulario de contacto">!</button>
-
-  <!-- MODAL -->
-  <div class="modal-backdrop" id="helpModal" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+  <div class="modal-backdrop" id="help-modal" role="dialog" aria-modal="true" aria-hidden="true" aria-labelledby="modal-title">
     <div class="modal">
-      <button id="closeModal" class="close-btn" aria-label="Cerrar ventana emergente">✕</button>
-      <h3 id="modalTitle">¿Desea contactarnos?</h3>
-      <p>Si tiene dudas o sugerencias, escríbanos a:
-        <br>
-        <a href="mailto:ensenanzayaprendizaje@urosario.edu.co">ensenanzayaprendizaje@urosario.edu.co</a>
-      </p>
+        <h3 id="modal-title">Contacto y Soporte</h3>
+        <p>Si tienes preguntas sobre el contenido de este boletín o necesitas soporte, contáctanos:</p>
+        <ul class="contact-list">
+            <li>Email: <a href="mailto:ceap@urosario.edu.co">ceap@urosario.edu.co</a></li>
+            <li>Teléfono: +57 (1) 6789000 Ext. 1234</li>
+        </ul>
+        <p>Horario de atención: Lunes a Viernes, 8:00 AM - 5:00 PM.</p>
+        <button class="close-btn" id="close-modal" aria-label="Cerrar ventana emergente">&times;</button>
     </div>
   </div>
-
-  <script src="app.js"></script>
+  
+  <!-- Librerías de Script -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <!-- RUTA CORREGIDA: Apunta a la carpeta 'js' y al archivo 'script.js' -->
+  <script src="js/script.js"></script>
 
 </body>
 </html>
