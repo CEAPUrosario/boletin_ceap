@@ -39,7 +39,7 @@ h2, h3 {
 
 /* --- REGLA PARA HACER LOS H2 MUCHO MÁS GRANDES (2.5rem) --- */
 h2 {
-    font-size: 5rem; 
+    font-size: 3rem; 
     font-weight: 500; 
     /* AJUSTE CLAVE: Eliminar margen inferior si ya tenemos un separador o texto que lo sigue */
     margin-bottom: 10rem; 
@@ -340,3 +340,4 @@ main{
 .podcast-tab:hover .podcast-icons{
   display:flex;
 }
+
