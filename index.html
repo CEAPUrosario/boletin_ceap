@@ -1,250 +1,219 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>Boletín CEAP</title>
-  <style>
-    body {
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      margin: 0;
-      padding: 0;
-      background-color: #fff;
-    }
-
-    /* Encabezado */
-    header {
-      text-align: center;
-      padding: 10px 0 0 0;
-    }
-
-    header img {
-      max-width: 450px;
-      height: auto;
-      display: block;
-      margin: 0 auto;
-    }
-
-    .top-info {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      margin: 0 40px;
-      font-size: 0.9em;
-    }
-
-    .top-info a {
-      color: #d00000;
-      text-decoration: none;
-    }
-
-    /* Navegación */
-    nav {
-      background-color: #f2f2f2;
-      display: flex;
-      justify-content: center;
-      flex-wrap: wrap;
-      padding: 5px 0;
-    }
-
-    nav button {
-      background-color: #e0e0e0;
-      border: none;
-      padding: 10px 20px;
-      margin: 5px;
-      font-size: 15px;
-      border-radius: 8px;
-      transition: background 0.3s, transform 0.2s;
-      cursor: pointer;
-    }
-
-    nav button:hover {
-      background-color: #0078d7;
-      color: white;
-      transform: scale(1.05);
-    }
-
-    nav button.active {
-      background-color: #0078d7;
-      color: white;
-    }
-
-    /* Contenido */
-    .content {
-      display: none;
-      padding: 20px;
-      max-width: 900px;
-      margin: 0 auto;
-      text-align: justify;
-    }
-
-    .content.active {
-      display: block;
-    }
-
-    /* Reproductor fijo inferior */
-    .fixed-player {
-      position: fixed;
-      bottom: 0;
-      left: 0;
-      width: 100%;
-      background-color: #ffffff;
-      border-top: 1px solid #ccc;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 6px 15px;
-      box-shadow: 0 -2px 6px rgba(0, 0, 0, 0.1);
-      box-sizing: border-box;
-    }
-
-    .player-container {
-      flex: 1;
-      max-width: 78%;
-    }
-
-    .player-container iframe {
-      width: 100%;
-      height: 80px;
-      border-radius: 8px;
-    }
-
-    .podcast-links {
-      display: flex;
-      align-items: center;
-      justify-content: flex-start;
-      gap: 8px;
-      min-width: 280px;
-      white-space: nowrap;
-    }
-
-    .podcast-links p {
-      margin: 0;
-      font-weight: bold;
-      font-size: 14px;
-      line-height: 1.2;
-    }
-
-    .podcast-icons a img {
-      width: 26px;
-      height: 26px;
-      vertical-align: middle;
-    }
-
-    /* Ajuste específico para Apple Podcast */
-    .podcast-icons a:last-child img {
-      width: 26px !important;
-      height: 26px !important;
-    }
-
-    /* Responsivo */
-    @media (max-width: 768px) {
-      .top-info {
-        flex-direction: column;
-        align-items: center;
-        margin: 0;
-      }
-
-      .fixed-player {
-        flex-direction: column;
-        padding: 8px;
-      }
-
-      .player-container {
-        max-width: 100%;
-      }
-
-      .podcast-links {
-        flex-direction: row;
-        flex-wrap: wrap;
-        justify-content: center;
-        margin-top: 5px;
-      }
-    }
-  </style>
+  
+  <!-- Enlaces a Google Fonts para fuentes sobrias y elegantes -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <!-- Volvemos a PLAYFAIR DISPLAY para títulos y ROBOTO SERIF para cuerpo -->
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Roboto+Serif:opsz,wght@8..144,300;8..144,400;8..144,600&display=swap" rel="stylesheet">
+  
+  <link rel="stylesheet" href="styles.css">
 </head>
+
 <body>
-  <header>
-    <img src="https://github.com/CEAPUrosario/boletin_ceap/blob/main/img/Header.png?raw=true" alt="Boletín CEAP">
-    <div class="top-info">
-      <span>Edición 10 - Enero de 2026</span>
-      <a href="https://www.urosario.edu.co/CEAP" target="_blank">www.urosario.edu.co/CEAP</a>
+
+  <!-- ============================
+       BARRA VERTICAL IZQUIERDA (Ajustada)
+  ================================-->
+  <aside class="sidebar left-sidebar" aria-label="Barra de navegación lateral">
+    
+    <div class="sidebar-logo">
+      <img src="https://github.com/CEAPUrosario/boletin_ceap/blob/main/img/Header.png?raw=true" alt="Boletín CEAP" class="logo-img">
+      <span class="brand-text">Edición 10 - Enero 2026</span>
     </div>
-  </header>
 
-  <nav>
-    <button class="active" onclick="showContent('inicio')">Inicio</button>
-    <button onclick="showContent('evaluacion')">Pensar la evaluación</button>
-    <button onclick="showContent('ia')">IA para la planeación de clases</button>
-    <button onclick="showContent('diseno')">Preguntarse al diseñar su curso</button>
-    <button onclick="showContent('cursos')">Cursos de desarrollo profesoral</button>
-    <button onclick="showContent('eventos')">Próximos Eventos</button>
-  </nav>
+    <nav class="sidebar-nav">
+      <button class="nav-btn active" data-section="inicio" aria-current="page">Inicio</button>
+      <button class="nav-btn" data-section="evaluacion">Pensar la evaluación</button>
+      <button class="nav-btn" data-section="ia">IA para la planeación de clases</button>
+      <button class="nav-btn" data-section="diseno">Preguntarse al diseñar su curso</button>
+      <button class="nav-btn" data-section="cursos">Cursos de desarrollo profesoral</button>
+      <button class="nav-btn" data-section="eventos">Próximos Eventos</button>
+    </nav>
 
-  <div id="inicio" class="content active">
-    <h2>Bienvenido al Boletín CEAP</h2>
-    <p>Explora las últimas reflexiones y recursos sobre la enseñanza y el aprendizaje...</p>
+  </aside>
+
+  <!-- ============================
+       CONTENIDO PRINCIPAL
+  ================================-->
+  <main id="mainContent">
+    <div class="content-card">
+
+      <!-- ============================ -->
+      <!-- SECCIÓN INICIO -->
+      <!-- ============================ -->
+      <section id="inicio" class="section active">
+        <article class="article">
+            
+            <header class="article-header">
+                <span class="article-category">Edición de Enero 2026</span>
+                <h2 class="article-title">Bienvenido al Boletín CEAP: Herramientas para la Excelencia Docente</h2>
+            </header>
+            
+            <hr class="article-separator">
+
+            <div class="article-body">
+                <p>Explora las últimas reflexiones y recursos sobre la enseñanza y el aprendizaje. Esta edición se centra en la innovación en la evaluación, el uso estratégico de la IA en la planeación y las preguntas esenciales para el diseño curricular. Nuestro objetivo es equiparte con el conocimiento y las herramientas para transformar tu práctica pedagógica.</p>
+                <a href="#" class="read-more">Explorar la Edición &rarr;</a>
+            </div>
+        </article>
+      </section>
+
+      <!-- ============================ -->
+      <!-- SECCIÓN EVALUACIÓN -->
+      <!-- ============================ -->
+      <section id="evaluacion" class="section">
+        <article class="article">
+
+            <header class="article-header">
+                <span class="article-category">Estrategias &amp; Metodologías</span>
+                <h2 class="article-title">Innovación en la Evaluación Formativa: Más allá del examen tradicional</h2>
+            </header>
+            
+            <hr class="article-separator">
+
+            <div class="article-body">
+                <p>La evaluación formativa no solo busca medir el conocimiento, sino guiar el proceso de aprendizaje del estudiante. En un entorno académico en constante evolución, el CEAP promueve herramientas que permiten retroalimentar el desempeño de manera efectiva y oportuna, integrando la reflexión y el desarrollo de habilidades críticas por encima de la memorización. Este enfoque está alineado con las mejores prácticas internacionales en diseño curricular.</p>
+                <p>Exploramos el uso de portafolios digitales, rúbricas dinámicas y coevaluación entre pares como mecanismos para enriquecer la experiencia evaluativa.</p>
+                <a href="#" class="read-more">Seguir Leyendo &rarr;</a>
+            </div>
+        </article>
+      </section>
+
+      <!-- ============================ -->
+      <!-- SECCIÓN IA -->
+      <!-- ============================ -->
+      <section id="ia" class="section">
+        <article class="article">
+
+            <header class="article-header">
+                <span class="article-category">Tecnología y Futuro</span>
+                <h2 class="article-title">Integrando la IA en tu Syllabus: Eficiencia y Personalización</h2>
+            </header>
+            
+            <hr class="article-separator">
+
+            <div class="article-body">
+                <p>La Inteligencia Artificial ofrece oportunidades inéditas para optimizar la planeación de clases, desde la generación de actividades diferenciadas hasta la creación de esquemas de evaluación inicial. Descubre cómo utilizar herramientas de IA para reducir la carga administrativa y enfocar más tiempo en la interacción directa con tus estudiantes.</p>
+                <a href="#" class="read-more">Ver Guía Rápida &rarr;</a>
+            </div>
+        </article>
+      </section>
+
+      <!-- ============================ -->
+      <!-- SECCIÓN DISEÑO -->
+      <!-- ============================ -->
+      <section id="diseno" class="section">
+        <article class="article">
+
+            <header class="article-header">
+                <span class="article-category">Diseño Curricular</span>
+                <h2 class="article-title">Las 5 Preguntas Esenciales antes de Diseñar tu Curso</h2>
+            </header>
+            
+            <hr class="article-separator">
+
+            <div class="article-body">
+                <p>El diseño efectivo de un curso comienza con una reflexión profunda sobre los objetivos, los resultados de aprendizaje deseados y la audiencia. Te presentamos las cinco preguntas clave que todo profesor debe responder antes de estructurar su material para garantizar la coherencia y el impacto pedagógico.</p>
+                <a href="#" class="read-more">Revisar Preguntas &rarr;</a>
+            </div>
+        </article>
+      </section>
+
+      <!-- ============================ -->
+      <!-- SECCIÓN CURSOS -->
+      <!-- ============================ -->
+      <section id="cursos" class="section">
+        <article class="article">
+
+            <header class="article-header">
+                <span class="article-category">Formación Profesional</span>
+                <h2 class="article-title">Agenda de Cursos de Desarrollo Profesoral: Primavera 2026</h2>
+            </header>
+            
+            <hr class="article-separator">
+
+            <div class="article-body">
+                <p>Conoce la nueva oferta de talleres y seminarios diseñados para el crecimiento continuo de la planta docente. Desde herramientas de gamificación hasta didáctica avanzada, inscríbete para seguir fortaleciendo tus habilidades pedagógicas.</p>
+                <a href="#" class="read-more">Ver Calendario Completo &rarr;</a>
+            </div>
+        </article>
+      </section>
+
+      <!-- ============================ -->
+      <!-- SECCIÓN EVENTOS -->
+      <!-- ============================ -->
+      <section id="eventos" class="section">
+        <article class="article">
+
+            <header class="article-header">
+                <span class="article-category">Fechas Importantes</span>
+                <h2 class="article-title">Próximos Eventos: Coloquios y Seminarios Abiertos</h2>
+            </header>
+            
+            <hr class="article-separator">
+
+            <div class="article-body">
+                <p>Te invitamos a participar en el próximo Coloquio de Innovación Educativa. Un espacio de encuentro para compartir experiencias y debatir el futuro de la enseñanza superior.</p>
+                <a href="#" class="read-more">Consultar Detalles &rarr;</a>
+            </div>
+        </article>
+      </section>
+
+
+    </div>
+  </main>
+
+  <!-- ============================
+       PESTAÑA PODCAST (derecha)
+  ================================-->
+  <div class="podcast-tab">
+    <div class="podcast-rotated">Siga nuestro podcast en:</div>
+
+    <div class="podcast-icons">
+      <a href="https://open.spotify.com/show/56vBIn7doLY3q4J6YWvVIM" target="_blank"><img src="https://github.com/CEAPUrosario/boletin_ceap/blob/main/img/Spotify.png?raw=true" alt="Spotify"></a>
+      <a href="https://www.youtube.com/playlist?list=PLCSRbw2Pd-BkwlO53gkWqMEUbc0x7HfNJ" target="_blank"><img src="https://github.com/CEAPUrosario/boletin_ceap/blob/main/img/Youtube.png?raw=true" alt="YouTube"></a>
+      <a href="https://soundcloud.com/ensenanza-aprendizaje" target="_blank"><img src="https://github.com/CEAPUrosario/boletin_ceap/blob/main/img/soundcloud.png?raw=true" alt="SoundCloud"></a>
+      <a href="https://www.spreaker.com/user/ceap-urosario--17959747" target="_blank"><img src="https://github.com/CEAPUrosario/boletin_ceap/blob/main/img/Spreaker.png?raw=true" alt="Spreaker"></a>
+      <a href="https://podcasts.apple.com/us/podcast/reflexiones-para-la-ense%C3%B1anza-y-el-aprendizaje/id1828714453" target="_blank"><img src="https://github.com/CEAPUrosario/boletin_ceap/blob/main/img/Apple.png?raw=true" alt="Apple Podcasts"></a>
+    </div>
   </div>
 
-  <div id="evaluacion" class="content">
-    <h2>Pensar la evaluación</h2>
-    <p>Contenido sobre estrategias y reflexiones en torno a la evaluación...</p>
-  </div>
-
-  <div id="ia" class="content">
-    <h2>IA para la planeación de clases</h2>
-    <p>Explora herramientas y metodologías para integrar IA en tus clases...</p>
-  </div>
-
-  <div id="diseno" class="content">
-    <h2>Preguntarse al diseñar su curso</h2>
-    <p>Reflexiones sobre el diseño pedagógico efectivo y centrado en el aprendizaje...</p>
-  </div>
-
-  <div id="cursos" class="content">
-    <h2>Cursos de desarrollo profesoral</h2>
-    <p>Consulta nuestra oferta de formación docente y desarrollo profesional...</p>
-  </div>
-
-  <div id="eventos" class="content">
-    <h2>Próximos Eventos</h2>
-    <p>Entérate de los eventos y actividades del CEAP...</p>
-  </div>
-
-  <!-- Reproductor fijo inferior -->
+  <!-- ============================
+        REPRODUCTOR INFERIOR
+  ================================-->
   <div class="fixed-player">
     <div class="player-container">
-      <iframe style="border-radius:12px"
-        src="https://open.spotify.com/embed/show/56vBIn7doLY3q4J6YWvVIM?utm_source=generator&theme=0&t=0"
-        width="100%" height="80" frameBorder="0" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
-        loading="lazy"></iframe>
-    </div>
-
-    <div class="podcast-links">
-      <p>Siga nuestro 
-        <br>
-        <br>podcast en:</p>
-      <div class="podcast-icons">
-        <a href="https://open.spotify.com/show/56vBIn7doLY3q4J6YWvVIM" target="_blank"><img src="https://github.com/CEAPUrosario/boletin_ceap/blob/main/img/Spotify.png?raw=true" alt="Spotify"></a>
-        <a href="https://www.youtube.com/playlist?list=PLCSRbw2Pd-BkwlO53gkWqMEUbc0x7HfNJ" target="_blank"><img src="https://github.com/CEAPUrosario/boletin_ceap/blob/main/img/Youtube.png?raw=true" alt="YouTube"></a>
-        <a href="https://soundcloud.com/ensenanza-aprendizaje" target="_blank"><img src="https://github.com/CEAPUrosario/boletin_ceap/blob/main/img/soundcloud.png?raw=true" alt="SoundCloud"></a>
-        <a href="https://www.spreaker.com/user/ceap-urosario--17959747" target="_blank"><img src="https://github.com/CEAPUrosario/boletin_ceap/blob/main/img/Spreaker.png?raw=true" alt="Spreaker"></a>
-        <a href="https://podcasts.apple.com/us/podcast/reflexiones-para-la-ense%C3%B1anza-y-el-aprendizaje/id1828714453" target="_blank"><img src="https://github.com/CEAPUrosario/boletin_ceap/blob/main/img/Apple.png?raw=true" alt="Apple Podcast"></a>
-      </div>
+      <iframe
+        src="https://open.spotify.com/embed/show/56vBIn7doLY3q4J6YWvVIM?utm_source=generator&theme=0"
+        frameborder="0"
+        allow="autoplay; encrypted-media"
+        loading="lazy"
+        title="Podcast Player">
+      </iframe>
     </div>
   </div>
 
-  <script>
-    function showContent(id) {
-      const contents = document.querySelectorAll('.content');
-      const buttons = document.querySelectorAll('nav button');
-      contents.forEach(c => c.classList.remove('active'));
-      buttons.forEach(b => b.classList.remove('active'));
-      document.getElementById(id).classList.add('active');
-      event.target.classList.add('active');
-    }
-  </script>
+  <!-- BOTÓN FLOTANTE AYUDA -->
+  <button class="help-fab" id="helpFab" aria-label="Abrir formulario de contacto">!</button>
+
+  <!-- MODAL -->
+  <div class="modal-backdrop" id="helpModal" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+    <div class="modal">
+      <button id="closeModal" class="close-btn" aria-label="Cerrar ventana emergente">✕</button>
+      <h3 id="modalTitle">¿Desea contactarnos?</h3>
+      <p>Si tiene dudas o sugerencias, escríbanos a:
+        <br>
+        <a href="mailto:ensenanzayaprendizaje@urosario.edu.co">ensenanzayaprendizaje@urosario.edu.co</a>
+      </p>
+    </div>
+  </div>
+
+  <script src="app.js"></script>
+
 </body>
 </html>
-
-
