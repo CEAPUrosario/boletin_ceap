@@ -3,170 +3,278 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Boletín CEAP</title>
-  
-  <!-- Enlaces a Google Fonts para fuentes sobrias y elegantes -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Roboto+Serif:opsz,wght@8..144,300;8..144,400;8..144,600&display=swap" rel="stylesheet">
-  
-  <!-- Iconos de Font Awesome -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
-  
-  <!-- RUTA CORREGIDA: Apunta a la carpeta 'css' y al archivo 'estilo.css' -->
-  <link rel="stylesheet" href="css/estilo.css"> 
+  <title>Boletín CEAP - Versión Épsilon</title>
+  <link rel="icon" type="image/png" href="https://github.com/CEAPUrosario/boletin_ceap/blob/main/img/Logo%20Bolet%C3%ADn.png?raw=true">
+  <link rel="stylesheet" href="css/estilo.css">
 </head>
-
 <body>
-
-  <!-- ===========================
-       BARRA VERTICAL IZQUIERDA
-  ================================-->
-  <aside class="sidebar left-sidebar" aria-label="Barra de navegación lateral">
+    <button class="hamburger-menu" id="hamburgerBtn">
+        <div class="bar1"></div>
+        <div class="bar2"></div>
+        <div class="bar3"></div>
+    </button>
     
-    <div class="sidebar-logo">
-      <img src="https://github.com/CEAPUrosario/boletin_ceap/blob/main/img/Header.png?raw=true" alt="Logo CEAP" class="logo-img">
-      <span class="brand-text">Universidad del Rosario</span>
-    </div>
+    <div class="header-blur-bg"></div>
+    
+    <header class="header-logo-fixed">
+        <a href="#" onclick="setActiveSection('inicio'); return false;">
+            <img src="https://github.com/CEAPUrosario/boletin_ceap/blob/main/img/Logo%20Bolet%C3%ADn.png?raw=true" alt="Boletín CEAP" class="logo-img">
+        </a>
+    </header>
 
-    <nav class="sidebar-nav" aria-label="Menú principal">
-      <button class="nav-btn" data-section="inicio" aria-current="page">Inicio</button>
-      <button class="nav-btn" data-section="evaluacion">Pensar la evaluación</button>
-      <button class="nav-btn" data-section="planeacion">IA para la planeación</button>
-      <button class="nav-btn" data-section="diseno">Preguntarse al diseñar</button>
-      <button class="nav-btn" data-section="profesional">Cursos profesional</button>
-      <button class="nav-btn" data-section="eventos">Próximos Eventos</button>
+    <div class="nav-container">
+    <nav class="header-nav" role="navigation" aria-label="Menú principal de secciones">
+        <button class="nav-btn active" data-section="inicio" aria-label="Sección Inicio">🏠 Inicio</button>
+        <button class="nav-btn" data-section="recursos" aria-label="Sección Claves para evaluar">🎙️ Claves para evaluar</button>
+        <button class="nav-btn" data-section="evaluacion" aria-label="Sección Evaluación">📝 Evaluación</button>
+        <button class="nav-btn" data-section="criterium" aria-label="Sección Critérium">💡 Critérium</button>
+        <button class="nav-btn" data-section="diseno" aria-label="Sección Uso de Inteligencia Artificial">🎨 Uso de IA</button>
+        <div class="nav-indicator"></div>
+        
+        <div class="zeta-controls" role="group" aria-label="Herramientas de accesibilidad y búsqueda">
+            <button id="decreaseText" class="zeta-control-btn" aria-label="Disminuir tamaño de letra"><span>A-</span></button>
+            <button id="increaseText" class="zeta-control-btn" aria-label="Aumentar tamaño de letra"><span>A+</span></button>
+            <button id="highContrastToggle" class="zeta-control-btn" aria-label="Activar modo de alto contraste"><span>◐</span></button>
+            <button id="searchToggle" class="zeta-control-btn" aria-label="Abrir buscador"><span>🔍</span></button>
+            <button id="darkModeToggle" class="zeta-control-btn" aria-label="Cambiar modo claro u oscuro"><span>🌙</span></button>
+        </div>
+        
+        <div id="scrollProgress" aria-hidden="true"></div>
     </nav>
-  </aside>
-
-  <!-- ===========================
-       CONTENIDO PRINCIPAL
-  ================================-->
-  <main class="main-content" role="main" id="main-content">
-    <div class="content-card">
-      <div class="sections-wrapper">
-        
-        <!-- SECCIÓN 1: INICIO (Activa por defecto) -->
-        <section id="inicio" class="section active" aria-labelledby="heading-inicio">
-          <span class="article-category">Edición 10 - Enero 2026</span>
-          <h2 class="article-title" id="heading-inicio">Bienvenido al Boletín CEAP: Herramientas para la Excelencia Docente</h2>
-          <div class="article-separator"></div>
-          <div class="article-body">
-            <p>Explora las últimas reflexiones y recursos sobre la enseñanza y el aprendizaje. Esta edición se centra en la innovación en la evaluación, el uso estratégico de la IA en la planeación y las preguntas esenciales para el diseño curricular. Nuestro objetivo es equiparte con el conocimiento y las herramientas para transformar tu práctica pedagógica.</p>
-            <p><strong>Temas Destacados:</strong></p>
-            <ul>
-              <li><a href="#" class="read-more" data-section-link="evaluacion">Innovación en la Evaluación Formativa: Más allá del examen tradicional.</a></li>
-              <li><a href="#" class="read-more" data-section-link="planeacion">La IA como co-piloto en la planeación de unidades didácticas.</a></li>
-              <li><a href="#" class="read-more" data-section-link="diseno">Las 5 preguntas que todo docente debe hacerse al diseñar su curso.</a></li>
-            </ul>
-          </div>
-        </section>
-
-        <!-- SECCIÓN 2: EVALUACIÓN -->
-        <section id="evaluacion" class="section" aria-labelledby="heading-evaluacion">
-          <span class="article-category">Estrategias & Metodologías</span>
-          <h2 class="article-title" id="heading-evaluacion">Innovación en la Evaluación Formativa: Más allá del examen tradicional</h2>
-          <div class="article-separator"></div>
-          <div class="article-body">
-            <p>La evaluación formativa no solo busca medir el conocimiento, sino guiar el proceso de aprendizaje del estudiante. En un entorno académico en constante evolución, el CEAP promueve herramientas que permiten retroalimentar el desempeño de manera efectiva y oportuna, integrando la reflexión y el desarrollo de habilidades críticas por encima de la memorización. Este enfoque está alineado con las mejores prácticas internacionales en diseño curricular.</p>
-            <p>Exploramos el uso de portafolios digitales, rúbricas dinámicas y coevaluación entre pares como mecanismos para enriquecer la experiencia evaluativa.</p>
-            <a href="#" class="read-more" data-section-link="inicio">Volver al Inicio &rarr;</a>
-          </div>
-        </section>
-        
-        <!-- SECCIÓN 3: PLANEACIÓN CON IA -->
-        <section id="planeacion" class="section" aria-labelledby="heading-planeacion">
-          <span class="article-category">Tecnología y Diseño Curricular</span>
-          <h2 class="article-title" id="heading-planeacion">La IA como co-piloto en la planeación de unidades didácticas</h2>
-          <div class="article-separator"></div>
-          <div class="article-body">
-            <p>La Inteligencia Artificial ha dejado de ser una herramienta futurista para convertirse en un asistente práctico en la sala de clases. Te mostramos cómo utilizar modelos de lenguaje avanzado para generar objetivos de aprendizaje claros, diseñar actividades diferenciadas y crear instrumentos de evaluación que midan competencias complejas. La IA no reemplaza al docente, sino que amplifica su capacidad de diseñar experiencias educativas de alto impacto.</p>
-            <a href="#" class="read-more" data-section-link="inicio">Volver al Inicio &rarr;</a>
-          </div>
-        </section>
-
-        <!-- SECCIÓN 4: DISEÑO DE CURSOS -->
-        <section id="diseno" class="section" aria-labelledby="heading-diseno">
-          <span class="article-category">Diseño Curricular</span>
-          <h2 class="article-title" id="heading-diseno">Las 5 preguntas que todo docente debe hacerse al diseñar su curso</h2>
-          <div class="article-separator"></div>
-          <div class="article-body">
-            <p>Todo gran curso comienza con una reflexión profunda sobre su propósito. Te presentamos un marco de cinco preguntas esenciales, inspiradas en el 'Backward Design', que te ayudarán a enfocar el diseño de tu asignatura desde el resultado de aprendizaje deseado. Asegura la alineación perfecta entre objetivos, metodologías y evaluación, garantizando que cada actividad contribuya directamente al perfil de egreso del estudiante.</p>
-            <a href="#" class="read-more" data-section-link="inicio">Volver al Inicio &rarr;</a>
-          </div>
-        </section>
-
-        <!-- SECCIÓN 5: DESARROLLO PROFESIONAL -->
-        <section id="profesional" class="section" aria-labelledby="heading-profesional">
-          <span class="article-category">Formación Contínua</span>
-          <h2 class="article-title" id="heading-profesional">Cursos de desarrollo profesional: Inscríbete ahora</h2>
-          <div class="article-separator"></div>
-          <div class="article-body">
-            <p>El CEAP lanza su nuevo calendario de talleres intensivos y cursos de corta duración diseñados para potenciar tus habilidades pedagógicas en el entorno digital. Temas como "Neuroeducación Aplicada", "Metodologías Activas" y "Liderazgo Educativo" ya están disponibles para inscripción. Invierte en tu crecimiento y lleva la excelencia a tu aula.</p>
-            <a href="#" class="read-more" data-section-link="inicio">Volver al Inicio &rarr;</a>
-          </div>
-        </section>
-        
-        <!-- SECCIÓN 6: PRÓXIMOS EVENTOS -->
-        <section id="eventos" class="section" aria-labelledby="heading-eventos">
-          <span class="article-category">Agenda CEAP</span>
-          <h2 class="article-title" id="heading-eventos">Próximos Eventos: No te los pierdas</h2>
-          <div class="article-separator"></div>
-          <div class="article-body">
-            <p>Mantente al tanto de los seminarios, conferencias y encuentros clave organizados por el CEAP y la Universidad del Rosario. Consulta el calendario completo y regístrate en los eventos que transformarán tu visión de la docencia.</p>
-            <a href="#" class="read-more" data-section-link="inicio">Volver al Inicio &rarr;</a>
-          </div>
-        </section>
-
-      </div> <!-- /.sections-wrapper -->
+    
+    <div id="searchBarContainer" class="search-bar-hidden" role="search">
+        <input type="text" id="searchInput" placeholder="Buscar tarjetas o cursos..." aria-label="Campo de búsqueda">
+        <button id="closeSearch" aria-label="Cerrar búsqueda">✕</button>
     </div>
-  </main>
+</div>
 
-  <!-- ===========================
-       REPRODUCTOR FIJO (BASE)
-  ================================-->
-  <footer class="fixed-player" aria-label="Reproductor de audio">
-    <!-- El iframe se mantiene para el reproductor de SoundCloud -->
-    <iframe width="100%" height="82" scrolling="no" frameborder="no" allow="autoplay" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/1758963287&color=%23ff5500&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true"></iframe>
-  </footer>
-  
-  <!-- ===========================
-       FAB BUTTON Y PESTAÑA DERECHA
-  ================================-->
-  <button class="help-fab" id="help-fab" aria-label="Abrir formulario de ayuda y contacto">
-    <i class="fas fa-question-circle"></i>
-  </button>
+    <main id="mainContent">
+        <section id="inicio" class="section active fade-in-up">
+            <div class="card-grid">
+    <a href="#" class="feature-card reveal" data-section="recursos">
+        <div class="card-inner-content">
+            <div class="card-image-wrapper" style="background-image: url('https://github.com/CEAPUrosario/boletin_ceap/blob/main/img/10_preguntas_evaluar.webp?raw=true');"></div>
+            <div class="card-text-content"><h3 class="card-title">10 Preguntas clave para evaluar</h3></div>
+            <div class="card-glint"></div>
+        </div>
+        <div class="card-info-below">
+            <span class="card-category">🎙️ Guía</span>
+            <p class="card-summary">Lista de 10 preguntas rápidas para revisar sus actividades evaluativas antes de publicarlas.</p>
+        </div>
+    </a>
 
-  <div class="podcast-tab" role="complementary">
-    <span class="podcast-rotated">Siga nuestro podcast en:</span>
-    <div class="podcast-icons">
-      <i class="fab fa-spotify fa-lg" aria-label="Spotify"></i>
-      <i class="fab fa-apple fa-lg" aria-label="Apple Podcasts"></i>
-      <i class="fab fa-google fa-lg" aria-label="Google Podcasts"></i>
-      <i class="fab fa-soundcloud fa-lg" aria-label="SoundCloud"></i>
+    <a href="#" class="feature-card reveal" data-section="evaluacion">
+        <div class="card-inner-content">
+            <div class="card-image-wrapper" style="background-image: url('https://github.com/CEAPUrosario/boletin_ceap/blob/main/img/evaluacion_integral.webp?raw=true');"></div>
+            <div class="card-text-content"><h3 class="card-title">Evaluación Integral</h3></div>
+            <div class="card-glint"></div>
+        </div>
+        <div class="card-info-below">
+            <span class="card-category">📄 Documento</span>
+            <p class="card-summary">Conozca los lineamientos oficiales de la evaluación integral de profesores.</p>
+        </div>
+    </a>
+
+    <a href="#" class="feature-card reveal" data-section="criterium">
+        <div class="card-inner-content">
+            <div class="card-image-wrapper" style="background-image: url('https://github.com/CEAPUrosario/boletin_ceap/blob/main/img/criterium.webp?raw=true');"></div>
+            <div class="card-text-content"><h3 class="card-title">IA y la planeación</h3></div>
+            <div class="card-glint"></div>
+        </div>
+        <div class="card-info-below">
+            <span class="card-category">💡 Critérium</span>
+            <p class="card-summary">Noticias sobre IA para optimizar la planeación de las clases universitarias.</p>
+        </div>
+    </a>
+
+    <a href="#" class="feature-card reveal" data-section="diseno">
+        <div class="card-inner-content">
+            <div class="card-image-wrapper" style="background-image: url('https://github.com/CEAPUrosario/boletin_ceap/blob/main/img/ia_en_la_universidad.webp?raw=true');"></div>
+            <div class="card-text-content"><h3 class="card-title">IA en la Universidad</h3></div>
+            <div class="card-glint"></div>
+        </div>
+        <div class="card-info-below">
+            <span class="card-category">🎨 Uso de IA</span>
+            <p class="card-summary">Orientaciones para el uso de la inteligencia artificial con liderazgo humano.</p>
+        </div>
+    </a>
+</div>
+
+            <aside class="events-sidebar-right">
+                <h2 class="events-title" style="display: flex; align-items: center; gap: 10px;">
+                    Calendario <span class="pulse-icon">📅</span>
+                </h2>
+                <div class="acordeon-sidebar">
+                    <div class="acordeon-item">
+                        <button class="acordeon-header" onclick="toggleAcordeon(this)">🎓 Cursos de Desarrollo</button>
+                        <div class="acordeon-content">
+                            <p style="font-size: 0.8rem; padding: 10px; background: #fffde7; border-radius: 8px; margin: 10px; border: 1px solid #ffe082;">
+                                Para inscribirse a los cursos haga clic <a href="https://appsweb01.urosario.edu.co/cursos_profesorales/" target="_blank" style="color: var(--primary-color); font-weight: 700;">AQUÍ</a>.
+                            </p>
+                            <div id="listaCursosAcordeon"></div>
+                        </div>
+                    </div>
+                    <div class="acordeon-item">
+                        <button class="acordeon-header" onclick="toggleAcordeon(this)">📝 Apreciación Docente</button>
+                        <div class="acordeon-content">
+                            <div style="padding:15px; background:#fdfdfd; border-radius:10px; margin:10px; border:1px solid #eee;">
+                                <span style="font-size:0.7rem; background:var(--light-accent); padding:3px 8px; border-radius:10px; font-weight:bold;">📅 Inicia: 29 Sep</span>
+                                <p style="font-size:0.85rem; margin:10px 0; line-height:1.3;">Los resultados de las encuestas fortalecen nuestra práctica docente.</p>
+                                <div style="display:flex; gap:5px;">
+                                    <a href="https://www.canva.com/design/DAFp8CgnqcI/Bx2abGW9rrvDOzGAKxnZJw/view" target="_blank" class="btn-enroll" style="flex:1; font-size:0.7rem; text-align:center; text-decoration:none;">Ver Guía</a>
+                                    <a href="https://sgi.urosario.edu.co/" target="_blank" class="btn-enroll" style="flex:1; font-size:0.7rem; text-align:center; text-decoration:none;">SGI</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </aside>
+        </section>
+
+        <section id="recursos" class="section">
+            <div class="magazine-layout reveal">
+                <h2 class="magazine-title">10 Preguntas clave para evaluar el aprendizaje</h2>
+                <div class="magazine-grid">
+                    <div class="magazine-text">
+                        <p>Sabemos que evaluar no es solo asignar una nota; es una forma de acompañar, ser justos y guiar a nuestros estudiantes con total transparencia. Por eso, desde el CEAP y Poliedro queremos darle una mano con esta lista de 10 preguntas rápidas.</p>
+                        <p>Tómelas como una guía amiga para revisar sus actividades antes de publicarlas y asegúrese de que cada evaluación sea un verdadero impulso para que sus estudiantes sigan aprendiendo. Haga clic en la imagen para ver la infografía que hemos preparado.</p>
+                        <div style="margin-top: 25px;">
+                            <button onclick="openEventPopup('Infografía: 10 Preguntas Clave', '')" class="btn-apreciacion" style="background: var(--vibrant-accent); color: white; border:none; cursor:pointer; width:auto; padding: 12px 25px;">Ampliar infografía 🔍</button>
+                        </div>
+                    </div>
+                    <div class="magazine-image">
+                        <div onclick="openEventPopup('Infografía: 10 Preguntas Clave', '')" style="cursor:pointer; width:100%;">
+                            <img src="https://img.freepik.com/vector-premium/diseno-cursos-linea_23-2148539669.jpg" alt="Vista previa Infografía">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="evaluacion" class="section">
+            <div class="magazine-layout reveal">
+                <h2 class="magazine-title">¿Ya conoce la evaluación integral de profesores?</h2>
+                <div class="magazine-grid">
+                    <div class="magazine-text">
+                        <p>Consulte los lineamientos oficiales de la Universidad del Rosario sobre la evaluación integral de profesores. Este recurso permite comprender el proceso desde una perspectiva de desarrollo y mejora continua.</p>
+                        <div style="margin-top: 25px;">
+                            <button onclick="openEventPopup('Documento: Evaluación Integral', '')" class="btn-apreciacion" style="background: var(--primary-color); color: white; border:none; cursor:pointer; width:auto; padding: 12px 25px;">Ver documento oficial 📄</button>
+                        </div>
+                    </div>
+                    <div class="magazine-image">
+                        <div onclick="openEventPopup('Documento: Evaluación Integral', '')" style="cursor:pointer; width:100%;">
+                            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSO0zNACq9GK1TKqPvUM2jgC0eZ9940vmEpUw&s" alt="Evaluación Integral">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="criterium" class="section">
+            <div class="magazine-layout reveal">
+                <h2 class="magazine-title">Critérium: IA para la creación de rúbricas de evaluación</h2>
+                <div class="magazine-grid">
+                    <div class="magazine-text">
+                        <p>Sabemos que el diseño de rúbricas es fundamental para una evaluación transparente, pero también que puede ser una tarea que demanda bastante tiempo. Por eso, desde la Dirección Académica, el CEAP y Poliedro, hemos creado <strong>Critérium</strong>.</p>
+                        <p>Este nuevo GPT está diseñado para acompañarlos en la construcción de criterios de evaluación de alta calidad pedagógica de manera ágil. Los invitamos a ver este breve video tutorial sobre el uso de la herramienta. También pueden profundizar un poco más sobre el tema en nuestra Guía para el diseño de rúbricas para la evaluación. ¡Esperamos que les sea de gran utilidad!</p>
+                        <div class="apreciacion-buttons" style="margin-top: 30px;">
+    <a href="https://chatgpt.com/g/g-68e6d68d5300819188d6f71a0e0536f7-criterium" target="_blank" class="btn-apreciacion btn-criterium-azul">Ingrese a Critérium aquí</a>
+    <a href="https://repository.urosario.edu.co/bitstreams/f9e10b3f-e1a7-432d-87d3-dcb549361074/download" target="_blank" class="btn-apreciacion btn-criterium-azul">Lea la guía de rúbricas</a>
+</div>
+                    </div>
+                    <div class="magazine-image">
+                        <div class="video-wrapper">
+                            <iframe width="100%" height="315" src="https://www.youtube.com/embed/sOOk1F9g9D0" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="diseno" class="section">
+            <div class="magazine-layout reveal">
+                <h2 class="magazine-title">Orientaciones para el uso de IA en la Universidad del Rosario</h2>
+                <div class="magazine-grid">
+                    <div class="magazine-text">
+                        <p>El CEAP de la Dirección Académica y la Dirección de Educación Digital (DED), adscritos a la Vicerrectoría Académica, lideraron la creación de las orientaciones para el uso de la inteligencia artificial en los procesos de enseñanza y aprendizaje en la Universidad del Rosario.</p>
+                        <p>Estas orientaciones nos permiten, como Universidad, incorporar el uso de la inteligencia artificial para apoyar los procesos pedagógicos y de aprendizaje, siempre desde el liderazgo humano y la responsabilidad ética. Haga clic en la imagen para conocer el micrositio IA en Acción.</p>
+                        <div style="margin-top: 25px;">
+                            <a href="https://urosario.edu.co/ia-en-accion" target="_blank" class="btn-apreciacion" style="background: #27ae60; color: white; width:auto; padding: 12px 25px;">Visitar micrositio 🌐</a>
+                        </div>
+                    </div>
+                    <div class="magazine-image">
+                        <a href="https://urosario.edu.co/ia-en-accion" target="_blank" style="width:100%;">
+                            <img src="https://urosario.edu.co/sites/default/files/2025-11/recurso_1.webp" alt="IA en Acción">
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <div class="podcast-side-tab transparent-tab">
+        <div class="tab-label">
+            <div class="listen-text-container"><p class="listen-text">ESCUCHE NUESTRO PODCAST</p></div>
+            <img src="https://github.com/CEAPUrosario/boletin_ceap/blob/main/img/Caratula%20podcast.png?raw=true">
+        </div>
+        <div class="tab-content">
+            <div class="mini-player">
+                <iframe src="https://open.spotify.com/embed/show/3bbaxCiNOO5PA4NfQl7dQ4?utm_source=generator" width="100%" height="352" frameBorder="0" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy" style="border-radius:12px;"></iframe>
+            </div>
+            <div class="footer-podcast-side">
+                <p style="font-size: 0.7rem; font-weight: 900; margin-bottom: 12px; color: var(--primary-color); text-align: center;">SIGA NUESTRO PODCAST</p>
+                <div class="icons-grid-five">
+                    <a href="https://open.spotify.com/embed/show/3bbaxCiNOO5PA4NfQl7dQ4?utm_source=generator" target="_blank"><img src="https://github.com/CEAPUrosario/boletin_ceap/blob/main/img/Spotify.png?raw=true"></a>
+                    <a href="https://www.spreaker.com/podcast/reflexiones-para-la-ensenanza-y-el-aprendizaje--6285791" target="_blank"><img src="https://github.com/CEAPUrosario/boletin_ceap/blob/main/img/Spreaker.png?raw=true"></a>
+                    <a href="https://soundcloud.com/ensenanza-aprendizaje" target="_blank"><img src="https://github.com/CEAPUrosario/boletin_ceap/blob/main/img/soundcloud.png?raw=true"></a>
+                    <a href="https://podcasts.apple.com/us/podcast/reflexiones-para-la-ense%C3%B1anza-y-el-aprendizaje/id1728144533" target="_blank"><img src="https://github.com/CEAPUrosario/boletin_ceap/blob/main/img/Apple.png?raw=true"></a>
+                    <a href="https://www.youtube.com/@ensenanzayaprendizajeUR" target="_blank"><img src="https://github.com/CEAPUrosario/boletin_ceap/blob/main/img/Youtube.png?raw=true"></a>
+                </div>
+            </div>
+        </div>
     </div>
-  </div>
-  
-  <!-- ===========================
-       MODAL DE AYUDA/CONTACTO
-  ================================-->
-  <div class="modal-backdrop" id="help-modal" role="dialog" aria-modal="true" aria-hidden="true" aria-labelledby="modal-title">
-    <div class="modal">
-        <h3 id="modal-title">Contacto y Soporte</h3>
-        <p>Si tienes preguntas sobre el contenido de este boletín o necesitas soporte, contáctanos:</p>
-        <ul class="contact-list">
-            <li>Email: <a href="mailto:ceap@urosario.edu.co">ceap@urosario.edu.co</a></li>
-            <li>Teléfono: +57 (1) 6789000 Ext. 1234</li>
-        </ul>
-        <p>Horario de atención: Lunes a Viernes, 8:00 AM - 5:00 PM.</p>
-        <button class="close-btn" id="close-modal" aria-label="Cerrar ventana emergente">&times;</button>
-    </div>
-  </div>
-  
-  <!-- Librerías de Script -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
-  <!-- RUTA CORREGIDA: Apunta a la carpeta 'js' y al archivo 'script.js' -->
-  <script src="js/script.js"></script>
 
+    <button class="contact-fab" id="helpFab" aria-label="Contáctenos">
+    <img src="https://github.com/CEAPUrosario/boletin_ceap/blob/main/img/Nuevo_bot%C3%B3n_correo.png?raw=true" class="fab-mailing-icon">
+</button>
+    <footer class="main-footer">
+        <div class="footer-container">
+            <div class="footer-brand"><img src="https://github.com/CEAPUrosario/boletin_ceap/blob/main/img/Logo%20v3.png?raw=true" class="footer-logo"></div>
+            <div class="footer-content-right">
+<div class="footer-nav-links">
+    <a href="#" onclick="openEventPopup('Ediciones Anteriores', '')">Ediciones anteriores</a>
+    <span class="footer-sep">|</span>
+    <a href="https://urosario.edu.co/" target="_blank">Visita Urosario</a>
+    <span class="footer-sep">|</span>
+    <a href="https://urosario.edu.co/profesores/ceap" target="_blank">Visita al CEAP</a>
+</div>
+                <div class="footer-social-links">
+                    <a href="https://www.linkedin.com/company/ceap-urosario/" target="_blank">
+                        <img src="https://static.vecteezy.com/system/resources/previews/018/930/480/non_2x/linkedin-logo-png-linkedin-icon-transparent-png-free-vector.jpg" alt="LinkedIn" class="footer-icon">
+                    </a>
+                    <a href="https://www.youtube.com/@ensenanzayaprendizajeUR" target="_blank">
+                        <img src="https://github.com/CEAPUrosario/boletin_ceap/blob/main/img/Youtube.png?raw=true" alt="YouTube" class="footer-icon">
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom"><p>© 2026 Universidad del Rosario - Vigilada Mineducación</p></div>
+    </footer>
+
+    <div class="modal-backdrop" id="helpModal">
+        <div class="modal modal-grande">
+            <button class="close-btn" id="closeModal">✕</button>
+          
+            <h3 id="modalTitle" style="color: var(--primary-color); margin-bottom: 15px;">Título</h3>
+            <div id="modalBodyText">Cuerpo</div>
+        </div>
+    </div>
+
+    <div id="sideDetailPanel" class="side-panel">
+        <button class="close-side-panel" onclick="toggleSidePanel(false)">✕</button>
+        <div id="sidePanelContent"></div>
+    </div>
+
+    <script src="js/script.js"></script>
 </body>
 </html>
