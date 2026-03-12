@@ -1,344 +1,773 @@
-/* ---------- Reset y variables ---------- */
-:root{
-  --sidebar-width: 280px; 
-  /* 30% - Color Secundario (Emerald Oscuro - Tipografía y Sidebar) */
-  --secondary-color: #ffffff; 
-  /* 10% - Color de Acento (Gold/Oro Pálido - Botones, FAB, Links) */
-  --accent: #C2A46C; 
-  --player-height: 82px;
+@font-face { font-family: 'PP Neue Montreal'; src: url('https://raw.githubusercontent.com/CEAPUrosario/boletin_ceap/main/font/ppneuemontreal-book.otf') format('opentype'); font-weight: 400; }
+@font-face { font-family: 'PP Neue Montreal'; src: url('https://raw.githubusercontent.com/CEAPUrosario/boletin_ceap/main/font/ppneuemontreal-bold.otf') format('opentype'); font-weight: 700; }
 
-  /* AJUSTE CLAVE: Reducimos el alto y el ancho inicial para que el texto quepa verticalmente */
-  --podcast-tab-height: 180px; 
-  --podcast-tab-width: 30px; /* Reducido para solo mostrar la línea vertical */
-  --podcast-tab-width-hover: 120px; /* Más ancho para mostrar bien los íconos */
-  
-  --podcast-color: #004D40; /* Usamos el color secundario para el podcast */
+:root {
+    --fixed-header-height: 110px;
+    --primary-color: #043959;
+    --secondary-color: #204959;
+    --light-accent: #F2E088;
+    --vibrant-accent: #F2B872;
+    --brown-divider: #735D49;
+    --nav-bg-tenue: rgba(242, 224, 136, 0.3);
 }
 
-*{box-sizing:border-box; margin:0; padding:0;}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body { font-family: "PP Neue Montreal", sans-serif; background-color: #ffffff; color: var(--primary-color); overflow-x: hidden; width: 100%; }
 
-html, body{
-  height:100%;
-  /* Tipografía sobria y legible: Roboto Serif para el cuerpo */
-  font-family: "Roboto Serif", serif; 
-  
-  /* Imagen de fondo ( 60%) */
-  background-image: url("https://github.com/CEAPUrosario/boletin_ceap/blob/main/img/Dise%C3%B1o%20sin%20t%C3%ADtulo%20(18).png?raw=true");
-  background-size: cover;
-  background-position: center;
-  background-attachment: fixed;
-  /* El color del texto base se vuelve el Secundario (30%) */
-  color: var(--secondary-color);
-}
-
-h2, h3 {
-  /* FUENTE: PLAYFAIR DISPLAY para títulos elegantes (Serif) */
-  font-family: 'Playfair Display', serif; 
-  color: var(--secondary-color); /* Los títulos usan el color Secundario (Emerald) */
-}
-
-/* --- REGLA PARA HACER LOS H2 MUCHO MÁS GRANDES (2.5rem) --- */
-h2 {
-    font-size: 3rem; 
-    font-weight: 500; 
-    /* AJUSTE CLAVE: Eliminar margen inferior si ya tenemos un separador o texto que lo sigue */
-    margin-bottom: 6rem; 
-}
-
-/* --- ESTILOS INSPIRADOS EN NAVAPRESS (ARTÍCULOS) --- */
-
-.article {
-    margin-bottom: 3rem;
-    padding-bottom: 2rem;
-    border-bottom: 1px solid rgba(0, 77, 64, 0.15); /* Sombra sutil del Emerald */
-}
-
-/* Línea separadora HR: Ahora usa el color de Acento (Gold/10%) */
-.article-separator {
+/* HEADER BLUR */
+.header-blur-bg {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 160px;
+    background: rgba(255, 255, 255, 0.9); 
+    backdrop-filter: blur(20px); 
+    -webkit-backdrop-filter: blur(20px);
+    z-index: 1100;
     border: none;
-    border-top: 2px solid var(--accent); /* Más grueso y color de acento */
-    width: 100px; /* Reducido para más elegancia */
-    /* AJUSTE CLAVE: Espacio después del separador */
-    margin: 1rem 0 3rem 0; 
+    box-shadow: none;
+    pointer-events: none;
 }
 
-/* Subtítulos/Categorías: Usan color de acento o un tono más claro del secundario */
-.article-category {
-    font-size: 0.75rem;
-    font-weight: 600;
-    letter-spacing: 0.15em; 
-    text-transform: uppercase;
-    color: rgba(0, 77, 64, 0.6); /* Gris tenue, pero con base Emerald */
-    /* AJUSTE CLAVE: Aumentar el margen inferior para separarlo del H2 (Título) */
-    margin-bottom: 1.5rem; 
-    display: block;
+/* AJUSTE LOGO */
+.header-logo-fixed { position: fixed; top: 0; left: 0; width: auto; height: var(--fixed-header-height); z-index: 1200; display: flex; align-items: center; padding-left: 2rem; }
+.logo-img { width: 280px; height: auto; transition: 0.3s; }
+
+/* NAV CONTAINER: NAVEGACIÓN A LA DERECHA */
+.nav-container { 
+    width: 100%; 
+    position: fixed; 
+    top: 25px; 
+    left: 0; 
+    z-index: 2000; 
+    display: flex; 
+    justify-content: flex-end; 
+    padding-right: 60px;
 }
 
-/* Título de la publicación: Usa color Secundario (Emerald) */
-.article-title {
-    margin-top: 0;
+/* --- ACTUALIZACIÓN DE COLOR DEL MENÚ (VERSIÓN SÓLIDA) --- */
+/* --- ACTUALIZACIÓN DE COLOR DEL MENÚ (VERSIÓN ETA) --- */
+.header-nav {  
+    display: flex;  
+    gap: 10px;  
+    background: #E8F1F5; /* CAMBIA AQUÍ EL COLOR (Ej: Azul Nube) */
+    padding: 10px 25px;  
+    border-radius: 50px;  
+    border: 1px solid rgba(4, 57, 89, 0.15); /* Borde sutil oscuro para que resalte */
+    position: relative;  
+    min-width: auto;
+    flex-wrap: nowrap;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1); 
+    z-index: 2000;
 }
 
-/* Cuerpo del artículo: Usa color Secundario (Emerald) */
-.article-body p {
-    font-size: 1.1rem;
-    line-height: 1.8;
-    margin-bottom: 1.5rem;
+.nav-btn { 
+    flex-shrink: 0; 
+    white-space: nowrap; 
+    background: transparent; 
+    color: #043959 !important; /* TEXTO OSCURO (Mejor legibilidad sobre fondo claro) */
+    border: none; 
+    padding: 8px 18px; 
+    border-radius: 25px; 
+    font-weight: 700; 
+    font-size: 0.9rem; 
+    cursor: pointer; 
+    transition: 0.3s; 
+    position: relative; 
+    z-index: 2; 
+    display: flex; 
+    align-items: center; 
+    gap: 5px; 
 }
 
-.article-body .read-more {
-    display: inline-block;
-    color: var(--accent); /* Color de Acento (Gold) */
-    text-decoration: none;
-    font-weight: 600;
-    letter-spacing: 0.05em;
-    padding-top: 0.5rem;
-    transition: opacity 0.2s ease;
+/* El globo indicador ahora es oscuro para que contraste con el fondo claro del menú */
+.nav-indicator { 
+    position: absolute; 
+    height: 36px; 
+    background: #043959 !important; /* Azul oscuro */
+    border-radius: 25px; 
+    top: 10px; 
+    left: 20px; 
+    transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1); 
+    z-index: 1; 
 }
 
-.article-body .read-more:hover {
-    opacity: 0.8;
+/* El texto se vuelve blanco solo cuando está sobre el indicador oscuro */
+.nav-btn.active { 
+    color: #ffffff !important; 
 }
 
-/* --- Ajuste para Títulos en Móvil (h2) --- */
+/* Mantenemos el ajuste de proporciones para que nada se pise */
+main {  
+    padding-top: 210px;  
+    max-width: 1550px;  
+    margin: 0 auto;  
+    position: relative;  
+    padding-left: 100px;  
+    padding-right: 60px;  
+    width: 100%;  
+}
+
+.section { display: none; width: 100%; padding-bottom: 100px; }
+.section.active { 
+    display: flex !important; 
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 40px; /* Calle de separación entre tarjetas y calendario */
+}
+
+.fade-in-up { animation: fadeInUp 0.6s ease-out forwards; }
+@keyframes fadeInUp {
+    from { opacity: 0; transform: translateY(25px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.card-grid { 
+    display: grid; 
+    grid-template-columns: repeat(4, 1fr); 
+    gap: 25px; 
+    flex: 1; /* Ocupa el espacio restante sin pisar el calendario */
+}
+
+.feature-card { display: block; text-decoration: none; color: inherit; perspective: 1200px; }
+.card-inner-content { height: 340px; border-radius: 18px; overflow: hidden; position: relative; box-shadow: 0 15px 45px rgba(0,0,0,0.12); transform-style: preserve-3d; transition: transform 0.2s ease, box-shadow 0.3s ease; }
+.card-inner-content:hover { box-shadow: 0 25px 55px rgba(4, 57, 89, 0.2); }
+.card-image-wrapper { width: 100%; height: 100%; background-size: cover; background-position: center; transition: transform 0.8s ease; }
+.card-inner-content::after { content: ''; position: absolute; bottom: 0; left: 0; width: 100%; height: 75%; background: linear-gradient(to top, rgba(4, 57, 89, 0.95), transparent); z-index: 1; }
+.card-text-content { position: absolute; bottom: 0; width: 100%; padding: 1.8rem; color: white; z-index: 2; }
+.card-title { font-size: 1.6rem; line-height: 1.1; font-weight: 700; letter-spacing: -0.5px; }
+.card-glint { position: absolute; top: 0; left: -150%; width: 100%; height: 100%; background: linear-gradient(120deg, transparent, rgba(255,255,255,0.3), transparent); z-index: 3; pointer-events: none; }
+.feature-card:hover .card-glint { left: 150%; transition: all 0.7s ease-in-out; }
+
+.events-sidebar-right { 
+    width: 270px; 
+    flex-shrink: 0; /* Evita que el calendario se encoja */
+    position: relative;
+}
+
+.events-title { font-size: 1.4rem; color: var(--secondary-color); margin-bottom: 20px; font-weight: 900; }
+
+.modal-backdrop { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(4, 57, 89, 0.7); display: none; align-items: center; justify-content: center; z-index: 5000; backdrop-filter: blur(8px); }
+.modal-backdrop.open { display: flex; }
+.modal { background: #fff; border-radius: 25px; transform: scale(0.9); opacity: 0; transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1); }
+.modal-backdrop.open .modal { transform: scale(1); opacity: 1; }
+.modal.modal-grande {
+    max-width: 1000px;
+    width: 95%;
+    padding: 30px 20px !important; 
+    position: relative;
+    overflow-y: auto;
+    max-height: 90vh;
+}
+/* Botón de cerrar para los Modales */
+.close-modal {
+    position: absolute;
+    top: 20px;
+    right: 25px; /* Mandamos a la derecha */
+    font-size: 2.2rem;
+    font-weight: 300;
+    color: #888;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    z-index: 5100;
+    transition: 0.3s;
+    line-height: 1;
+}
+
+.close-modal:hover {
+    color: var(--primary-color);
+    transform: scale(1.1);
+}
+
+.btn-detail { background: #e9ecef; border: none; padding: 8px 15px; border-radius: 6px; font-size: 0.8rem; font-weight: 700; cursor: pointer; transition: 0.3s; }
+.btn-enroll { background: var(--primary-color); color: white; border: none; padding: 8px 15px; border-radius: 6px; font-size: 0.8rem; font-weight: 700; cursor: pointer; transition: 0.3s; }
+
+.podcast-side-tab.transparent-tab { position: fixed; left: -415px; top: 50%; transform: translateY(-50%); width: 530px; z-index: 4000; display: flex; align-items: center; transition: left 0.6s ease; }
+.podcast-side-tab:hover { left: 0 !important; }
+.tab-content { width: 415px; background: #ffffff; padding: 30px; border-radius: 0 25px 25px 0; box-shadow: 15px 0 50px rgba(0,0,0,0.15); display: flex; flex-direction: column; gap: 20px; order: 1; }
+.tab-label { width: 85px; cursor: pointer; order: 2; padding-left: 10px; }
+.tab-label img { width: 100%; border-radius: 12px; }
+.listen-text { writing-mode: vertical-rl; transform: rotate(180deg); font-size: 0.7rem; font-weight: 900; color: var(--primary-color); background: var(--light-accent); padding: 12px 5px; border-radius: 5px; }
+.icons-grid-five { display: flex; justify-content: space-between; align-items: center; padding: 0 10px; }
+.icons-grid-five img { width: 34px; height: 34px; }
+
+
+/* === NUEVO BOTÓN FLOTANTE ANIMADO (VERSIÓN ETA) === */
+.contact-fab { 
+    position: fixed; 
+    bottom: 35px; 
+    right: 35px; 
+    width: 110px; /* Tamaño ajustado para la nueva imagen */
+    height: 110px; 
+    background: transparent !important; /* Sin fondo circular */
+    border: none !important; /* Sin bordes */
+    cursor: pointer; 
+    z-index: 2100; 
+    overflow: visible; /* Para que la sombra no se corte */
+    padding: 0;
+    box-shadow: none !important; /* Quitamos la sombra del cuadro antiguo */
+    outline: none;
+}
+
+/* La imagen del sobre con su efecto de levitación */
+.fab-mailing-icon {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    /* Sombreado que sigue la forma del sobre */
+    filter: drop-shadow(0 10px 15px rgba(4, 57, 89, 0.3));
+    /* Llamado a la animación continua */
+    animation: levitacionCorreo 3s ease-in-out infinite;
+    transition: transform 0.3s ease;
+}
+
+/* Efecto opcional: se agranda un poco al pasar el mouse */
+.contact-fab:hover .fab-mailing-icon {
+    transform: scale(1.1);
+    filter: drop-shadow(0 15px 25px rgba(4, 57, 89, 0.4));
+}
+
+/* LÓGICA DE LEVITACIÓN CON ZUMBIDO (BUZZ) */
+@keyframes levitacionZumbido {
+    0%, 100% { transform: translateY(0px) rotate(0deg); }
+    40% { transform: translateY(-15px) rotate(0deg); } /* Sube normal */
+    
+    /* Inicio del Zumbido (Rápido) */
+    45% { transform: translateY(-15px) rotate(-3deg); }
+    47% { transform: translateY(-15px) rotate(3deg); }
+    49% { transform: translateY(-15px) rotate(-3deg); }
+    51% { transform: translateY(-15px) rotate(3deg); }
+    53% { transform: translateY(-15px) rotate(0deg); }
+    /* Fin del Zumbido */
+    
+    60% { transform: translateY(-15px); } /* Se queda un momento arriba */
+}
+
+/* Aplicamos la animación a la imagen */
+.fab-mailing-icon {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    filter: drop-shadow(0 10px 15px rgba(4, 57, 89, 0.3));
+    animation: levitacionZumbido 4s ease-in-out infinite; /* 4 segundos para que no sea estresante */
+}
+.contact-fab:hover .fab-mailing-icon {
+    animation: buzzMouse 0.3s linear infinite; /* Zumbido rápido al tocarlo */
+}
+
+@keyframes buzzMouse {
+    0% { transform: translate(1px, 1px) rotate(0deg); }
+    20% { transform: translate(-1px, -2px) rotate(-1deg); }
+    40% { transform: translate(-3px, 0px) rotate(1deg); }
+    60% { transform: translate(3px, 2px) rotate(0deg); }
+    80% { transform: translate(1px, -1px) rotate(1deg); }
+    100% { transform: translate(-1px, 2px) rotate(-1deg); }
+}
+
+.side-panel { position: fixed; top: 0; right: -100%; width: 55%; height: 100%; background: #ffffff; border-left: 6px solid var(--vibrant-accent); transition: right 0.5s; padding: 50px 40px; z-index: 4500; box-shadow: -15px 0 40px rgba(0,0,0,0.2); overflow-y: auto; opacity: 0; pointer-events: none; }
+.side-panel.active { right: 0; opacity: 1; pointer-events: auto; }
+/* Botón de cerrar para el Panel Lateral */
+.close-side-panel {
+    position: absolute;
+    top: 20px;
+    right: 20px; /* Esquina superior derecha */
+    background: transparent;
+    border: none;
+    font-size: 2.2rem;
+    cursor: pointer;
+    color: var(--primary-color);
+    z-index: 5000;
+    transition: 0.3s;
+}
+
+.close-side-panel:hover {
+    transform: rotate(90deg); /* Efecto visual de cierre */
+    color: var(--vibrant-accent);
+}
+
+.magazine-layout { max-width: 1200px; margin: 0 auto; }
+.magazine-title { font-size: 2.8rem; color: var(--primary-color); margin-bottom: 35px; font-weight: 700; border-bottom: 5px solid var(--vibrant-accent); display: inline-block; }
+
+.magazine-grid { display: grid; grid-template-columns: 1.2fr 0.8fr; gap: 50px; align-items: center; }
+.magazine-text p { font-size: 1.1rem; line-height: 1.8; color: #333; text-align: justify; margin-bottom: 15px; }
+
+.magazine-image { width: 100%; height: 100%; display: flex; }
+.magazine-image img, .magazine-image .video-wrapper { width: 100%; height: 100%; max-height: 420px; object-fit: cover; border-radius: 15px; box-shadow: 0 15px 40px rgba(0,0,0,0.1); }
+
+.main-footer { background-color: var(--primary-color); color: #ffffff; padding: 40px 0 20px 0; margin-top: 10px; width: 100%; }
+.footer-container { max-width: 1200px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; padding: 0 40px; }
+.footer-logo { width: 240px; filter: brightness(0) invert(1); }
+.footer-nav-links a { color: var(--vibrant-accent); text-decoration: none; font-size: 0.85rem; font-weight: 700; }
+.footer-social-links { display: flex; gap: 15px; align-items: center; }
+.footer-icon { width: 25px; height: 25px; object-fit: contain; filter: brightness(0) invert(1); transition: transform 0.3s ease, opacity 0.3s ease; opacity: 0.9; }
+.footer-icon:hover { transform: translateY(-3px); opacity: 1; }
+.footer-bottom { width: 100%; text-align: center; margin-top: 30px; padding-top: 20px; border-top: 1px solid rgba(255,255,255,0.1); font-size: 0.8rem; opacity: 0.8; }
+
+.card-info-below { margin-top: 18px; }
+.card-category { font-size: 0.75rem; font-weight: 900; text-transform: uppercase; color: var(--vibrant-accent); display: block; margin-bottom: 4px; letter-spacing: 0.5px; }
+.card-summary { font-size: 0.85rem; line-height: 1.3; color: #666; font-weight: 400; }
+
+.acordeon-item { border-bottom: 1px solid #eee; margin-bottom: 5px; }
+.acordeon-header { width: 100%; padding: 15px; background: #f8f9fa; border: none; display: flex; justify-content: space-between; align-items: center; cursor: pointer; font-weight: 700; color: var(--primary-color); border-radius: 8px; transition: 0.3s; }
+.acordeon-header::after { content: '▼'; font-size: 0.7rem; transition: transform 0.3s; }
+.acordeon-header.active::after { transform: rotate(180deg); }
+.acordeon-content { background: #ffffff; max-height: 0; overflow: hidden; transition: max-height 0.3s ease-in-out; }
+.acordeon-content.open { max-height: 600px; overflow-y: auto; }
+.course-row-sidebar { transition: all 0.3s ease; border-bottom: 1px solid #f5f5f5; position: relative; }
+.course-row-sidebar:hover { padding-left: 5px; border-left: 2px solid var(--vibrant-accent); }
+.pulse-icon { display: inline-block; animation: calendarBounce 2s infinite ease-in-out; font-size: 1.2rem; }
+@keyframes calendarBounce { 0%, 100% { transform: translateY(0) rotate(0deg); } 50% { transform: translateY(-5px) rotate(5deg); } }
+
+.nav-arrows-container { display: flex; justify-content: space-between; margin-top: 50px; padding-top: 30px; border-top: 1px solid #eee; gap: 20px; }
+.arrow-btn { padding: 12px 25px; border-radius: 12px; border: 2px solid var(--primary-color); background: transparent; color: var(--primary-color); font-weight: 700; cursor: pointer; transition: all 0.3s ease; display: flex; align-items: center; gap: 10px; text-decoration: none; font-size: 0.9rem; }
+.arrow-btn:hover { background: var(--primary-color); color: white; transform: translateY(-3px); box-shadow: 0 5px 15px rgba(4, 57, 89, 0.2); }
+.arrow-btn.next { background: var(--primary-color); color: white; margin-left: auto; }
+
+.hamburger-menu {
+  display: none; position: fixed; top: 20px; right: 20px; width: 35px; height: 25px;
+  background: transparent; border: none; cursor: pointer; z-index: 3000;
+  flex-direction: column; justify-content: space-between;
+}
+.hamburger-menu div { width: 100%; height: 4px; background: var(--primary-color); border-radius: 4px; transition: 0.3s; }
+.hamburger-menu.open .bar1 { transform: rotate(-45deg) translate(-7px, 5px); }
+.hamburger-menu.open .bar2 { opacity: 0; }
+.hamburger-menu.open .bar3 { transform: rotate(45deg) translate(-8px, -7px); }
+
+@media (max-width: 1024px) {
+    .card-grid { width: 100%; grid-template-columns: repeat(2, 1fr); }
+    .events-sidebar-right { position: static; width: 100%; margin-top: 40px; }
+}
+
 @media (max-width: 768px) {
-    h2 {
-        font-size: 2rem; 
+    /* Mantenemos tus básicos */
+    .hamburger-menu { display: flex; }
+    .header-logo-fixed { width: 100%; justify-content: flex-start; padding-left: 1.5rem; height: 80px; top: 0; }
+    .logo-img { width: 180px; }
+    
+    /* OPTIMIZACIÓN: Quitamos el blur para que no se trabe al cargar */
+    .header-blur-bg { 
+        height: 90px; 
+        backdrop-filter: none !important; 
+        -webkit-backdrop-filter: none !important;
+        background: rgba(255, 255, 255, 0.98) !important; 
+    }
+
+    /* NAV-CONTAINER: Ahora más ancho (85%) y alineado arriba */
+    .nav-container { 
+        position: fixed; top: 0; left: -100%; width: 85%; height: 100vh; 
+        background: white; z-index: 3400; transition: left 0.4s ease; 
+        display: flex; flex-direction: column; padding: 80px 25px; 
+        justify-content: flex-start; align-items: flex-start;
+        box-shadow: 10px 0 30px rgba(0,0,0,0.2);
+    }
+    .nav-container.open { left: 0; }
+    
+    /* HEADER-NAV: Botones en lista vertical con espacio para el dedo */
+    .header-nav { 
+        flex-direction: column !important; background: transparent !important; 
+        border: none !important; gap: 10px !important; width: 100% !important; 
+        padding: 0 !important;
+    }
+    .nav-btn { 
+        font-size: 1.1rem !important; width: 100% !important; text-align: left !important; 
+        padding: 15px 0 !important; border-bottom: 1px solid rgba(0,0,0,0.05); 
+        color: var(--primary-color) !important;
+    }
+    .nav-indicator { display: none; }
+
+    /* MAIN Y SECCIONES: Evitamos que el contenido se vea apretado */
+    main { padding-top: 100px; padding-left: 20px; padding-right: 20px; width: 100%; }
+    .section.active { display: block !important; }
+    
+    /* GRID DE TARJETAS: Una sola columna */
+    .card-grid { grid-template-columns: 1fr !important; width: 100% !important; margin: 0; }
+    .card-inner-content { height: 260px !important; }
+
+    /* DISEÑO MAGAZINE: Imagen ARRIBA y texto ABAJO (Para que no se aprete) */
+    .magazine-grid { display: flex !important; flex-direction: column !important; gap: 20px !important; }
+    .magazine-image { order: -1; width: 100% !important; }
+    .magazine-text { width: 100% !important; padding: 0 !important; }
+    .magazine-text p { text-align: left !important; font-size: 1rem !important; }
+
+    /* PODCAST: Pasa de ser una pestaña lateral a un bloque al final */
+    .podcast-side-tab.transparent-tab {
+        position: relative !important; left: 0 !important; top: 0 !important;
+        transform: none !important; width: 100% !important; margin: 40px 0;
+    }
+    .tab-label { display: none !important; } 
+    .tab-content { width: 100% !important; border-radius: 20px !important; box-shadow: none !important; border: 1px solid #eee; }
+
+    /* BOTÓN CORREO: Ahora sí queda FIJO en la esquina */
+    .contact-fab {
+        position: fixed !important; bottom: 20px !important; right: 20px !important;
+        width: 85px !important; height: 85px !important; z-index: 9999 !important;
+    }
+
+    /* TUS PANELES LATERALES (Se mantienen como los tenías) */
+    .events-sidebar-right { position: static; width: 100%; margin-top: 20px; order: 2; padding: 0; }
+    .side-panel { width: 100% !important; height: 85vh !important; top: auto !important; bottom: -100% !important; right: 0 !important; left: 0 !important; border-left: none !important; border-top: 6px solid var(--vibrant-accent); border-radius: 25px 25px 0 0; position: fixed !important; transition: bottom 0.5s cubic-bezier(0.4, 0, 0.2, 1) !important; z-index: 5500 !important; padding: 40px 20px; opacity: 1 !important; pointer-events: auto !important; }
+    .side-panel.active { bottom: 0 !important; }
+    
+    /* AJUSTE MODO OSCURO MÓVIL */
+    body.dark-mode .nav-container, 
+    body.dark-mode .header-blur-bg { background-color: #021a29 !important; }
+}
+/* Botón de cerrar para el Panel Lateral */
+.close-side-panel {
+    /* ... mantén lo que ya tienes aquí ... */
+}
+@media (max-width: 768px) {
+    /* ... otros estilos móviles ... */
+
+    .footer-container {
+        flex-direction: column !important; /* Apila verticalmente */
+        align-items: flex-start !important; /* Alinea todo a la izquierda */
+        padding: 0 25px !important;
+        gap: 30px;
+    }
+
+    .footer-content-right {
+        align-items: flex-start !important; /* Links y redes a la izquierda */
+        text-align: left !important;
+        width: 100%;
+    }
+
+    .footer-nav-links {
+        display: flex;
+        flex-direction: column; /* Links uno debajo de otro */
+        gap: 15px;
+    }
+
+    .footer-sep { display: none; } /* Quitamos la rayita separadora | */
+
+    .footer-logo {
+        width: 200px; /* Un poco más pequeño para móvil */
+    }
+
+    .footer-social-links {
+        justify-content: flex-start !important;
+        margin-top: 10px;
     }
 }
-/* ---------------------------------------------------- */
 
-/* ---------- SIDEBAR IZQUIERDO: SIN FONDO NI BLUR ---------- */
-.sidebar{
-  position: fixed;
-  top:0;
-  left:0;
-  width: var(--sidebar-width);
-  height: calc(100vh - var(--player-height)); 
-  background: none; 
-  backdrop-filter: none;
-  -webkit-backdrop-filter: none;
-  padding: 1.2rem .8rem;
-  box-shadow: none; 
-  border-right: none; 
-  display:flex;
-  flex-direction:column; 
-  z-index:1200;
+/* REGLA MAESTRA PARA QUE TODAS LAS "X" QUEDEN A LA DERECHA */
+.close-modal, .close-side-panel, .close-btn {
+    position: absolute !important;
+    top: 15px !important;
+    right: 15px !important;
+    left: auto !important; 
+    font-size: 2.2rem;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    z-index: 6000;
+    line-height: 1;
+    display: block !important;
+}
+/* ============================================================
+   ZETA & ACCESIBILIDAD - VERSIÓN ETA
+   ============================================================ */
+
+:root {
+    --bg-color: #ffffff;
+    --text-color: #043959;
+    --card-bg: #ffffff;
+    /* Eliminamos la variable antigua de nav-bg para usar los nuevos colores sólidos */
 }
 
-/* Logo arriba */
-.sidebar-logo {
-  margin-bottom: 1rem;
-  flex-shrink: 0; 
+body.dark-mode {
+    --bg-color: #021a29; 
+    --text-color: #e0e0e0;
+    --card-bg: #032539;
+    background-color: var(--bg-color);
+    color: var(--text-color);
 }
 
-.sidebar .logo-img{
-  width: 100%;
-  display:block;
+/* --- AJUSTES MODO OSCURO (MENÚ Y TEXTOS) --- */
+body.dark-mode .header-nav {
+    background: #032539 !important; /* Azul profundo */
+    border-color: rgba(255, 255, 255, 0.1);
 }
 
-.sidebar .brand-text{
-  font-size:.78rem;
-  text-align:center;
-  color: var(--secondary-color); /* Color Secundario */
-  display:block;
+body.dark-mode .nav-btn {
+    color: #ffffff !important;
 }
 
-/* Contenedor de navegación para distribución uniforme */
-.sidebar-nav {
-  flex-grow: 1; 
-  display: flex;
-  flex-direction: column;
-  justify-content: space-evenly; 
-  align-items: center;
+body.dark-mode .nav-indicator {
+    background: #F2B872 !important; /* Indicador naranja en modo oscuro */
 }
 
-/* Botones: ESTILO ELEGANTE */
-.sidebar .nav-btn{
-  width:90%; 
-  /* Botones transparentes con borde y color de texto del Secundario */
-  background:transparent; 
-  color: var(--secondary-color); /* Texto Secundario (Emerald) */
-  border: 2px solid var(--secondary-color); /* Borde Secundario (Emerald) */
-  padding:.7rem 1rem; 
-  margin: .3rem 0; 
-  text-align:center; 
-  border-radius:8px;
-  font-weight:600;
-  cursor:pointer;
-  transition: background .18s ease, transform .18s ease, box-shadow .18s ease, color .18s ease;
-  box-shadow: none; 
+body.dark-mode .nav-btn.active {
+    color: #043959 !important; /* Texto oscuro sobre el naranja */
 }
 
-/* Hover: Invertir colores (relleno), usa el Secundario */
-.sidebar .nav-btn:hover{
-  background: var(--secondary-color);
-  color: white; 
-  transform: translateY(-1px);
-  box-shadow: 0 4px 8px rgba(0,0,0,0.15); 
+/* --- COLORES DE TÍTULOS Y PÁRRAFOS EN MODO OSCURO --- */
+body.dark-mode h2, 
+body.dark-mode h3, 
+body.dark-mode h4, 
+body.dark-mode .magazine-title, 
+body.dark-mode .events-title, 
+body.dark-mode .footer-podcast-side p, 
+body.dark-mode #sidePanelContent h4, 
+body.dark-mode #sidePanelContent p, 
+body.dark-mode #sidePanelContent strong,
+body.dark-mode #criterium .magazine-text p { 
+    color: #ffffff !important; 
 }
 
-/* Botón activo: Fondo Secundario */
-.sidebar .nav-btn.active{
-  background: var(--secondary-color);
-  color:white;
-  box-shadow: 0 4px 8px rgba(0,0,0,0.15);
+/* --- BLOQUE ACTUALIZADO DE MODO OSCURO --- */
+body.dark-mode .header-blur-bg { background: rgba(2, 26, 41, 0.9); }
+
+/* Ajuste del Podcast (tab-content), Modales y Paneles */
+body.dark-mode .tab-content, 
+body.dark-mode .modal, 
+body.dark-mode .side-panel { 
+    background-color: var(--card-bg) !important; 
+    color: var(--text-color); 
+}
+body.dark-mode .close-modal, 
+body.dark-mode .close-side-panel { 
+    color: #ffffff !important; 
 }
 
-/* ---------- MAIN CONTENT: OCUPAR TODO EL ESPACIO RESTANTE ---------- */
-main{
-  margin-left: var(--sidebar-width);
-  min-height: calc(100vh - var(--player-height));
-  padding:2rem 2.2rem calc(var(--player-height) + 1rem) 2.2rem;
-  width: calc(100% - var(--sidebar-width)); 
-  overflow-x: hidden;
+/* Sombra Pro para que el reproductor rojo resalte en la noche */
+body.dark-mode .podcast-side-tab .tab-content {
+    box-shadow: -10px 0 30px rgba(0,0,0,0.4);
+    border-left: 1px solid rgba(255,255,255,0.05);
 }
 
-/* CARD DEL CONTENIDO: SIN FONDO NI BLUR */
-.content-card{
-  width: 100%;
-  max-width: 100%; 
-  margin:0 auto;
-  background: none; 
-  backdrop-filter: none;
-  -webkit-backdrop-filter: none;
-  border-radius: 0; 
-  padding:0; 
-  box-shadow: none;
+/* Forzar textos blancos en Títulos y párrafos de Critérium/Revista */
+body.dark-mode h2, body.dark-mode h3, body.dark-mode h4, 
+body.dark-mode .magazine-title, body.dark-mode .events-title, 
+body.dark-mode .magazine-text p, body.dark-mode #criterium .magazine-text p { 
+    color: #ffffff !important; 
 }
 
+body.dark-mode .card-summary { color: #b0b0b0; }
+body.dark-mode .acordeon-header { background: #043959; color: white; }
+body.dark-mode .listen-text, body.dark-mode .tab-label { background: var(--primary-color) !important; color: #ffffff !important; }
+body.dark-mode #increaseText span, body.dark-mode #decreaseText span { color: #ffffff; }
 
-.section{ display:none; }
-.section.active{ display:block; }
+/* --- CONTROLES ZETA --- */
+.zeta-controls { display: flex; gap: 5px; margin-left: 15px; padding-left: 15px; border-left: 1px solid rgba(4, 57, 89, 0.2); align-items: center; }
+.zeta-control-btn { background: transparent; border: none; cursor: pointer; font-size: 1.2rem; transition: transform 0.2s ease; padding: 5px; display: flex; align-items: center; }
+.zeta-control-btn:hover { transform: scale(1.2); }
 
-/* ---------- REPRODUCTOR FIJO (Sin cambios de color) ---------- */
-.fixed-player{
-  position:fixed;
-  bottom:0;
-  left:0;
-  width:100%;
-  background:#000;
-  z-index:1400;
-}
-.fixed-player iframe{
-  width:100%;
-  height: var(--player-height);
-  border:none;
-}
+#searchBarContainer { position: absolute; top: 70px; right: 60px; left: auto; transform: none; width: 400px; background: var(--bg-color); padding: 15px; border-radius: 15px; box-shadow: 0 10px 30px rgba(0,0,0,0.2); display: flex; gap: 10px; z-index: 3000; transition: all 0.3s ease; border: 2px solid var(--vibrant-accent); }
+.search-bar-hidden { opacity: 0; visibility: hidden; top: 50px !important; }
 
-/* ---------- FAB BUTTON (AYUDA): Usa Color de Acento (Gold/10%) ---------- */
-.help-fab{
-  position:fixed;
-  bottom: calc(var(--player-height) + 20px);
-  right:20px;
-  width:56px;
-  height:56px;
-  border:none;
-  border-radius:50%;
-  background:var(--accent); /* Usa el color de acento (Gold) */
-  color:white;
-  font-size:24px;
-  font-weight:700;
-  cursor:pointer;
-  box-shadow:0 8px 24px rgba(0,0,0,0.25);
-  z-index:1500;
+#searchInput { flex: 1; padding: 10px 15px; border-radius: 10px; border: 1px solid #ddd; outline: none; font-family: inherit; }
+#closeSearch { 
+    background: transparent; 
+    border: none; 
+    font-size: 1.5rem; 
+    cursor: pointer; 
+    color: var(--primary-color); 
+    order: 3; /* Asegura que quede al final del contenedor flex (derecha) */
 }
 
-/* ---------- MODAL (Ajuste de color de texto) ---------- */
-.modal-backdrop{
-  position:fixed; inset:0;
-  background: rgba(0,0,0,0.45);
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  visibility:hidden;
-  opacity:0;
-  z-index:1600;
-  transition:opacity .25s ease;
+/* --- EFECTOS Y UTILIDADES --- */
+.skeleton-loader { width: 100%; height: 60px; background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%); background-size: 200% 100%; animation: skeleton-pulse 1.5s infinite; border-radius: 8px; margin-bottom: 10px; }
+@keyframes skeleton-pulse { 0% { background-position: 200% 0; } 100% { background-position: -200% 0; } }
+body.dark-mode .skeleton-loader { background: linear-gradient(90deg, #043959 25%, #064d7a 50%, #043959 75%); }
+body { transition: background-color 0.5s ease, color 0.5s ease !important; }
+
+.zeta-control-btn::after { content: attr(title); position: absolute; bottom: -35px; left: 50%; transform: translateX(-50%); background: var(--primary-color); color: white; padding: 4px 8px; border-radius: 4px; font-size: 0.7rem; white-space: nowrap; opacity: 0; pointer-events: none; transition: 0.2s; }
+.zeta-control-btn:hover::after { opacity: 1; }
+
+.copy-toast { position: fixed; bottom: 100px; left: 50%; transform: translateX(-50%); background: var(--vibrant-accent); color: var(--primary-color); padding: 10px 20px; border-radius: 25px; font-weight: 700; font-size: 0.9rem; box-shadow: 0 5px 15px rgba(0,0,0,0.2); z-index: 5500; animation: fadeInOut 2s forwards; }
+@keyframes fadeInOut { 0% { opacity: 0; transform: translate(-50%, 20px); } 20% { opacity: 1; transform: translate(-50%, 0); } 80% { opacity: 1; } 100% { opacity: 0; } }
+
+/* --- ACCESIBILIDAD TEXTO --- */
+html { font-size: 16px; transition: font-size 0.2s ease-in-out; }
+html.font-sm { font-size: 14px; }
+html.font-md { font-size: 16px; }
+html.font-lg { font-size: 19px; }
+html.font-xl { font-size: 22px; }
+
+#increaseText span, #decreaseText span { font-weight: 700; font-size: 0.9rem; color: var(--primary-color); }
+
+/* --- NUEVA CLASE PARA UNIFICAR BOTONES --- */
+.btn-boletin {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 12px 25px;
+    border-radius: 12px; /* La forma redondeada de Critérium */
+    font-weight: 700;
+    font-size: 0.95rem;
+    text-decoration: none !important;
+    border: none;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    color: white !important;
 }
 
-.modal-backdrop.open{
-  visibility:visible;
-  opacity:1;
+.btn-boletin:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15);
+    filter: brightness(1.1);
 }
 
-.modal{
-  background:white;
-  padding:2rem;
-  width:min(550px, 94%);
-  border-radius:14px;
-  position:relative;
-  /* Color del texto interior del modal se ajusta al secundario */
-  color: var(--secondary-color);
+/* COLORES POR SECCIÓN */
+.btn-recursos { background-color: #F2B872 !important; } /* Naranja */
+.btn-evaluacion { background-color: #043959 !important; } /* Azul Oscuro */
+.btn-criterium { background-color: #204959 !important; } /* Azul Medio */
+.btn-ia { background-color: #27ae60 !important; } /* Verde */
+
+/* --- ALTO CONTRASTE UNIFICADO (IMÁGENES + BLINDAJE TOTAL) --- */
+
+/* 1. Base y Textos */
+body.high-contrast { 
+    background-color: #000000 !important; 
+    color: #ffff00 !important; 
 }
 
-.modal .close-btn{
-  position:absolute;
-  top:12px;
-  right:12px;
-  font-size:20px;
-  background:none;
-  border:none;
-  cursor:pointer;
-  color: var(--secondary-color); /* Color secundario para la X */
+body.high-contrast h1, 
+body.high-contrast h2, 
+body.high-contrast h3, 
+body.high-contrast h4, 
+body.high-contrast p, 
+body.high-contrast span, 
+body.high-contrast a,
+body.high-contrast strong { 
+    color: #ffff00 !important; 
+    text-shadow: none !important; 
 }
 
-/* ---------- PESTAÑA DERECHA (PODCAST) ---------- */
-.podcast-tab{
-  position:fixed;
-  right:0;
-  top:65%;
-  transform:translateY(-50%);
-  background:var(--podcast-color); /* Color Secundario (Emerald) */
-  color:white; 
-  padding:.6rem;
-  width:var(--podcast-tab-width);
-  height:var(--podcast-tab-height); 
-  border-radius:8px 0 0 8px;
-  display:flex;
-  align-items:center;
-  justify-content:center; 
-  overflow:hidden;
-  cursor:pointer;
-  transition:width .25s ease;
-  box-shadow: -4px 0 12px rgba(0,0,0,0.15);
-  z-index:1300;
+/* 2. REGLA MAESTRA DE IMÁGENES: PROTECCIÓN TOTAL */
+body.high-contrast .card-image-wrapper {
+    background-image: inherit !important; 
+    background-color: transparent !important; 
+    filter: grayscale(1) brightness(0.7) contrast(1.2) !important; 
+    opacity: 1 !important;
+    display: block !important;
+    visibility: visible !important;
+    /* REFUERZOS CLAVE: */
+    position: relative !important;
+    z-index: 5 !important;
 }
 
-.podcast-rotated{
-  transform: rotate(-90deg); 
-  white-space:nowrap;
-  font-size:.8rem;
-  font-weight: bold; 
+/* Estabilización de la tarjeta - Aseguramos que el fondo negro no tape la imagen */
+body.high-contrast .card-inner-content { 
+    background-color: #000000 !important; /* Cambiado 'background' por 'background-color' */
+    border: 3px solid #ffff00 !important; 
+    overflow: hidden !important;
+    position: relative !important;
 }
 
-.podcast-icons{
-  display:none;
-  flex-direction:column;
-  gap:10px;
-  align-items:center;
-  width: 100%;
-  justify-content: space-evenly;
-  margin-left: -5px; 
+/* 3. BLINDAJE DE POP-UPS, MODALES Y PANELES */
+body.high-contrast .modal, 
+body.high-contrast .modal-grande,
+body.high-contrast .side-panel,
+body.high-contrast .modal-backdrop,
+body.high-contrast #modalBodyText,
+body.high-contrast #sidePanelContent {
+    background-color: #000000 !important;
+    border: 3px solid #ffff00 !important;
+    color: #ffff00 !important;
 }
 
-.podcast-icons img{
-  width:24px;
-  height:24px;
-  filter: drop-shadow(0 1px 1px rgba(0,0,0,0.5)); 
+/* 4. BLINDAJE DE CALENDARIO Y ACORDEONES */
+body.high-contrast .acordeon-header,
+body.high-contrast .acordeon-content,
+body.high-contrast .course-row-sidebar,
+body.high-contrast .acordeon-sidebar {
+    background-color: #000000 !important;
+    border: 1px solid #ffff00 !important;
 }
 
-/* Hover → ocultar texto, mostrar íconos */
-.podcast-tab:hover{
-  width:var(--podcast-tab-width-hover); 
+/* 5. BLINDAJE DE PODCAST */
+body.high-contrast .tab-content,
+body.high-contrast .podcast-side-tab,
+body.high-contrast .listen-text,
+body.high-contrast .tab-label {
+    background-color: #000000 !important;
+    border: 2px solid #ffff00 !important;
 }
 
-.podcast-tab:hover .podcast-rotated{
-  display:none;
+/* 6. REFUERZO DE TODOS LOS BOTONES (Incluyendo Critérium, IA y Footer) */
+body.high-contrast button,
+body.high-contrast .btn-enroll,
+body.high-contrast .btn-detail,
+body.high-contrast .close-modal,
+body.high-contrast .close-side-panel,
+body.high-contrast .close-btn,
+body.high-contrast .btn-apreciacion,
+body.high-contrast .btn-criterium-azul,
+body.high-contrast .arrow-btn {
+    background-color: #000000 !important;
+    color: #ffff00 !important;
+    border: 2px solid #ffff00 !important;
+    text-decoration: none !important;
 }
 
-.podcast-tab:hover .podcast-icons{
-  display:flex;
+/* 7. REFUERZO DE FOOTER (Nuevo) */
+body.high-contrast .main-footer,
+body.high-contrast .footer-bottom {
+    background-color: #000000 !important;
+    border-top: 2px solid #ffff00 !important;
 }
 
+body.high-contrast .footer-nav-links a {
+    color: #ffff00 !important;
+    text-decoration: underline !important;
+}
 
+/* Hover de botones y links */
+body.high-contrast button:hover,
+body.high-contrast .nav-btn:hover,
+body.high-contrast .btn-criterium-azul:hover,
+body.high-contrast .arrow-btn:hover {
+    background-color: #ffff00 !important;
+    color: #000 !important;
+}
+
+/* 8. Navegación y Logos */
+body.high-contrast .nav-btn, 
+body.high-contrast .zeta-control-btn span { 
+    color: #ffff00 !important; 
+    border: 1px solid #ffff00 !important; 
+}
+body.high-contrast .nav-indicator { background: #ffff00 !important; }
+body.high-contrast .nav-btn.active { background: #ffff00 !important; color: #000000 !important; }
+
+body.high-contrast .header-blur-bg { 
+    background: #000000 !important; 
+    border-bottom: 2px solid #ffff00 !important; 
+}
+body.high-contrast .header-nav { background: #000000 !important; border: 2px solid #ffff00 !important; }
+
+/* Inversión de iconos */
+body.high-contrast .footer-icon, 
+body.high-contrast .icons-grid-five img,
+body.high-contrast .fab-mailing-icon { 
+    filter: grayscale(1) invert(1) brightness(2) !important; 
+}
+
+body.high-contrast .logo-img { 
+    filter: brightness(0) invert(1) contrast(2) !important; 
+}
+
+/* --- BOTONES CRITÉRIUM --- */
+.apreciacion-buttons { display: flex; gap: 15px; flex-wrap: wrap; margin-top: 20px; }
+.btn-criterium-azul {
+    background-color: var(--primary-color);
+    color: white !important;
+    padding: 12px 20px;
+    border-radius: 8px;
+    text-decoration: none !important;
+    font-weight: 700;
+    font-size: 0.9rem;
+    display: inline-flex;
+    align-items: center;
+    transition: all 0.3s ease;
+    border: none;
+    cursor: pointer;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+.btn-criterium-azul:hover { background-color: var(--secondary-color); transform: translateY(-2px); box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15); }
+.apreciacion-buttons a:last-child { background-color: var(--vibrant-accent); color: var(--primary-color) !important; }
