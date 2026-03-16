@@ -423,7 +423,7 @@ if(btnContrast) {
 }
 
 // 6.6 ARRANQUE MAESTRO
-window.onload = () => {
+document.addEventListener('DOMContentLoaded', () => {
     llenarAcordeonSidebar();
     const activeBtn = document.querySelector('.nav-btn.active');
     if (activeBtn) moveIndicator(activeBtn);
@@ -432,7 +432,7 @@ window.onload = () => {
     updateProgressBar();
     reubicarElementosMovil();
     setActiveSection('inicio');
-};
+});
 
 window.addEventListener('resize', () => {
     const activeBtn = document.querySelector('.nav-btn.active');
