@@ -10,16 +10,18 @@ const nombreMeses = {
 };
 
 const cursosDb = {
-    mar1: { nombre: "Didáctica y Nuevas Tecnologías", modalidad: "Virtual", fechas: "01 al 15 de marzo", start: "20260301T090000", end: "20260301T110000", reseña: "Integración de herramientas digitales para dinamizar el aula..." },
-    mar2: { nombre: "Evaluación por Competencias", modalidad: "Presencial", fechas: "05 al 10 de marzo", start: "20260305T140000", end: "20260305T160000", reseña: "Diseño de instrumentos de evaluación de alta calidad..." },
-    mar3: { nombre: "Escritura Académica", modalidad: "Híbrida", fechas: "12 al 20 de marzo", start: "20260312T090000", end: "20260312T110000", reseña: "Estrategias de redacción y publicación en revistas indexadas..." },
-    mar4: { nombre: "Liderazgo Educativo", modalidad: "Virtual", fechas: "18 al 25 de marzo", start: "20260318T150000", end: "20260318T170000", reseña: "Gestión de grupos y resolución de conflictos en el aula..." },
-    mar5: { nombre: "Gamificación", modalidad: "Virtual", fechas: "25 al 30 de marzo", start: "20260325T080000", end: "20260325T100000", reseña: "Mecánicas de juego aplicadas al aprendizaje universitario..." },
-    apr1: { nombre: "IA Generativa en el Aula", modalidad: "Presencial", fechas: "02 al 08 de abril", start: "20260402T100000", end: "20260402T120000", reseña: "Uso práctico de modelos de lenguaje en la labor docente..." },
-    apr2: { nombre: "Diseño Instruccional", modalidad: "Virtual", fechas: "10 al 18 de abril", start: "20260410T140000", end: "20260410T160000", reseña: "Modelos para estructurar sílabos efectivos y modernos..." },
-    apr3: { nombre: "Debates en Clase", modalidad: "Presencial", fechas: "15 al 22 de abril", start: "20260415T110000", end: "20260415T130000", reseña: "Técnicas de moderación y argumentación para estudiantes..." },
-    apr4: { nombre: "Inclusión DUA", modalidad: "Virtual", fechas: "22 al 28 de abril", start: "20260422T080000", end: "20260422T100000", reseña: "Diseño Universal para el Aprendizaje y diversidad..." },
-    apr5: { nombre: "Grupos Grandes", modalidad: "Híbrida", fechas: "25 al 30 de abril", start: "20260425T150000", end: "20260425T170000", reseña: "Estrategias pedagógicas para clases masivas..." }
+    apr1: { nombre: " Integración avanzada de IA en el aula", modalidad: "Virtual", fechas: "06 al 24 de abril", start: "20260406T090000", end: "060424T110000", reseña: " Escenario formativo avanzado en el uso de la IA para proyectos educativos, a partir de casos prácticos de éxito para transformar la práctica docente, alineada con buenas prácticas de gobernanza digital y sostenibilidad tecnológica. Curso virtual que fomenta la creatividad y el trabajo colaborativo para ser un estratega en el uso de la IA, el curso se desarrolla en el LMS Octopia, con 2 clases sincrónicas (1 semanal de 2 horas) y un evento de socialización de experiencias de aprendizaje." },
+    apr2: { nombre: " Aprender con emoción", modalidad: "Presencial", fechas: "08 al 15 de abril", start: "202604085T140000", end: "20260415T160000", reseña: " Conocer y comprender las bases de la educación emocional aprendiendo sobre estrategias pedagógicas para dinamizarla en el aula. Se busca que los participantes comprendan la importancia de la educación emocional a partir de la problematización del concepto tradicional y actual de la educación, que conozcan las bases conceptuales de la educación emocional en términos de la inteligencia emocional, la motivación, la comunicación y el reconocimiento del cuerpo." },
+    apr3: { nombre: " Taller pedagogías y enfoques interseccionales en la U", modalidad: "Presencial", fechas: "10 de abril", start: "20260410T090000", end: "20260410T090000", reseña: "Este taller se articula con la línea “Docencia desde lo humano” porque convoca al profesorado a reflexionar críticamente sobre vectores de poder —género, discapacidad, interculturalidad, sexualidad— y su incidencia en la vida universitaria. Al articular propuestas profesorales con los ejes de una política interseccional institucional, se fortalece la capacidad del cuerpo docente para reconocer y transformar estructuras de desigualdad en los entornos académicos, promoviendo una docencia más justa." },
+    apr4: { nombre: "Ambientes de enseñanza y aprendizaje mediados por tecnologías", modalidad: "Virtual", fechas: "10 al 30 de abril", start: "20260410T150000", end: "20260430T170000", reseña: "Como parte del Modelo de Formación de Competencias Digitales para la Docencia, en este curso usted aprenderá sobre tendencias educativas, metodologías emergentes y gestión de entornos virtuales y mejorar la práctica docente mediante el uso eficaz de tecnologías educativas con enfoque pedagógico. Este escenario propicia la reflexión sobre cómo potenciar cambios educativos en el aula universitaria. Unico encuentro sincrónico al inicio del curso." },
+    apr5: { nombre: "Taller de estrategia de evaluación con rúbrica: gestione calificación avanzada", modalidad: "Virtual", fechas: "10 de abril ", start: "20260410T080000", end: "20260410T080000", reseña: "Sesión formativa de la Dirección de Educación Digital para orientar sobre las funcionalidades de la calificación avanzada con rúbricas, a partir del uso automatizado de éstas como instrumento para la evaluación en módulos del aula virtual tipo Tarea, foro y Turnitin. En este taller se aprende a configurar, utilizar y evaluar utilizando la rúbrica o la guía de puntuación, sus ventajas, alcances y limitaciones cuando se incorporan en los ejercicios de una aula virtual para valorar los trabajos." },
+    apr6: { nombre: " Curso de inducción al enfoque pedagógico del aprender a aprender", modalidad: "Blended", fechas: "17 de abril al 15 de mayo", start: "20260417T100000", end: "20260515T120000", reseña: " Este curso tiene el objetivo de introducir a los profesores de las diferentes unidades académicas en el enfoque pedagógico del aprender a aprender. En este curso los participantes podrán explorar las posibles aplicaciones de este enfoque al interior de su práctica pedagógica aterrizándolas a la guía de asignatura." },
+    apr7: { nombre: " Taller estructuración del libro calificador de Moodle", modalidad: "Acceso Remoto", fechas: "20 de abril", start: "20260420T140000", end: "20260420T140000", reseña: "Escenario formativo que orienta sobre el modelamiento de libro calificador de las aulas virtuales, a partir de las estructuración de categorías de calificación, ajuste de notas y ponderaciones de las actividades para el cálculo de las notas; potenciando el aula y automatizando el sistema de evaluación del curso." },
+    apr8: { nombre: "Diversidad sexual y de género en el aula", modalidad: "Acceso Remoto", fechas: "22 al 24 de abril", start: "20260422T110000", end: "20260424T130000", reseña: "La creciente visibilidad de disidencias sexo-genéricas y personas LGBTIQ+ en espacios educativos ha significado, con frecuencia, desafíos a la labor docente que demandan la adquisición de lenguajes y herramientas que permitan abordar prácticas discriminatorias en razón de la orientación sexual y la identidad de género. Por ello, este curso brinda elementos conceptuales y prácticos, orientados a la construcción de aulas más inclusivas y respetuosas de la diversidad sexual y de géneros." },
+    apr9: { nombre: "Emociónate y comunica desde la inteligencia", modalidad: "Presencial", fechas: "23 de abril al 07 de mayo", start: "20260423T080000", end: "20260507T100000", reseña: "Favorecer en los docentes de educación superior la capacidad de una comunicación asertiva y manejo adecuado de las emociones con sus estudiantes dentro del aula de clase, por medio de su participación en un taller que pretende reconocer la importancia de estos dos factores y la aplicación de estrategias prácticas." },
+    apr10: { nombre: "Creatividad y bienestar en el aula", modalidad: "Presencial", fechas: "23 de abril", start: "20260423T150000", end: "20260423T150000", reseña: "Este curso propone la creatividad como una vía para el bienestar en el aula. Parte de la idea de que enseñar y aprender son experiencias atravesadas por lo emocional, y que el aula puede convertirse en un espacio de cuidado, expresión y regulación cuando se habilitan lenguajes distintos como los artísticos. A través de experiencias creativas sencillas y transferibles, el taller invita a los docentes a explorar estrategias que favorecen la conexión consigo mismos y con sus estudiantes." },
+    may1: { nombre: "Nooc: competencias para la gestión de herramientas en aulas virtuales", modalidad: "Virtual", fechas: "11 de mayo al 11 de junio", start: "202600511T150000", end: "20260611T170000", reseña: "Como parte del Modelo de Formación de Competencias Digitales para la Docencia, en este curso usted aprenderá a usar con enfoque pedagógico diversos servicios y herramientas de Moodle en nivel intermedio, para orientarlos hacia la creación de experiencias de aprendizaje significativas a través del aula virtual. La ruta de aprendizaje es de autoselección e incluye un acompañamiento tecnopedagógico como apoyo para potenciar los conocimientos de los participantes que gestionan entornos educativos." },
+    may2: { nombre: " Enseñar con pasión = Aprender con motivación", modalidad: "Presencial", fechas: "21 de mayo", start: "202600521T150000", end: "202600521T150000", reseña: "En este curso el profesor podrá comprender los mecanismos a través de los cuales funciona la motivación y cómo puede utilizarlos para incentivarse a sí mismo y de esta manera promover un clima estimulante en el aula que favorezca un aprendizaje entusiasta." }
 };
 
 const edicionesDb = {
@@ -259,8 +261,8 @@ function openHelpModal(titulo, html) {
 }
 
 window.openEventPopup = function(titulo, reseña) {
-    if (titulo === 'Infografía: 10 Preguntas Clave') {
-        openHelpModal(titulo, `<div class="video-wrapper"><iframe src="https://drive.google.com/file/d/1b4GXIea1rUBkJNFfAV62Y96nkX_4mTT4/preview" width="100%" height="480" frameborder="0"></iframe></div>`);
+    if (titulo === 'Protección de Datos Personales') {
+        openHelpModal(titulo, `<div class="video-wrapper"><iframe src="https://drive.google.com/file/d/1Xe4E6d1Hdy3bmVDknELfixs6f_Hj2bbW/preview?usp=sharing" width="100%" height="480" frameborder="0"></iframe></div>`);
     } else if (titulo === 'Documento: Evaluación Integral') {
         openHelpModal(titulo, `<div class="video-wrapper"><iframe src="https://drive.google.com/file/d/1oamJgZksvJf44ERvDHUtKtsiMbq71DVX/preview" width="100%" height="480" frameborder="0"></iframe></div>`);
     } else if (titulo === 'Ediciones Anteriores') {
@@ -439,3 +441,85 @@ window.addEventListener('resize', () => {
     if(activeBtn) moveIndicator(activeBtn);
     reubicarElementosMovil();
 });
+window.verDetalleLanzamiento = function() {
+    const titulo = "Lanzamiento: Comunidades de Aprendizaje y Práctica";
+    
+    // Aquí puedes poner el link de tu video de Drive o una imagen <img>
+    const htmlContenido = `
+        <div style="text-align:center;">
+            <p style="margin-bottom:15px; line-height:1.5;">
+                Acompáñanos este <strong>20 de abril</strong> en la FILBo para conocer esta obra 
+                fundamental de Milena Alcocer y Clara García.
+            </p>
+            <div class="video-wrapper">
+                <iframe src="https://drive.google.com/file/d/ID_DE_TU_VIDEO/preview" 
+                        width="100%" height="350" frameborder="0" allow="autoplay"></iframe>
+            </div>
+            <p style="margin-top:15px; font-size:0.9rem; color:#666;">
+                Un espacio para dialogar sobre el desarrollo profesoral en la educación superior.
+            </p>
+        </div>
+    `;
+    
+    openHelpModal(titulo, htmlContenido);
+};
+window.abrirPopUpActividad = function(titulo, descripcion, tipoMedia, urlMedia) {
+    let contenidoHTML = `<p style="line-height:1.6; margin-bottom:15px;">${descripcion}</p>`;
+
+    if (tipoMedia === 'video') {
+        contenidoHTML += `
+            <div class="video-wrapper">
+                <iframe src="${urlMedia}" width="100%" height="350" frameborder="0" allow="autoplay"></iframe>
+            </div>`;
+    } else if (tipoMedia === 'imagen') {
+        contenidoHTML += `<img src="${urlMedia}" style="width:100%; border-radius:10px; box-shadow:0 4px 10px rgba(0,0,0,0.1);">`;
+    }
+
+    openHelpModal(titulo, contenidoHTML);
+};
+// Función para el intercambio de fotos del Carrete
+window.actualizarFotoHomenaje = function(el) {
+    const main = document.getElementById('fotoGrandeHomenaje');
+    const todasLasMinis = document.querySelectorAll('.mini-h');
+
+    if (!main) return;
+
+    // Efecto de parpadeo suave al cambiar
+    main.style.opacity = '0.4';
+
+    setTimeout(() => {
+        main.src = el.src;
+        main.style.opacity = '1';
+
+        // Resetear todas las miniaturas
+        todasLasMinis.forEach(m => {
+            m.style.border = '2px solid transparent';
+            m.style.opacity = '0.6';
+            m.style.transform = 'scale(1)';
+        });
+
+        // Resaltar la seleccionada
+        el.style.border = '2px solid #fecb2f'; // Amarillo Rosario
+        el.style.opacity = '1';
+        el.style.transform = 'scale(1.05)';
+    }, 200);
+};
+window.expandirFoto = function() {
+    const fotoActual = document.getElementById('fotoGrandeHomenaje').src;
+    const tituloActual = "Registro Fotográfico - Ceremonia al Legado";
+
+    // Creamos el contenido del modal: la foto al 100% de la capacidad del modal
+    const contenidoModal = `
+        <div style="display: flex; justify-content: center; align-items: center; background: #000; border-radius: 15px; overflow: hidden; min-height: 300px;">
+            <img src="${fotoActual}" style="max-width: 100%; max-height: 80vh; object-fit: contain;">
+        </div>
+        <p style="margin-top: 15px; text-align: center; color: #666; font-size: 0.9rem;">
+            Use la 'X' superior para regresar al boletín
+        </p>
+    `;
+
+    // Reutilizamos tu función existente para abrir modales
+    if (typeof openHelpModal === "function") {
+        openHelpModal(tituloActual, contenidoModal);
+    }
+};
