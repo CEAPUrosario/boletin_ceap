@@ -292,8 +292,58 @@ main {
 .magazine-layout { max-width: 1200px; margin: 0 auto; }
 .magazine-title { font-size: 2.8rem; color: var(--primary-color); margin-bottom: 35px; font-weight: 700; border-bottom: 5px solid var(--vibrant-accent); display: inline-block; }
 
-.magazine-grid { display: grid; grid-template-columns: 1.2fr 0.8fr; gap: 50px; align-items: center; }
-.magazine-text p { font-size: 1.1rem; line-height: 1.8; color: #333; text-align: justify; margin-bottom: 15px; }
+/* ============================================================
+   REFINAMIENTO ESTÉTICO FINAL (ESTILO IMAGEN 2)
+   ============================================================ */
+
+/* 1. Alineamos todo arriba (como estaba antes) */
+.magazine-grid {
+    display: grid !important;
+    grid-template-columns: 1.2fr 0.8fr !important;
+    gap: 50px !important;
+    align-items: flex-start !important; /* Alineación superior total */
+}
+
+/* 2. El texto fluye natural desde arriba (Sin rellenos raros) */
+.magazine-text {
+    display: block !important; /* Volvemos al bloque estándar */
+    height: auto !important; 
+    min-height: 0 !important; /* Quitamos la altura mínima forzada */
+}
+
+.magazine-text p {
+    font-size: 1.1rem !important;
+    line-height: 1.8 !important;
+    color: #333 !important;
+    margin-bottom: 15px !important; /* Espacio natural entre párrafos */
+    text-align: justify !important;
+}
+
+/* 3. La imagen y el video mantienen su proporción elegante */
+.magazine-image {
+    display: block !important;
+    width: 100% !important;
+}
+
+.magazine-image img, 
+.magazine-image .video-wrapper {
+    width: 100% !important;
+    height: auto !important; /* Proporción natural */
+    max-height: 420px !important; /* Límite para que no sea gigante */
+    object-fit: cover !important;
+    border-radius: 15px !important;
+    box-shadow: 0 15px 40px rgba(0,0,0,0.1) !important;
+}
+
+/* 4. Botones con espacio moderado (no al fondo del todo si no es necesario) */
+.magazine-text div:has(.btn-boletin),
+.apreciacion-buttons {
+    display: flex !important;
+    gap: 15px !important;
+    flex-wrap: wrap !important;
+    margin-top: 25px !important; /* Espacio fijo respecto al último párrafo */
+    padding-top: 0 !important;
+}
 
 /* Unificamos el comportamiento de las imágenes del layout */
 .magazine-image { 
@@ -958,4 +1008,63 @@ body.high-contrast .archive-item-card div[style*="background: #f8f9fa"] {
     background: #000000 !important;
     border: 1px solid #ffff00 !important;
     color: #ffff00 !important;
+}
+/* --- ESTILOS DEL CARRETE CLARO (V3) --- */
+
+/* Scrollbar vertical para la cinta de miniaturas (Modo Claro) */
+.cinta-vertical-clara::-webkit-scrollbar {
+    width: 6px;
+}
+
+.cinta-vertical-clara::-webkit-scrollbar-track {
+    background: #fdfdfd;
+}
+
+.cinta-vertical-clara::-webkit-scrollbar-thumb {
+    background: #dddddd; /* Color gris suave */
+    border-radius: 10px;
+}
+
+.cinta-vertical-clara::-webkit-scrollbar-thumb:hover {
+    background: var(--vibrant-accent); /* Tu variable naranja */
+}
+
+/* Efecto hover en el visor principal */
+.carrete-homenaje-pro-claros #fotoGrandeHomenaje:hover {
+    filter: brightness(1.05);
+}
+
+/* --- AJUSTE RESPONSIVO MAESTRO (MÓVIL) --- */
+@media (max-width: 768px) {
+    /* El contenedor principal ya tiene wrap, así que el flex fluirá hacia abajo */
+    
+    .visor-principal {
+        height: 350px !important; /* Foto más pequeña en móvil */
+        width: 100% !important;
+        flex: 1 1 100% !important;
+    }
+    
+    .cinta-vertical-clara {
+        width: 100% !important;
+        flex: 1 1 100% !important;
+        flex-direction: row !important; /* CAMBIA A HORIZONTAL */
+        overflow-x: auto !important; /* Scroll horizontal en móvil */
+        overflow-y: hidden !important;
+        height: auto !important;
+        max-height: none !important;
+        padding: 5px 0 !important;
+    }
+    
+    .cinta-vertical-clara .mini-h {
+        width: 90px !important; /* Tamaño fijo horizontal */
+        height: 65px !important;
+    }
+}
+.poster-wrapper:hover {
+    transform: translateY(-8px) scale(1.01);
+    box-shadow: 0 25px 60px rgba(4, 57, 89, 0.25) !important;
+}
+
+.poster-wrapper:active {
+    transform: translateY(-2px) scale(0.99);
 }
