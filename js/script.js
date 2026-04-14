@@ -444,22 +444,47 @@ window.addEventListener('resize', () => {
 window.verDetalleLanzamiento = function() {
     const titulo = "Lanzamiento: Comunidades de Aprendizaje y Práctica";
     
-    // Aquí puedes poner el link de tu video de Drive o una imagen <img>
-    const htmlContenido = `
-        <div style="text-align:center;">
-            <p style="margin-bottom:15px; line-height:1.5;">
-                Acompáñanos este <strong>20 de abril</strong> en la FILBo para conocer esta obra 
-                fundamental de Milena Alcocer y Clara García.
-            </p>
-            <div class="video-wrapper">
-                <iframe src="https://drive.google.com/file/d/ID_DE_TU_VIDEO/preview" 
-                        width="100%" height="350" frameborder="0" allow="autoplay"></iframe>
+const htmlContenido = `
+    <div class="lanzamiento-container" style="display: grid; grid-template-columns: 1fr 1.2fr; gap: 25px; align-items: start;">
+        
+        <div class="video-section">
+            <div class="video-wrapper" style="border-radius: 15px; overflow: hidden; box-shadow: 0 10px 25px rgba(0,0,0,0.1); background: #000;">
+                <iframe src="https://www.youtube.com/embed/-uqy2QwTzR4" 
+                        width="100%" height="450" frameborder="0" 
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                        allowfullscreen></iframe>
             </div>
-            <p style="margin-top:15px; font-size:0.9rem; color:#666;">
-                Un espacio para dialogar sobre el desarrollo profesoral en la educación superior.
-            </p>
         </div>
-    `;
+
+        <div class="info-section" style="display: flex; flex-direction: column; gap: 15px;">
+            <div style="background: #fdf2e9; padding: 10px 15px; border-radius: 10px; border-left: 4px solid #F2B872;">
+                <span style="font-size: 0.85rem; font-weight: 700; color: #735D49;">📅 CITA EDITORIAL</span>
+                <p style="margin: 5px 0 0; font-size: 1rem; font-weight: 700; color: var(--primary-color);">23 de abril | 2:30 PM</p>
+            </div>
+
+            <p style="line-height: 1.6; font-size: 1rem; color: #333; text-align: justify;">
+                Lo invitamos al lanzamiento de la obra <strong>"Comunidades de aprendizaje y práctica"</strong>, un texto fundamental coordinado por Milena Alcocer y Clara García que explora los retos del desarrollo profesoral.
+            </p>
+
+            <p style="line-height: 1.6; font-size: 0.95rem; color: #555;">
+                Descubra esta y otras novedades académicas explorando el catálogo de la 
+                <a href="https://editorial.urosario.edu.co/" target="_blank" style="color: var(--primary-color); font-weight: 700; text-decoration: underline;">
+                    Editorial de la Universidad del Rosario
+                </a>.
+            </p>
+
+            <div style="margin-top: 10px; display: flex; flex-direction: column; gap: 10px;">
+                <a href="https://editorial.urosario.edu.co/" target="_blank" class="btn-boletin" style="background: var(--primary-color); width: 100% !important; justify-content: center;">
+                    Explorar Catálogo Editorial 📚
+                </a>
+                
+                <a href="https://www.google.com/maps/search/Corferias+-+Bogot%C3%A1,+Colombia/@4.6298912,-74.0901729,17z/data=!3m1!4b1?entry=ttu&g_ep=EgoyMDI2MDQwMS4wIKXMDSoASAFQAw%3D%3D" target="_blank" class="btn-boletin" style="background: #2e7d32; width: 100% !important; justify-content: center;">
+                    📍 Cómo llegar a Corferias (FILBo)
+                </a>
+            </div>
+        </div>
+    </div>
+`;
     
     openHelpModal(titulo, htmlContenido);
 };
