@@ -46,54 +46,61 @@ body { font-family: "PP Neue Montreal", sans-serif; background-color: #ffffff; c
     padding-right: 60px;
 }
 
-/* --- ACTUALIZACIÓN DE COLOR DEL MENÚ (VERSIÓN SÓLIDA) --- */
-/* --- ACTUALIZACIÓN DE COLOR DEL MENÚ (VERSIÓN ETA) --- */
+/* --- AJUSTE DE ESCALAMIENTO DEL MENÚ --- */
+
 .header-nav {  
     display: flex;  
-    gap: 10px;  
-    background: #E8F1F5; /* CAMBIA AQUÍ EL COLOR (Ej: Azul Nube) */
-    padding: 10px 25px;  
+    gap: 6px; /* Reducimos el espacio entre botones de 10px a 6px */
+    background: #E8F1F5; 
+    padding: 8px 15px; /* Reducimos el relleno lateral del contenedor */
     border-radius: 50px;  
-    border: 1px solid rgba(4, 57, 89, 0.15); /* Borde sutil oscuro para que resalte */
+    border: 1px solid rgba(4, 57, 89, 0.15); 
     position: relative;  
-    min-width: auto;
-    flex-wrap: nowrap;
+    align-items: center;
     box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1); 
     z-index: 2000;
 }
 
 .nav-btn { 
-    flex-shrink: 0; 
+    flex-shrink: 1; /* Permitimos que los botones se compriman un poco si es necesario */
     white-space: nowrap; 
     background: transparent; 
-    color: #043959 !important; /* TEXTO OSCURO (Mejor legibilidad sobre fondo claro) */
+    color: #043959 !important; 
     border: none; 
-    padding: 8px 18px; 
+    
+    /* Reducimos el padding lateral (de 18px a 10px) para ganar mucho ancho */
+    padding: 8px 10px; 
+    
     border-radius: 25px; 
     font-weight: 700; 
-    font-size: 0.9rem; 
+    
+    /* Reducimos la fuente de 0.9rem a 0.78rem (Escalamiento) */
+    font-size: 0.78rem; 
+    
     cursor: pointer; 
-    transition: 0.3s; 
+    transition: all 0.3s ease; 
     position: relative; 
     z-index: 2; 
     display: flex; 
     align-items: center; 
-    gap: 5px; 
+    gap: 4px; 
 }
 
-/* El globo indicador ahora es oscuro para que contraste con el fondo claro del menú */
+/* --- RECUPERACIÓN DEL COLOR SELECCIONADO --- */
+
+/* Aseguramos que el indicador (el globo oscuro) tenga el tamaño correcto */
 .nav-indicator { 
     position: absolute; 
-    height: 36px; 
-    background: #043959 !important; /* Azul oscuro */
+    height: 34px; /* Ajustado a la altura del botón */
+    background: #043959 !important; 
     border-radius: 25px; 
-    top: 10px; 
-    left: 20px; 
+    top: 50%;
+    transform: translateY(-50%); /* Centrado vertical perfecto */
     transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1); 
     z-index: 1; 
 }
 
-/* El texto se vuelve blanco solo cuando está sobre el indicador oscuro */
+/* El texto blanco cuando el botón está activo */
 .nav-btn.active { 
     color: #ffffff !important; 
 }
@@ -393,8 +400,27 @@ main {
 .card-summary { font-size: 0.85rem; line-height: 1.3; color: #666; font-weight: 400; }
 
 .acordeon-item { border-bottom: 1px solid #eee; margin-bottom: 5px; }
-.acordeon-header { width: 100%; padding: 15px; background: #f8f9fa; border: none; display: flex; justify-content: space-between; align-items: center; cursor: pointer; font-weight: 700; color: var(--primary-color); border-radius: 8px; transition: 0.3s; }
-.acordeon-header::after { content: '▼'; font-size: 0.7rem; transition: transform 0.3s; }
+
+/* ESTE ES EL CAMBIO PRINCIPAL */
+.acordeon-header { 
+    width: 100%; 
+    padding: 15px; 
+    background: #f8f9fa; 
+    border: none; 
+    display: flex; 
+    justify-content: space-between; 
+    align-items: center; 
+    text-align: left;    /* <--- Fuerza el texto a la izquierda */
+    gap: 12px;           /* <--- Espacio entre el emoji y el texto */
+    cursor: pointer; 
+    font-weight: 700; 
+    color: var(--primary-color); 
+    border-radius: 8px; 
+    transition: 0.3s; 
+    line-height: 1.3;    /* <--- Mejora el espacio entre líneas si el título es largo */
+}
+
+.acordeon-header::after { content: '▼'; font-size: 0.7rem; transition: transform 0.3s; flex-shrink: 0; }
 .acordeon-header.active::after { transform: rotate(180deg); }
 .acordeon-content { background: #ffffff; max-height: 0; overflow: hidden; transition: max-height 0.3s ease-in-out; }
 .acordeon-content.open { max-height: 600px; overflow-y: auto; }
@@ -499,10 +525,8 @@ main {
 }
 /* Botón de cerrar para el Panel Lateral */
 .close-side-panel {
-    /* ... mantén lo que ya tienes aquí ... */
 }
 @media (max-width: 768px) {
-    /* ... otros estilos móviles ... */
 
     .footer-container {
         flex-direction: column !important; /* Apila verticalmente */
@@ -1067,4 +1091,118 @@ body.high-contrast .archive-item-card div[style*="background: #f8f9fa"] {
 
 .poster-wrapper:active {
     transform: translateY(-2px) scale(0.99);
+}
+/* --- AJUSTE PARA PORTÁTILES Y PANTALLAS MEDIANAS --- */
+@media (max-width: 1400px) {
+    /* 1. Reducimos el logo un poco más para ganar aire */
+    .logo-img {
+        width: 220px !important;
+    }
+
+    /* 2. Ajustamos el contenedor del logo para que ocupe menos ancho real */
+    .header-logo-fixed {
+        width: 250px !important;
+        padding-left: 1rem !important;
+    }
+
+    /* 3. Reducimos el tamaño de la letra y el espacio del menú */
+    .nav-btn {
+        font-size: 0.72rem !important;
+        padding: 6px 8px !important;
+        gap: 3px !important;
+    }
+
+    .header-nav {
+        gap: 4px !important;
+        padding: 6px 12px !important;
+    }
+
+    /* 4. Alejamos el menú un poco más del borde derecho */
+    .nav-container {
+        padding-right: 30px !important;
+    }
+}
+
+/* --- SOLUCIÓN DE EMERGENCIA: SI SIGUEN CHOCANDO --- */
+@media (max-width: 1200px) {
+    /* Si la pantalla es muy pequeña para estar en una línea, 
+       bajamos el menú debajo del logo para que nada se tape */
+    .nav-container {
+        justify-content: center !important;
+        top: 90px !important; /* Lo bajamos un poco */
+        padding-right: 0 !important;
+        width: 100% !important;
+    }
+
+    .header-logo-fixed {
+        width: 100% !important;
+        justify-content: center !important;
+        padding-left: 0 !important;
+    }
+    
+    .header-blur-bg {
+        height: 160px !important; /* Aumentamos el fondo blanco para cubrir el menú abajo */
+    }
+
+    main {
+        padding-top: 180px !important; /* Bajamos el contenido para que no lo tape el menú nuevo */
+    }
+}
+/* ============================================================
+   SOLUCIÓN MÓVIL DEFINITIVA: TEXTO ARRIBA / FOTOS ABAJO
+   ============================================================ */
+
+@media (max-width: 768px) {
+    /* 1. SECCIÓN HOMENAJE: Forzamos el flujo vertical absoluto */
+    .section#evaluacion .magazine-grid {
+        display: block !important; /* Rompe la cuadrícula de dos columnas */
+        width: 100% !important;
+        margin: 0 !important;
+        padding: 0 !important;
+    }
+
+    /* 2. EL TEXTO toma todo el ancho superior */
+    .section#evaluacion .magazine-text {
+        width: 100% !important;
+        margin-bottom: 25px !important; /* Espacio antes de que empiecen las fotos */
+        padding: 0 5px !important; /* Pequeño margen interno para el texto */
+        text-align: justify; /* Mantenemos el justificado para elegancia */
+    }
+
+    /* 3. EL CONTENEDOR DE FOTOS toma todo el ancho inferior */
+    .section#evaluacion .magazine-grid > div:last-child {
+        display: flex !important; /* El contenedor interno de fotos sigue siendo flex */
+        flex-direction: column !important; /* Fotos en una columna */
+        width: 100% !important;
+        margin: 0 !important;
+        padding: 0 !important;
+        gap: 15px !important;
+    }
+
+    /* 4. AJUSTE DEL VISOR DE LA FOTO GRANDE */
+    /* Buscamos el div con la altura inline de escritorio y la reducimos */
+    .section#evaluacion div[style*="height: 420px"] {
+        height: 280px !important; /* Altura ideal para la foto principal en móvil */
+        width: 100% !important;
+        margin-bottom: 10px !important;
+    }
+
+    /* 5. LA CINTA DE MINIATURAS: De columna Vertical a Fila Horizontal */
+    .cinta-v {
+        flex-direction: row !important; /* Una mini al lado de la otra */
+        overflow-x: auto !important;   /* Permite scroll horizontal */
+        overflow-y: hidden !important;
+        width: 100% !important;
+        height: 85px !important; /* Altura fija para la fila */
+        gap: 10px !important;
+        padding: 5px 0 !important;
+        background: #fff;
+        border-radius: 10px;
+    }
+
+    .mini-h {
+        width: 100px !important; /* Más anchas para facilitar el toque */
+        height: 70px !important;
+        flex-shrink: 0 !important; /* Evita que se aplasten */
+    }
 }
