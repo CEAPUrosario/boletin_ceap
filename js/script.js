@@ -352,7 +352,7 @@ function reubicarElementosMovil() {
 
 // 6.4 FLECHAS DE NAVEGACIÓN INTELIGENTES
 function inyectarFlechasNavegacion() {
-    const idsSecciones = ['inicio', 'recursos', 'evaluacion', 'criterium', 'diseno'];
+    const idsSecciones = ['inicio', 'recursos', 'evaluacion', 'criterium'];
     idsSecciones.forEach((id, index) => {
         if (id === 'inicio') return;
         const section = document.getElementById(id);
