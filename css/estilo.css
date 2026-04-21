@@ -1136,6 +1136,20 @@ body.high-contrast .archive-item-card div[style*="background: #f8f9fa"] {
         padding-top: 180px !important; /* Bajamos el contenido para que no lo tape el menú nuevo */
     }
 }
+@media (max-width: 1400px) {
+    /* Ajustamos el botón flotante para que no tape el calendario */
+    .contact-fab {
+        right: 15px !important;  /* Lo pegamos más al borde derecho */
+        bottom: 15px !important; /* Lo bajamos un poco más */
+        width: 80px !important;   /* Lo hacemos un poco más pequeño (antes 110px) */
+        height: 80px !important;
+    }
+
+    /* Ajustamos la sombra para el nuevo tamaño */
+    .fab-mailing-icon {
+        filter: drop-shadow(0 5px 10px rgba(4, 57, 89, 0.2)) !important;
+    }
+}
 /* ============================================================
    SOLUCIÓN MÓVIL DEFINITIVA: TEXTO ARRIBA / FOTOS ABAJO
    ============================================================ */
@@ -1192,5 +1206,109 @@ body.high-contrast .archive-item-card div[style*="background: #f8f9fa"] {
         width: 100px !important; /* Más anchas para facilitar el toque */
         height: 70px !important;
         flex-shrink: 0 !important; /* Evita que se aplasten */
+    }
+}
+#diseno {
+    display: none !important;
+}
+@media (max-width: 768px) {
+    /* Hacemos que el contenedor del menú ocupe más espacio y se vea limpio */
+    .nav-container {
+        width: 100% !important;
+        padding: 80px 20px !important; /* Más espacio para que no choque con el logo */
+    }
+
+    .header-nav {
+        gap: 15px !important; /* Espacio entre botones */
+        padding: 20px !important;
+    }
+
+    .nav-btn {
+        font-size: 1.1rem !important; /* Letra más grande para tocar con el dedo */
+        padding: 12px 15px !important;
+        border-bottom: 1px solid rgba(0,0,0,0.05); /* Separación sutil */
+        justify-content: flex-start !important;
+    }
+
+    /* Los controles de accesibilidad (A+, A-, etc.) en una fila aparte */
+    .zeta-controls {
+        margin-top: 20px;
+        padding-top: 20px;
+        border-top: 1px solid rgba(0,0,0,0.1);
+        justify-content: space-around !important;
+        width: 100%;
+        border-left: none !important;
+    }
+}
+/* Esto devuelve el estilo al PC que acabamos de quitar del HTML */
+.grid-homenaje {
+    display: grid !important;
+    grid-template-columns: 40% 60% !important;
+    gap: 30px !important;
+    align-items: start !important;
+}@media (max-width: 768px) {
+    .grid-homenaje {
+        display: flex !important;
+        flex-direction: column !important; /* Fuerza el orden: Texto arriba / Fotos abajo */
+    }
+
+    .grid-homenaje .magazine-text {
+        width: 100% !important; /* El texto ahora sí ocupa todo el ancho */
+        margin-bottom: 25px !important;
+    }
+
+    /* El contenedor de las fotos también se ajusta al ancho total */
+    .grid-homenaje > div:last-child {
+        width: 100% !important;
+        display: flex !important;
+        flex-direction: column !important;
+        grid-template-columns: 1fr !important; /* Anula las 2 columnas internas de fotos */
+    }
+
+    /* La cinta de fotos ahora es horizontal y fácil de deslizar */
+    .cinta-v {
+        flex-direction: row !important;
+        overflow-x: auto !important;
+        height: 85px !important;
+        width: 100% !important;
+        display: flex !important;
+    }
+}
+/* ============================================================
+   SOLUCIÓN RADICAL: MAXIMIZAR CONTENIDO EN MÓVIL
+   ============================================================ */
+
+@media (max-width: 768px) {
+    /* 1. Forzamos que la caja blanca ocupe casi todo el ancho */
+    .modal.modal-grande {
+        width: 95% !important; /* Casi de borde a borde */
+        max-width: none !important;
+        padding: 50px 10px 10px 10px !important; /* Reducimos márgenes internos */
+        margin: 10px auto !important;
+        transform: scale(1) !important; /* Eliminamos el achicamiento del 0.9 */
+    }
+
+    /* 2. El título: más pequeño para que no robe espacio vertical */
+    #modalTitle {
+        font-size: 1.1rem !important;
+        margin-bottom: 15px !important;
+        width: 85% !important; /* Para que no choque con la X */
+    }
+
+    /* 3. EL CONTENIDO: Aquí es donde ganamos la legibilidad */
+    #modalBodyText {
+        padding: 0 !important;
+        width: 100% !important;
+    }
+
+    /* 4. EL IFRAME (La infografía): Forzamos el tamaño máximo */
+    #modalBodyText iframe {
+        width: 100% !important;
+        height: 70vh !important; /* Que ocupe el 70% del alto de la pantalla del celular */
+        border-radius: 5px !important;
+    }
+    /* 5. Aseguramos que el fondo del modal no empuje la caja hacia adentro */
+    .modal-backdrop {
+        padding: 5px !important;
     }
 }
