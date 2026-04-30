@@ -1,113 +1,393 @@
+<!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-MBP9NRZL');</script>
+<!-- End Google Tag Manager -->
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Día del Profesor — Universidad del Rosario</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400;600;700&family=DM+Sans:wght@300;400;500&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="style.css">
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Boletín CEAP - Versión Épsilon</title>
+  <link rel="icon" type="image/png" href="https://github.com/CEAPUrosario/boletin_ceap/blob/main/img/Logo%20Bolet%C3%ADn.png?raw=true">
+  <link rel="stylesheet" href="css/estilo.css">
 </head>
 <body>
+  <!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-MBP9NRZL"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
+    <button class="hamburger-menu" id="hamburgerBtn">
+        <div class="bar1"></div>
+        <div class="bar2"></div>
+        <div class="bar3"></div>
+    </button>
+    
+    <div class="header-blur-bg"></div>
+    
+    <header class="header-logo-fixed">
+        <a href="#" onclick="setActiveSection('inicio'); return false;">
+    <img src="https://github.com/CEAPUrosario/boletin_ceap/blob/main/img/Logo%20Bolet%C3%ADn.png?raw=true" 
+         alt="Boletín CEAP" 
+         class="logo-img" 
+         fetchpriority="high">
+</a>
+    </header>
 
-  <!-- HERO -->
-  <header class="hero">
-    <div class="hero-bg"></div>
-
-    <a href="#" class="logo-wrap">
-      <img src="https://github.com/CEAPUrosario/boletin_ceap/blob/main/img/UROSARIO_Logo_Horizontal_blanco%20sobre%20transp.png?raw=true"
-           alt="Universidad del Rosario" class="logo-img">
-    </a>
-
-    <div class="deco-star s1">★</div>
-    <div class="deco-star s2">✦</div>
-    <div class="deco-star s3">★</div>
-
-    <div class="hero-inner">
-      <p class="hero-eyebrow">15 de mayo</p>
-      <h1 class="hero-title">Feliz Día,<br><em>Profe</em></h1>
-      <p class="hero-sub">Tus estudiantes tienen algo que decirte ✨</p>
-      <div class="hero-actions">
-        <a href="#mensajes" class="btn btn-primary">Ver mensajes</a>
-        <a href="#escribir" class="btn btn-outline">Dejar un mensaje</a>
-      </div>
-    </div>
-
-    <div class="float-postit fp1">¡Gracias!</div>
-    <div class="float-postit fp2">★</div>
-    <div class="float-postit fp3">El mejor profe</div>
-  </header>
-
-  <!-- SEARCH -->
-  <section class="search-section">
-    <div class="container">
-      <div class="search-wrap">
-        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
-        <input type="text" id="search" placeholder="Buscar a tu profe…" oninput="filterMessages()">
-      </div>
-    </div>
-  </section>
-
-  <!-- MESSAGES BOARD -->
-  <section class="board-section" id="mensajes">
-    <div class="container">
-      <h2 class="section-title">El tablero <span class="tag-chip">de mensajes</span></h2>
-      <div class="board" id="board">
-        <div class="loading-board">Cargando mensajes… ✦</div>
-      </div>
-      <p class="empty-state" id="empty-state" style="display:none">No hay mensajes para ese nombre todavía.</p>
-    </div>
-  </section>
-
-  <!-- WRITE FORM -->
-  <section class="form-section" id="escribir">
-    <div class="container">
-      <div class="form-card">
-        <div class="form-card-deco"></div>
-        <h2 class="form-title">Deja tu mensaje</h2>
-        <p class="form-subtitle">Cuéntale a tu profe lo que significa para ti</p>
-        <div class="form-body">
-
-          <div class="field">
-            <label>¿Para qué profesor?</label>
-            <!-- datalist: permite escribir O elegir de la lista -->
-            <input type="text" id="f-profe" list="profesores-list"
-                   placeholder="Escribe o elige el nombre del profe…"
-                   autocomplete="off">
-            <datalist id="profesores-list"></datalist>
-            <small id="select-loading" style="font-size:12px;color:#7a7a9a;margin-top:5px;display:block">Cargando lista de profesores…</small>
-          </div>
-
-          <div class="field">
-            <label>Tu nombre (opcional)</label>
-            <input type="text" id="f-nombre" placeholder="Ej: Valeria, Estudiante de 3er año…">
-          </div>
-
-          <div class="field">
-            <label>Tu mensaje</label>
-            <textarea id="f-mensaje" placeholder="Escríbele desde el corazón…"></textarea>
-          </div>
-
-          <div class="field color-pick">
-            <label>Color del post-it</label>
-            <div class="color-swatches" id="swatches"></div>
-          </div>
-
-          <button class="btn btn-send" onclick="sendMessage()">Enviar mensaje ✦</button>
-
-          <p class="form-note">Tu mensaje será revisado antes de aparecer en el tablero 🔍</p>
+    <div class="nav-container">
+    <nav class="header-nav" role="navigation" aria-label="Menú principal de secciones">
+        <button class="nav-btn active" data-section="inicio" aria-label="Sección Inicio">🏠 Inicio</button>
+        <button class="nav-btn" data-section="recursos" aria-label="Sección Claves para evaluar">🪪 Protección de datos</button>
+        <button class="nav-btn" data-section="evaluacion" aria-label="Sección Evaluación">🎊 Ceremonia de homenaje</button>
+        <button class="nav-btn" data-section="criterium" aria-label="Sección Critérium">💼 Estatuto Profesoral</button>
+     <div class="nav-indicator"></div>
+        <div class="zeta-controls" role="group" aria-label="Herramientas de accesibilidad y búsqueda">
+            <button id="decreaseText" class="zeta-control-btn" aria-label="Disminuir tamaño de letra"><span>A-</span></button>
+            <button id="increaseText" class="zeta-control-btn" aria-label="Aumentar tamaño de letra"><span>A+</span></button>
+            <button id="highContrastToggle" class="zeta-control-btn" aria-label="Activar modo de alto contraste"><span>◐</span></button>
+            <button id="searchToggle" class="zeta-control-btn" aria-label="Abrir buscador"><span>🔍</span></button>
+            <button id="darkModeToggle" class="zeta-control-btn" aria-label="Cambiar modo claro u oscuro"><span>🌙</span></button>
         </div>
-      </div>
+        
+        <div id="scrollProgress" aria-hidden="true"></div>
+    </nav>
+    
+    <div id="searchBarContainer" class="search-bar-hidden" role="search">
+        <input type="text" id="searchInput" placeholder="Buscar tarjetas o cursos..." aria-label="Campo de búsqueda">
+        <button id="closeSearch" aria-label="Cerrar búsqueda">✕</button>
     </div>
-  </section>
+</div>
 
-  <footer class="site-footer">
-    <img src="https://github.com/CEAPUrosario/boletin_ceap/blob/main/img/UROSARIO_Logo_Horizontal_blanco%20sobre%20transp.png?raw=true"
-         alt="Universidad del Rosario" style="height:28px;opacity:0.4;margin-bottom:10px;display:block;margin-left:auto;margin-right:auto;">
-    <p>Hecho con <span style="color:#e2687a">♥</span> por los estudiantes · Día del Profesor</p>
-  </footer>
+    <main id="mainContent">
+        <section id="inicio" class="section active fade-in-up">
+    <div class="card-grid">
+        <a href="#" class="feature-card reveal" data-section="recursos">
+            <div class="card-inner-content">
+                <div class="card-image-wrapper" style="background-image: url('https://github.com/CEAPUrosario/boletin_ceap/blob/main/img/Tarjeta%201%20-%20PDP.webp?raw=true');"></div>
+                <div class="card-text-content"><h3 class="card-title">Protección de datos</h3></div>
+                <div class="card-glint"></div>
+            </div>
+            <div class="card-info-below">
+                <span class="card-category">🎙️ Infografía</span>
+                <p class="card-summary">Garantice un entorno educativo seguro. Conozca las pautas esenciales para el manejo ético y legal de la información de sus estudiantes en entornos presenciales y virtuales.</p>
+            </div>
+        </a>
 
-  <div class="toast" id="toast"></div>
-  <script type="module" src="app.js"></script>
-</body>
+        <a href="#" class="feature-card reveal" data-section="evaluacion">
+            <div class="card-inner-content">
+                <div class="card-image-wrapper" style="background-image: url('https://github.com/CEAPUrosario/boletin_ceap/blob/main/img/12.webp?raw=true');"></div>
+                <div class="card-text-content"><h3 class="card-title">Ceremonia de homenaje</h3></div>
+                <div class="card-glint"></div>
+            </div>
+            <div class="card-info-below">
+                <span class="card-category">📄 Memorias</span>
+                <p class="card-summary">Conozca cómo se vivió la jornada de reconocimiento a los docentes rosaristas que han transformado la academia con su dedicación.</p>
+            </div>
+        </a>
+
+        <a href="#" class="feature-card reveal" data-section="criterium">
+            <div class="card-inner-content">
+                <div class="card-image-wrapper" style="background-image: url('https://github.com/CEAPUrosario/boletin_ceap/blob/main/img/Tarjetas%20p%C3%A1g.%20web.webp?raw=true');"></div>
+                <div class="card-text-content"><h3 class="card-title">Actualización del estatuto profesoral</h3></div>
+                <div class="card-glint"></div>
+            </div>
+            <div class="card-info-below">
+                <span class="card-category">💡 Institucional</span>
+                <p class="card-summary">En los próximos días se lanzará oficialmente el micrositio de actualización del Estatuto Profesoral UR. Infórmese sobre los espacios de socialización y retroalimentación en los que podrá participar para aportar a la consolidación de esta política profesoral.</p>
+            </div>
+        </a>
+
+<a href="https://urosario.edu.co/profesores/servicios-al-profesor/reflexiones-pedagogicas" target="_blank" class="feature-card reveal">
+            <div class="card-inner-content">
+                <div class="card-image-wrapper" style="background-image: url('https://github.com/CEAPUrosario/boletin_ceap/blob/main/img/Tarjeta_4.png?raw=true');"></div>
+                <div class="card-text-content"><h3 class="card-title">Reflexiones Pedagógicas</h3></div>
+                <div class="card-glint"></div>
+            </div>
+            <div class="card-info-below">
+                <span class="card-category">📖 Convocatoria</span>              
+                <p class="card-summary">El CEAP abre nuevamente la convocatoria para pubilcar las reflexiones pedagógicas sobre las buenas prácticas e innovaciones. Consulte las condiciones y postule sus escritos entrando aquí. </p>
+            </div>
+        </a>
+    </div> <aside class="events-sidebar-right">
+        <h2 class="events-title" style="display: flex; align-items: center; gap: 10px;">
+            Calendario <span class="pulse-icon">📅</span>
+        </h2>
+        <div class="acordeon-sidebar">
+            <div class="acordeon-item">
+                <button class="acordeon-header" onclick="toggleAcordeon(this)">🎓 Cursos de Desarrollo profesoral</button>
+                <div class="acordeon-content">
+                    <p style="font-size: 0.8rem; padding: 10px; background: #fffde7; border-radius: 8px; margin: 10px; border: 1px solid #ffe082;">
+                        Para inscribirse a los cursos haga clic <a href="https://appsweb01.urosario.edu.co/cursos_profesorales/" target="_blank" style="color: var(--primary-color); font-weight: 700;">AQUÍ</a>.
+                    </p>
+                    <div id="listaCursosAcordeon"></div>
+                </div>
+            </div>
+            <div class="acordeon-item">
+                <button class="acordeon-header" onclick="toggleAcordeon(this)">📝 Apreciación de la docencia </button>
+                <div class="acordeon-content">
+                    <div style="padding:15px; background:#fdfdfd; border-radius:10px; margin:10px; border:1px solid #eee;">
+                        <span style="font-size:0.7rem; background:var(--light-accent); padding:3px 8px; border-radius:10px; font-weight:bold;">📅 Fechas: 25 de marzo al 07 de mayo</span>
+                        <p style="font-size:0.85rem; margin:10px 0; line-height:1.3;">La excelencia se construye en el aula. Le invitamos a destinar diez minutos de su clase para motivar y acompañar a sus estudiantes de pregrado en este proceso. Su liderazgo es clave para que su voz transforme nuestra práctica docente y fortalezca la calidad académica.</p>
+                        <div style="display:flex; gap:5px;">
+                            <a href="https://www.canva.com/design/DAFp8CgnqcI/Bx2abGW9rrvDOzGAKxnZJw/view" target="_blank" class="btn-enroll" style="flex:1; font-size:0.7rem; text-align:center; text-decoration:none;">Ver Paso a paso</a>
+                            <a href="https://sgi.urosario.edu.co/" target="_blank" class="btn-enroll" style="flex:1; font-size:0.7rem; text-align:center; text-decoration:none;">Ingreso al sistema</a>                      
+                        </div>
+                  </div>
+                </div>
+            </div>
+        </div>
+          <div class="acordeon-item">
+    <button class="acordeon-header" onclick="toggleAcordeon(this)">📚 Lanzamiento Editorial</button>
+    <div class="acordeon-content">
+        <div style="padding:15px; background:#fdfdfd; border-radius:10px; margin:10px; border:1px solid #eee;">
+            <span style="font-size:0.7rem; background:#e8f5e9; color:#2e7d32; padding:3px 8px; border-radius:10px; font-weight:bold;">📅 Fecha: 23 de abril - 2:00 pm | Stand 302, segundo piso, pabellón 3- Corferias</span>
+            
+            <p style="font-size:0.85rem; margin:10px 0; line-height:1.4; color:#333;">
+                Le invitamos al lanzamiento del libro <strong>"Comunidades de aprendizaje y práctica: Aportes al desarrollo profesoral docente en educación superior"</strong>. 
+                Esta obra, coordinada por <strong>Milena Alcocer y Clara García</strong>, ofrece una mirada profunda sobre la colaboración y el crecimiento docente.
+            </p>
+            
+            <p style="font-size:0.8rem; color:#666; font-style:italic; margin-bottom:12px;">
+                ¡Acompáñenos a celebrar este importante aporte académico en la Feria del Libro de Bogotá!
+            </p>
+
+<div style="display:flex; gap:5px;">
+<button onclick="verDetalleLanzamiento()" class="btn-enroll" style="flex:1; font-size:0.7rem; text-align:center; border:none; cursor:pointer;">
+    🎬 Ver invitación
+</button>
+</div>
+            </div>
+        </div>
+    </div>
+</div>
+          <div class="acordeon-item">
+    <button class="acordeon-header" onclick="toggleAcordeon(this)">⚖️ Postulación al Premio a la excelencia en docencia</button>
+    <div class="acordeon-content">
+        <div style="padding:15px; background:#fdfdfd; border-radius:10px; margin:10px; border:1px solid #eee;">
+            <span style="font-size:0.7rem; background:#fff3e0; color:#e65100; padding:3px 8px; border-radius:10px; font-weight:bold;">
+                📅 Fecha máxima: 29 de mayo
+            </span>
+            
+            <p style="font-size:0.85rem; margin:10px 0; line-height:1.4; color:#333;">
+                Cada año reconocemos la docencia destacada de nuestros profesores. Si desea postular a algún profesor o profesora postúlelo al <strong>Premio a la excelencia en docencia 2026</strong>, lo invitamos a registrar la candidatura. 
+            </p>
+            
+            <p style="font-size:0.8rem; color:#666; font-style:italic; margin-bottom:12px;">
+                Conozca los lineamientos y las condiciones
+            </p>
+
+<div style="display:flex; gap:5px;">
+    <a href="https://urosario.edu.co/ceap/premio-a-la-excelencia-en-docencia" 
+       target="_blank" 
+       rel="noopener noreferrer" 
+       class="btn-enroll" 
+       style="flex:1; font-size:0.7rem; text-align:center; text-decoration:none; display:flex; align-items:center; justify-content: center; cursor:pointer; border:none;">
+        📋 Ver Condiciones
+    </a>
+                </button>
+<a href="https://forms.office.com/pages/responsepage.aspx?id=V1dSrrqJME2i90l5bvjGBPWwuq4MFqNFg9RGlpjVCmBUNjdHS0k4VDRBS1o5QU9CQkNETThORVJHNC4u&route=shorturl" 
+   class="btn-enroll" 
+   target="_blank" 
+   rel="noopener noreferrer" 
+   style="flex:1; font-size:0.7rem; text-align:center; text-decoration:none; background:#e65100;">
+   👨🏻‍🏫 Link de postulación
+</a>
+            </div>
+        </div>
+    </div>
+</div>
+         <div class="acordeon-item">
+    <button class="acordeon-header" onclick="toggleAcordeon(this)">⚖️ Webinar: AndoInnovando</button>
+    <div class="acordeon-content">
+        <div style="padding:15px; background:#fdfdfd; border-radius:10px; margin:10px; border:1px solid #eee;">
+            <span style="font-size:0.7rem; background:#fff3e0; color:#e65100; padding:3px 8px; border-radius:10px; font-weight:bold;">
+                📅 Fecha: 28 de abril - 10:00 a 11:30 am | Acceso remoto
+            </span>
+            
+            <p style="font-size:0.85rem; margin:10px 0; line-height:1.4; color:#333;">
+                En este webinar, encontrará un espacio para reflexionar sobre los retos y posibilidades de la evaluación en contextos mediados por inteligencia artificial. 
+            </p>
+            
+            <p style="font-size:0.8rem; color:#666; font-style:italic; margin-bottom:12px;">
+                Inscríbase y acompáñenos en este importante evento
+            </p>
+
+<div style="display:flex; gap:5px;">
+    <a href="https://urosario.zoom.us/meeting/register/VMAHEYaLQ2OhcfRcDr4MhQ" 
+       target="_blank" 
+       rel="noopener noreferrer" 
+       class="btn-enroll" 
+       style="flex:1; font-size:0.7rem; text-align:center; text-decoration:none; display:flex; align-items:center; justify-content: center; cursor:pointer; border:none;">
+        📋 Inscríbase
+    </a>
+            </div>
+        </div>
+    </div>
+</div>
+    </aside>
+</section>
+<section id="recursos" class="section">
+    <div class="magazine-layout reveal">
+        <h2 class="magazine-title">Protección de datos personales en espacios académicos</h2>
+        <div class="magazine-grid">
+            <div class="magazine-text">
+                <p>En el ejercicio de la docencia, el manejo responsable de la información es una responsabilidad ética y legal. Es fundamental que los profesores reconozcan qué datos pueden ser recolectados, cómo deben almacenarse y de qué forma se garantiza la privacidad de los estudiantes en grabaciones de clases, plataformas digitales y otros espacios formativos.</p>
+                <p>Esto implica, entre otros aspectos, compartir la información académica únicamente por canales oficiales, resguardar la confidencialidad de los resultados, evitar su divulgación en espacios informales y contar con las autorizaciones necesarias para la recolección y uso de datos, especialmente cuando intervienen terceros.</p>
+                              <p>Esta guía, realizada por la Dirección de laneación y Efectividad Institucional - DPEI, condensa lineamientos clave para proteger la privacidad de la comunidad académica y fortalecer prácticas docentes basadas en la transparencia, la seguridad y el respeto por los datos personales.</p>
+                <div style="margin-top: 25px; display: flex; justify-content: flex-start;">
+                    <button onclick="openEventPopup('Protección de Datos Personales', '<iframe src=\'https://drive.google.com/file/d/1Xe4E6d1Hdy3bmVDknELfixs6f_Hj2bbW/preview\' width=\'100%\' height=\'480\'></iframe>')" class="btn-boletin btn-recursos">
+    Ampliar infografía 🔍
+</button>
+                </div>
+            </div>
+            <div class="magazine-image">
+                <div onclick="openEventPopup('Protección de Datos Personales', '<iframe src=\'https://drive.google.com/file/d/1Xe4E6d1Hdy3bmVDknELfixs6f_Hj2bbW/preview\' width=\'100%\' height=\'480\'></iframe>')" style="cursor:pointer; width:100%;">
+    <img src="https://github.com/CEAPUrosario/boletin_ceap/blob/main/img/Secci%C3%B3n%201%20-%20PDP.webp?raw=true" alt="Vista previa Infografía" loading="lazy">
+</div>
+            </div>
+        </div>
+    </div>
+</section>
+<section id="evaluacion" class="section">
+    <div class="magazine-layout reveal">
+        <h2 class="magazine-title">Homenaje al legado académico del profesorado Rosarista</h2>
+        
+<div class="magazine-grid grid-homenaje">  
+            <div class="magazine-text">
+                <p style="text-align: justify; margin-bottom: 15px;">El 13 de marzo de 2026, en el Aula Máxima del Claustro de la Universidad del Rosario, se realizó la ceremonia en homenaje al legado académico de profesores y profesoras Rosaristas.</p>
+                <p style="text-align: justify; margin-bottom: 15px;">Durante el evento, se reconocieron trayectorias docentes que han contribuido de manera significativa a la formación de estudiantes y al fortalecimiento de la comunidad académica. La jornada destacó el valor de la labor profesoral tanto en la enseñanza como en el acompañamiento formativo.</p>
+                <p style="text-align: justify;">Este espacio permitió exaltar el compromiso y la dedicación del profesorado. Algunos de los momentos que dieron forma a esta jornada se recogen en las imágenes adjuntas.</p>
+            </div>
+
+            <div style="
+                display: grid; 
+                grid-template-columns: 1fr 90px; /* Visor principal | Columna miniaturas */
+                gap: 12px; 
+                background: #ffffff; 
+                padding: 15px; 
+                border-radius: 20px; 
+                border: 1px solid #eee;
+                box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+            ">
+                <div style="position: relative; background: #fdfdfd; border-radius: 12px; overflow: hidden; display: flex; align-items: center; justify-content: center; height: 420px; border: 1px solid #f0f0f0;">
+                    <button onclick="expandirFoto()" style="position: absolute; top: 12px; right: 12px; background: rgba(255,255,255,0.9); border-radius: 6px; color: #043959; cursor: pointer; padding: 6px 10px; z-index: 10; border: 1px solid #ddd; font-weight: bold;">⛶</button>
+                    
+                    <img id="fotoGrandeHomenaje" src="https://github.com/CEAPUrosario/boletin_ceap/blob/main/img/Homenaje%20-%20C.webp?raw=true" 
+                         style="width: 100%; height: 100%; object-fit: contain; transition: opacity 0.3s ease; cursor: zoom-in;" 
+                         onclick="expandirFoto()">
+                </div>
+
+                <div class="cinta-v" style="display: flex; flex-direction: column; gap: 10px; overflow-y: auto; max-height: 420px;">
+                    <img class="mini-h" src="https://github.com/CEAPUrosario/boletin_ceap/blob/main/img/Homenaje%20-%20A.webp?raw=true" onclick="actualizarFotoHomenaje(this)" style="width: 100%; height: 60px; object-fit: cover; border-radius: 6px; cursor: pointer; border: 2px solid #fecb2f; flex-shrink: 0;">
+                    <img class="mini-h" src="https://github.com/CEAPUrosario/boletin_ceap/blob/main/img/Homenaje%20-%20B.webp?raw=true" onclick="actualizarFotoHomenaje(this)" style="width: 100%; height: 60px; object-fit: cover; border-radius: 6px; cursor: pointer; border: 2px solid transparent; opacity: 0.6; flex-shrink: 0;">
+                    <img class="mini-h" src="https://github.com/CEAPUrosario/boletin_ceap/blob/main/img/Homenaje%20-%20E.webp?raw=true" onclick="actualizarFotoHomenaje(this)" style="width: 100%; height: 60px; object-fit: cover; border-radius: 6px; cursor: pointer; border: 2px solid transparent; opacity: 0.6; flex-shrink: 0;">
+                                      <img class="mini-h" src="https://github.com/CEAPUrosario/boletin_ceap/blob/main/img/Homenaje%20-%20F.webp?raw=true" onclick="actualizarFotoHomenaje(this)" style="width: 100%; height: 60px; object-fit: cover; border-radius: 6px; cursor: pointer; border: 2px solid transparent; opacity: 0.6; flex-shrink: 0;">
+                                      <img class="mini-h" src="https://github.com/CEAPUrosario/boletin_ceap/blob/main/img/Homenaje%20-%20G.webp?raw=true" onclick="actualizarFotoHomenaje(this)" style="width: 100%; height: 60px; object-fit: cover; border-radius: 6px; cursor: pointer; border: 2px solid transparent; opacity: 0.6; flex-shrink: 0;">
+                                      <img class="mini-h" src="https://github.com/CEAPUrosario/boletin_ceap/blob/main/img/Homenaje%20-%20H.webp?raw=true" onclick="actualizarFotoHomenaje(this)" style="width: 100%; height: 60px; object-fit: cover; border-radius: 6px; cursor: pointer; border: 2px solid transparent; opacity: 0.6; flex-shrink: 0;">
+                                      <img class="mini-h" src="https://github.com/CEAPUrosario/boletin_ceap/blob/main/img/Homenaje%20-%20J.webp?raw=true" onclick="actualizarFotoHomenaje(this)" style="width: 100%; height: 60px; object-fit: cover; border-radius: 6px; cursor: pointer; border: 2px solid transparent; opacity: 0.6; flex-shrink: 0;">
+                                      <img class="mini-h" src="https://github.com/CEAPUrosario/boletin_ceap/blob/main/img/Homenaje%20-%20K.webp?raw=true" onclick="actualizarFotoHomenaje(this)" style="width: 100%; height: 60px; object-fit: cover; border-radius: 6px; cursor: pointer; border: 2px solid transparent; opacity: 0.6; flex-shrink: 0;">
+                                      <img class="mini-h" src="https://github.com/CEAPUrosario/boletin_ceap/blob/main/img/Homenaje%20-%20L.webp?raw=true" onclick="actualizarFotoHomenaje(this)" style="width: 100%; height: 60px; object-fit: cover; border-radius: 6px; cursor: pointer; border: 2px solid transparent; opacity: 0.6; flex-shrink: 0;">
+                                      <img class="mini-h" src="https://github.com/CEAPUrosario/boletin_ceap/blob/main/img/Homenaje%20-%20N.webp?raw=true" onclick="actualizarFotoHomenaje(this)" style="width: 100%; height: 60px; object-fit: cover; border-radius: 6px; cursor: pointer; border: 2px solid transparent; opacity: 0.6; flex-shrink: 0;">
+                                      <img class="mini-h" src="https://github.com/CEAPUrosario/boletin_ceap/blob/main/img/Homenaje%20-%20O.webp?raw=true" onclick="actualizarFotoHomenaje(this)" style="width: 100%; height: 60px; object-fit: cover; border-radius: 6px; cursor: pointer; border: 2px solid transparent; opacity: 0.6; flex-shrink: 0;">
+                                      <img class="mini-h" src="https://github.com/CEAPUrosario/boletin_ceap/blob/main/img/Homenaje%20-%20P.webp?raw=true" onclick="actualizarFotoHomenaje(this)" style="width: 100%; height: 60px; object-fit: cover; border-radius: 6px; cursor: pointer; border: 2px solid transparent; opacity: 0.6; flex-shrink: 0;">
+                                      <img class="mini-h" src="https://github.com/CEAPUrosario/boletin_ceap/blob/main/img/Homenaje%20-%20Q.webp?raw=true" onclick="actualizarFotoHomenaje(this)" style="width: 100%; height: 60px; object-fit: cover; border-radius: 6px; cursor: pointer; border: 2px solid transparent; opacity: 0.6; flex-shrink: 0;">
+                                      <img class="mini-h" src="https://github.com/CEAPUrosario/boletin_ceap/blob/main/img/Homenaje%20-%20R.webp?raw=true" onclick="actualizarFotoHomenaje(this)" style="width: 100%; height: 60px; object-fit: cover; border-radius: 6px; cursor: pointer; border: 2px solid transparent; opacity: 0.6; flex-shrink: 0;">
+                                      <img class="mini-h" src="https://github.com/CEAPUrosario/boletin_ceap/blob/main/img/Homenaje%20-%20S.webp?raw=true" onclick="actualizarFotoHomenaje(this)" style="width: 100%; height: 60px; object-fit: cover; border-radius: 6px; cursor: pointer; border: 2px solid transparent; opacity: 0.6; flex-shrink: 0;">
+                                      <img class="mini-h" src="https://github.com/CEAPUrosario/boletin_ceap/blob/main/img/Homenaje%20-%20T.webp?raw=true" onclick="actualizarFotoHomenaje(this)" style="width: 100%; height: 60px; object-fit: cover; border-radius: 6px; cursor: pointer; border: 2px solid transparent; opacity: 0.6; flex-shrink: 0;">
+                                      <img class="mini-h" src="https://github.com/CEAPUrosario/boletin_ceap/blob/main/img/Homenaje%20-%20U.webp?raw=true" onclick="actualizarFotoHomenaje(this)" style="width: 100%; height: 60px; object-fit: cover; border-radius: 6px; cursor: pointer; border: 2px solid transparent; opacity: 0.6; flex-shrink: 0;">
+                                      <img class="mini-h" src="https://github.com/CEAPUrosario/boletin_ceap/blob/main/img/Homenaje%20-%20V.webp?raw=true" onclick="actualizarFotoHomenaje(this)" style="width: 100%; height: 60px; object-fit: cover; border-radius: 6px; cursor: pointer; border: 2px solid transparent; opacity: 0.6; flex-shrink: 0;">
+                                      <img class="mini-h" src="https://github.com/CEAPUrosario/boletin_ceap/blob/main/img/Homenaje%20-%20W.webp?raw=true" onclick="actualizarFotoHomenaje(this)" style="width: 100%; height: 60px; object-fit: cover; border-radius: 6px; cursor: pointer; border: 2px solid transparent; opacity: 0.6; flex-shrink: 0;">
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+        <section id="criterium" class="section">
+            <div class="magazine-layout reveal">
+                <h2 class="magazine-title">Actualización del estatuto profesoral</h2>
+                <div class="magazine-grid">
+                    <div class="magazine-text">
+                        <p>Próximamente se habilitará el micrositio de actualización del Estatuto Profesoral URosario. Un espacio creado para socializar de manera clara los propósitos y alcances del ajuste a la política que regula todos los procesos relacionados con la trayectoria académica del cuerpo profesoral.  
+</p>
+                        <p>La actualización del Estatuto define la normatividad que le permite a los profesores y profesoras desarrollar su proyecto académico individual de largo plazo, alineado con el proyecto educativo institucional, en condiciones que promueven la excelencia académica y en un marco de autonomía académica, libertad de pensamiento, pluralismo, y respeto por las ideas.  De esta manera, el Estatuto contribuye a que la Universidad del Rosario continúe posicionándose como una institución de educación superior reconocida por su calidad e impacto, y a asegurar el cumplimiento de la misión que guía su proyecto educativo.</p>
+                                              <p>Podrá consultar el documento y la información complementaria en el micrositio, en el que también tendrá acceso a un formulario en el que podrá registrar sus dudas, comentarios o inquietudes. Además de esta herramienta de participación, podrá vincularse a las sesiones en vivo que se realizarán en cada una de las sedes para poder compartir sus aportes a este ejercicio de actualización.  Su participación es fundamental.</p>
+                        <div style="margin-top: 30px; display: flex; gap: 15px; flex-wrap: wrap;">
+</div>
+                    </div>
+<div class="magazine-image">
+    <img src="https://github.com/CEAPUrosario/boletin_ceap/blob/main/img/Tarjetas%20p%C3%A1g.%20web.webp?raw=true" alt="Descripción de la imagen" loading="lazy">
+</div>                </div>
+            </div>
+        </section>
+    </main>
+
+    <div class="podcast-side-tab transparent-tab">
+        <div class="tab-label">
+            <div class="listen-text-container"><p class="listen-text">ESCUCHE NUESTRO PODCAST</p></div>
+            <img src="https://github.com/CEAPUrosario/boletin_ceap/blob/main/img/Caratula%20podcast.png?raw=true">
+        </div>
+        <div class="tab-content">
+            <div class="mini-player">
+                <iframe src="https://open.spotify.com/embed/show/3bbaxCiNOO5PA4NfQl7dQ4?utm_source=generator" width="100%" height="352" frameBorder="0" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy" style="border-radius:12px;"></iframe>
+            </div>
+            <div class="footer-podcast-side">
+                <p style="font-size: 0.7rem; font-weight: 900; margin-bottom: 12px; color: var(--primary-color); text-align: center;">SIGA NUESTRO PODCAST</p>
+                <div class="icons-grid-five">
+                    <a href="https://open.spotify.com/embed/show/3bbaxCiNOO5PA4NfQl7dQ4?utm_source=generator" target="_blank"><img src="https://github.com/CEAPUrosario/boletin_ceap/blob/main/img/Spotify.png?raw=true"></a>
+                    <a href="https://www.spreaker.com/podcast/reflexiones-para-la-ensenanza-y-el-aprendizaje--6285791" target="_blank"><img src="https://github.com/CEAPUrosario/boletin_ceap/blob/main/img/Spreaker.png?raw=true"></a>
+                    <a href="https://soundcloud.com/ensenanza-aprendizaje" target="_blank"><img src="https://github.com/CEAPUrosario/boletin_ceap/blob/main/img/soundcloud.png?raw=true"></a>
+                    <a href="https://podcasts.apple.com/us/podcast/reflexiones-para-la-ense%C3%B1anza-y-el-aprendizaje/id1728144533" target="_blank"><img src="https://github.com/CEAPUrosario/boletin_ceap/blob/main/img/Apple.png?raw=true"></a>
+                    <a href="https://www.youtube.com/@ensenanzayaprendizajeUR" target="_blank"><img src="https://github.com/CEAPUrosario/boletin_ceap/blob/main/img/Youtube.png?raw=true"></a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <button class="contact-fab" id="helpFab" aria-label="Contáctenos">
+    <img src="https://github.com/CEAPUrosario/boletin_ceap/blob/main/img/Nuevo_bot%C3%B3n_correo.png?raw=true" 
+         class="fab-mailing-icon" 
+         fetchpriority="high">
+</button>
+    <footer class="main-footer">
+        <div class="footer-container">
+            <div class="footer-brand"><img src="https://github.com/CEAPUrosario/boletin_ceap/blob/main/img/Logo%20v3.png?raw=true" class="footer-logo"></div>
+            <div class="footer-content-right">
+<div class="footer-nav-links">
+    <a href="#" onclick="openEventPopup('Ediciones Anteriores', '')">Ediciones anteriores</a>
+    <span class="footer-sep">|</span>
+    <a href="https://urosario.edu.co/" target="_blank">Visita Urosario</a>
+    <span class="footer-sep">|</span>
+    <a href="https://urosario.edu.co/profesores/ceap" target="_blank">Visita al CEAP</a>
+</div>
+                <div class="footer-social-links">
+                    <a href="https://www.linkedin.com/company/ceap-urosario/" target="_blank">
+                        <img src="https://static.vecteezy.com/system/resources/previews/018/930/480/non_2x/linkedin-logo-linkedin-icon-transparent-free-png.png" alt="LinkedIn" class="footer-icon">
+                    </a>
+                    <a href="https://www.youtube.com/@ensenanzayaprendizajeUR" target="_blank">
+                        <img src="https://github.com/CEAPUrosario/boletin_ceap/blob/main/img/Youtube.png?raw=true" alt="YouTube" class="footer-icon">
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom"><p>© 2026 Universidad del Rosario - Vigilada Mineducación</p></div>
+    </footer>
+
+    <div class="modal-backdrop" id="helpModal">
+        <div class="modal modal-grande">
+            <button class="close-btn" id="closeModal">✕</button>
+          
+            <h3 id="modalTitle" style="color: var(--primary-color); margin-bottom: 15px;">Título</h3>
+            <div id="modalBodyText">Cuerpo</div>
+        </div>
+    </div>
+
+    <div id="sideDetailPanel" class="side-panel">
+        <button class="close-side-panel" onclick="toggleSidePanel(false)">✕</button>
+        <div id="sidePanelContent"></div>
+    </div>
+
+    <script src="js/script.js"></script>
+</body>a
 </html>
